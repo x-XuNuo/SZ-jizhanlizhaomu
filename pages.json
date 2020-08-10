@@ -37,6 +37,94 @@
 		{
 			"path": "pages/test/test",
 			"style": {}
+		},
+		{//招募首页
+			"path": "pages/recruitment/recruitIndex",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "招募首页",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才
+			"path": "pages/recruitment/recruit/recruit-list",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "聘才",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才申请第一步
+			"path": "pages/recruitment/recruit/information-step-first",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "计划申请",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才申请第二步
+			"path": "pages/recruitment/recruit/information-step-second",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "添加人员",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才申请第三步
+			"path": "pages/recruitment/recruit/information-step-third",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "添加附件",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才-添加人员
+			"path": "pages/recruitment/recruit/information-addMember",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "添加人员",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才-附件详情
+			"path": "pages/recruitment/recruit/information-photos",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "附件详情",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{//聘才-拟聘人员列表
+			"path": "pages/recruitment/recruit/information-memberList",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "拟聘人员列表",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
 		}
 	],
 	"subPackages": [{
