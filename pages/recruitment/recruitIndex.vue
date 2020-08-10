@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 	.line-common-inner {
-		background: #f0eff5;
+		background: #FFFFFF;
 		height: 20upx;
 		width: 100%;
 	}

@@ -63,7 +63,7 @@ export default {
 			}
 
 			let coverParam = this.data ? '?' + this.$U.convertObj(this.data.jointParam) : '';
-			if (!this.operateData.linkType) {
+			if (this.operateData.linkType == "0") {
 				this.$R.push(this.operateData.link + coverParam);
 				console.log('url:', this.operateData.link + coverParam);
 			} else {
