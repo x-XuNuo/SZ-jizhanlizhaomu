@@ -1,43 +1,5 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/frame/frame",
-			"style": {
-				"enablePullDownRefresh": true,
-				"app-plus": {
-					"titleNView": false
-				},
-				"h5": {
-					"titleNView": false
-				}
-			}
-		}, {
-			"path": "pages/main/main",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		},
-
-		{
-			"path": "pages/common-page/common-link",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/user/user",
-			"style": {}
-		},
-		{
-			"path": "pages/test/test",
-			"style": {}
-		},
 		{//招募首页
 			"path": "pages/recruitment/recruitIndex",
 			"style": {
@@ -125,6 +87,44 @@
 					"titleNView": false
 				}
 			}
+		},
+		{
+			"path": "pages/frame/frame",
+			"style": {
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": false
+				},
+				"h5": {
+					"titleNView": false
+				}
+			}
+		}, 
+		{
+			"path": "pages/main/main",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/common-page/common-link",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {}
+		},
+		{
+			"path": "pages/test/test",
+			"style": {}
 		}
 	],
 	"subPackages": [{
