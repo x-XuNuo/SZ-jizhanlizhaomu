@@ -2,13 +2,13 @@
 	<view>
 		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
 			
-			<block slot="a-swiper-below">
+			<!-- <block slot="a-swiper-below">
 					<view class="line-common-inner"></view>
 			</block>
 			
 			<block slot="a-icon-list-below">
 					<view class="line-common-inner"></view>
-			</block>
+			</block> -->
 			
 		</a-frame>
 		

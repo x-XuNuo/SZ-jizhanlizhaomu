@@ -104,16 +104,16 @@ export default {
 			default: 0
 		},
 		autoplay: { // 是否自动切换
-			type: Boolean,
-			default: true
+			type: String,
+			default: 'true'
 		},
 		interval: { // 自动切换时间间隔
-			type: Number,
-			default: 3000
+			type: String,
+			default: "3000"
 		},
 		duration: { // 切换动画时长
-			type: Number,
-			default: 500
+			type: String,
+			default: "500"
 		},
 		vertical: { // 滑动方向是否为纵向
 			type: Boolean,

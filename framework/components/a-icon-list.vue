@@ -264,8 +264,8 @@ export default {
 					if (this.operateData.click) {
 						eval(this.operateData.click);
 					}
-					if (!this.operateDataList.linkType) {
-						this.$R.push(operateDataList.link + coverParam);
+					if (this.operateDataList.linkType == '0') {
+						this.$R.push(this.operateDataList.link + coverParam);
 						// console.log('url:', this.operateDataList.link + coverParam);
 					} else {
 						this.$R.jumpLink(this.operateDataList.link + coverParam);
