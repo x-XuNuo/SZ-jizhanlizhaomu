@@ -265,11 +265,11 @@ export default {
 						eval(this.operateData.click);
 					}
 					if (!this.operateDataList.linkType) {
-						// this.$R.push(operateDataList.link + coverParam);
-						console.log('url:', this.operateDataList.link + coverParam);
+						this.$R.push(operateDataList.link + coverParam);
+						// console.log('url:', this.operateDataList.link + coverParam);
 					} else {
-						// this.$R.jumpLink(this.operateDataList.link + coverParam);
-						console.log('link:', this.operateDataList.link + coverParam);
+						this.$R.jumpLink(this.operateDataList.link + coverParam);
+						// console.log('link:', this.operateDataList.link + coverParam);
 					}
 				} else {
 					console.log('缺少参数-type');
