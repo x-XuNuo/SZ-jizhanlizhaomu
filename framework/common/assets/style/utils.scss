@@ -1,0 +1,610 @@
+/*utils 工具*/
+
+.text-black {
+	color: #000;
+}
+
+.text-dark {
+	color: #333;
+}
+
+.text-deep {
+	color: #555;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.text-blue {
+	color: #007aff !important;
+}
+
+.text-color668 {
+	color: #668be7;
+}
+
+.text-color999 {
+	color: #999999;
+}
+.text-color4949 {
+	color: #494949;
+}
+
+.text-orange,
+.text-colorF93F {
+	color: #ff993f !important;
+}
+
+.text-colorRed {
+	color: #ff0d0d;
+}
+
+.text-color8C {
+	color: #8c8c8c;
+}
+
+.text-color-blue {
+	color: #117be3;
+}
+
+.text-color97 {
+	color: #979797;
+}
+
+.bg-fff {
+	background: #ffffff;
+}
+
+/* 
+	基础颜色背景
+ */
+
+.a-badge-blue {
+	color: #fff !important;
+	background-color: #007aff !important;
+	border-color: #007aff !important;
+}
+
+/*字体*/
+.f10 {
+	font-size: 20upx;
+}
+
+.f12 {
+	font-size: 24upx;
+}
+
+.f13 {
+	font-size: 26upx;
+}
+
+.f14 {
+	font-size: 28upx;
+}
+
+.f15 {
+	font-size: 30upx;
+}
+
+.f16 {
+	font-size: 32upx;
+}
+
+.f17 {
+	font-size: 34upx;
+}
+
+.f18 {
+	font-size: 36upx;
+}
+
+.f20 {
+	font-size: 40upx;
+}
+
+.f24 {
+	font-size: 48upx;
+}
+
+/* 文字对齐*/
+.tl {
+	text-align: left;
+}
+
+.tc {
+	text-align: center;
+}
+
+.tr {
+	text-align: right;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.break-word {
+	white-space: normal;
+	word-break: break-word;
+}
+
+/*浮动与清除浮动*/
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+/*#ifdef H5*/
+.fix {
+	zoom: 1;
+}
+
+.fix:after {
+	display: table;
+	content: '';
+	clear: both;
+}
+/*#endif*/
+
+/*显示*/
+.dn {
+	display: none;
+}
+
+.di {
+	display: inline;
+}
+
+.db {
+	display: block;
+}
+
+.dib {
+	display: inline-block;
+}
+
+.dt {
+	display: table;
+}
+/*#ifdef H5*/
+div.dib {
+	display: inline;
+	zoom: 1;
+}
+/*#endif*/
+
+.vm {
+	vertical-align: middle;
+}
+
+.vib {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/*定位*/
+.pr {
+	position: relative;
+}
+
+.pa {
+	position: absolute;
+}
+
+.pf {
+	position: fixed;
+}
+
+/* padding 边距 */
+.pt10 {
+	padding-top: 20upx;
+}
+
+.pt15 {
+	padding-top: 30upx;
+}
+
+.pt50 {
+	padding-top: 100upx;
+}
+
+.pl5 {
+	padding-left: 10upx;
+}
+
+.pl10 {
+	padding-left: 20upx;
+}
+
+.pl15 {
+	padding-left: 30upx;
+}
+
+.pb10 {
+	padding-bottom: 20upx;
+}
+
+.pb15 {
+	padding-bottom: 30upx;
+}
+
+.pb50 {
+	padding-bottom: 100upx;
+}
+
+.pr5 {
+	padding-right: 10upx;
+}
+
+.pr10 {
+	padding-right: 20upx;
+}
+
+.pr15 {
+	padding-right: 30upx;
+}
+
+.pr20 {
+	padding-right: 40upx;
+}
+
+/*盒子模型*/
+.ml4 {
+	margin-left: 8upx;
+}
+
+.mr4 {
+	margin-right: 8upx;
+}
+
+.mt4 {
+	margin-top: 8upx;
+}
+
+.mb4 {
+	margin-bottom: 8upx;
+}
+
+.ml8 {
+	margin-left: 16upx;
+}
+
+.mr8 {
+	margin-right: 16upx;
+}
+
+.mt8 {
+	margin-top: 16upx;
+}
+
+.mb8 {
+	margin-bottom: 16upx;
+}
+
+.ml12 {
+	margin-left: 24upx;
+}
+
+.mr12 {
+	margin-right: 24upx;
+}
+
+.mt12 {
+	margin-top: 24upx;
+}
+
+.mb12 {
+	margin-bottom: 24upx;
+}
+
+.ml16 {
+	margin-left: 32upx;
+}
+
+.mr16 {
+	margin-right: 32upx;
+}
+
+.mt16 {
+	margin-top: 32upx;
+}
+
+.mb16 {
+	margin-bottom: 32upx;
+}
+
+.ml20 {
+	margin-left: 40upx;
+}
+
+.mr20 {
+	margin-right: 40upx;
+}
+
+.mt20 {
+	margin-top: 40upx;
+}
+
+.mb20 {
+	margin-bottom: 40upx;
+}
+
+.ml24 {
+	margin-left: 48upx;
+}
+
+.mr24 {
+	margin-right: 48upx;
+}
+
+.mt24 {
+	margin-top: 48upx;
+}
+
+.mb24 {
+	margin-bottom: 48upx;
+}
+
+.ml10 {
+	margin-left: 20upx;
+}
+
+.mr5 {
+	margin-right: 10upx;
+}
+
+.mr10 {
+	margin-right: 20upx;
+}
+
+.mt10 {
+	margin-top: 20upx;
+}
+
+.mb5 {
+	margin-bottom: 10upx;
+}
+
+.mb10 {
+	margin-bottom: 20upx;
+}
+
+.ml15 {
+	margin-left: 30upx;
+}
+
+.mr15 {
+	margin-right: 30upx;
+}
+
+.mt15 {
+	margin-top: 30upx;
+}
+
+.mb15 {
+	margin-bottom: 30upx;
+}
+
+.font-weightbold {
+	font-weight: bold;
+}
+
+/*按钮禁用*/
+.disabled {
+	outline: 0 none;
+	cursor: default !important;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+	-ms-pointer-events: none;
+	pointer-events: none;
+}
+
+/* 圆角样式 */
+.border-radius16 {
+	border-radius: 32upx;
+}
+
+/**
+ * 
+ * 自定义class工具
+ * 
+*/
+
+.pad {
+	padding: 0 20upx;
+}
+
+.padding10 {
+	padding: 20upx;
+}
+
+.padding15 {
+	padding: 30upx;
+}
+
+// 格式化页面
+.height100 {
+	height: 100%;
+}
+
+.width100 {
+	width: 100%;
+}
+
+.page_box {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow-x: hidden;
+}
+.scroll-box {
+	flex: 1;
+	height: 100%;
+	position: relative;
+}
+.content_box {
+	flex: 1;
+	overflow-y: auto;
+}
+/*单行文本溢出省略号*/
+.one-t {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	transition: all linear 0.2s;
+}
+/*多行文本溢出省略号*/
+.more-t {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	transition: all linear 0.2s;
+}
+
+/* 文本内容不换行 */
+.text-nowrap {
+	white-space: nowrap;
+}
+
+.width45 {
+	width: 45%;
+}
+
+.width50 {
+	width: 50%;
+}
+
+/* ==================
+          flex布局(colorui里面也有相关基础样式)
+ ==================== */
+/* x水平排列*/
+.x-f {
+	display: flex;
+	align-items: center;
+}
+/*x两端且水平居中*/
+.x-bc {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+/*x平分且水平居中*/
+.x-ac {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+/*x水平靠上对齐*/
+.x-start {
+	display: flex;
+	align-items: flex-start;
+}
+/*x水平靠下对齐*/
+.x-end {
+	display: flex;
+	align-items: flex-end;
+}
+/*上下左右居中*/
+.x-c {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/*y竖直靠左*/
+.y-start {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+/*y竖直靠右*/
+.y-end {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+/*y竖直居中*/
+.y-f {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+// y竖直两端
+.y-b {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+/*上下左右居中*/
+.y-c {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+/*y竖直两端居中*/
+.y-bc {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.flex1 {
+	flex: 1;
+}
+
+.flex2 {
+	flex: 2;
+}
+
+.text-decoration-through {
+	text-decoration: line-through;
+}
+
+/* 
+	框架属性样式
+ */
+.top {
+	position: relative;
+	z-index: 990;
+	top: 0;
+}
+.right {
+	position: relative;
+	z-index: 990;
+	right: 0;
+}
+.bottom {
+	position: relative;
+	z-index: 990;
+	bottom: 0;
+}
+.left {
+	position: relative;
+	z-index: 990;
+	left: 0;
+}
+.icon-size24 {
+	width: 48upx !important;
+	height: 48upx !important;
+	line-height: 48upx !important;
+	margin-right: 10upx;
+}
+
+.icon-box{
+	width:60upx;
+	height:60upx;
+	line-height:60upx;
+}
+
+.border-line{
+	border-bottom:1px solid #f4f4f4;
+}
