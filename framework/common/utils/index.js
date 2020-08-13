@@ -469,8 +469,9 @@ export default {
 
 	async initPages() {
 		let queryPageJson = {};
+		let currentPage = "";
 		var pages = getCurrentPages();
-		let currentPage = pages[pages.length - 1].route;
+		currentPage = pages[pages.length-1].route;
 		let pageCode = this.pageCodeEncrypted(currentPage);
 
 		let requestParam = {

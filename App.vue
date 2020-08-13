@@ -23,7 +23,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
-	@import url("@/framework/common/assets/style/utils.scss");
+	@import "@/framework/common/assets/style/utils.scss";
 </style>

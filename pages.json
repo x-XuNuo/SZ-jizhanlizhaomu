@@ -1,6 +1,14 @@
 {
+	"easycom": {
+		"^ax-(.*)": "@/framework/components/ax-$1/ax-$1.vue",
+		"^a-(.*)": "@/framework/components/a-$1/a-$1.vue",
+		"^ux-(.*)": "@/framework/components/ux-$1/ux-$1.vue",
+		"^u-(.*)": "@/framework/libs/uView/components/u-$1/u-$1.vue",
+		"^uscroll-(.*)": "@/framework/components/uscroll-mescroll-uni/uscroll-$1.vue"
+
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{//招募首页
+		{ //招募首页
 			"path": "pages/recruitment/recruitIndex",
 			"style": {
 				//#ifndef H5
@@ -11,7 +19,7 @@
 				}
 			}
 		},
-		{//聘才
+		{ //聘才
 			"path": "pages/recruitment/recruit/recruit-list",
 			"style": {
 				//#ifndef H5
@@ -22,7 +30,7 @@
 				}
 			}
 		},
-		{//聘才申请第一步
+		{ //聘才申请第一步
 			"path": "pages/recruitment/recruit/information-step-first",
 			"style": {
 				//#ifndef H5
@@ -33,7 +41,7 @@
 				}
 			}
 		},
-		{//聘才申请第二步
+		{ //聘才申请第二步
 			"path": "pages/recruitment/recruit/information-step-second",
 			"style": {
 				//#ifndef H5
@@ -44,7 +52,7 @@
 				}
 			}
 		},
-		{//聘才申请第三步
+		{ //聘才申请第三步
 			"path": "pages/recruitment/recruit/information-step-third",
 			"style": {
 				//#ifndef H5
@@ -55,7 +63,7 @@
 				}
 			}
 		},
-		{//聘才-添加人员
+		{ //聘才-添加人员
 			"path": "pages/recruitment/recruit/information-addMember",
 			"style": {
 				//#ifndef H5
@@ -66,7 +74,7 @@
 				}
 			}
 		},
-		{//聘才-附件详情
+		{ //聘才-附件详情
 			"path": "pages/recruitment/recruit/information-photos",
 			"style": {
 				//#ifndef H5
@@ -77,7 +85,7 @@
 				}
 			}
 		},
-		{//聘才-拟聘人员列表
+		{ //聘才-拟聘人员列表
 			"path": "pages/recruitment/recruit/information-memberList",
 			"style": {
 				//#ifndef H5
@@ -99,7 +107,7 @@
 					"titleNView": false
 				}
 			}
-		}, 
+		},
 		{
 			"path": "pages/main/main",
 			"style": {
@@ -122,8 +130,9 @@
 			"path": "pages/user/user",
 			"style": {}
 		},
+		// 查找日历组件查询测试页面
 		{
-			"path": "pages/test/test",
+			"path": "pages/dateSearch/dateSearch",
 			"style": {}
 		}
 	],

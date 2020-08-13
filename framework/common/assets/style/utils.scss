@@ -1,3 +1,6 @@
+/* 引入外部框架的样式文件 */
+@import '@/framework/libs/uView/index.scss';
+
 /*utils 工具*/
 
 .text-black {
@@ -599,12 +602,24 @@ div.dib {
 	margin-right: 10upx;
 }
 
-.icon-box{
-	width:60upx;
-	height:60upx;
-	line-height:60upx;
+.icon-box {
+	width: 60upx;
+	height: 60upx;
+	line-height: 60upx;
 }
 
-.border-line{
-	border-bottom:1px solid #f4f4f4;
+.border-line {
+	border-bottom: 1px solid #f4f4f4;
+}
+
+// 测试按钮样式
+.btnClass {
+	background-color: #fa3534 !important;
+	border-color: #fa3534 !important;
+	color: #fff !important;
+}
+.btnHoverClass {
+	background-color: #dd6161 !important;
+	border-color: #dd6161 !important;
+	color: #ccc !important;
 }

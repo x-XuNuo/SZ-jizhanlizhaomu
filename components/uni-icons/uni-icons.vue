@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	import icons from '@/framework/components/u-icons/icons.js';
+	import icons from '@/framework/components/ux-icons/icons.js';
 	// #ifdef APP-NVUE
 	var domModule = weex.requireModule('dom');
 	domModule.addRule('fontFace', {

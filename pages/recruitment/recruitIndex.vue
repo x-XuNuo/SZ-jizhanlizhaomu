@@ -10,6 +10,20 @@
 					<view class="line-common-inner"></view>
 			</block>
 			
+			<!-- 测试修改数据 -->
+			<!-- 使用插槽 -->
+			<block slot="a-icon-list-prove">
+				<!-- 渲染数据 -->
+				<view class="" v-for="(item,index) in list" :key="index">
+					{{item.name}}
+				</view>
+			</block>
+			
+			<block slot="a-button-prove">
+				<view class="button-prove">
+					sdfghjkl;
+				</view>
+			</block>
 		</a-frame>
 		
 		
@@ -23,7 +37,9 @@ export default {
 		return {
 			myBtn: "btn-text",
 			// 请求参数
-			requestParamData:{}
+			requestParamData:{},
+			list:[
+			]
 		};
 	},
 	components: {},
@@ -84,5 +100,15 @@ export default {
 		background: #FFFFFF;
 		height: 20upx;
 		width: 100%;
+	}
+	.button-prove{
+		background-color: cyan;
+		width: 100%;
+		/* height: 20upx; */
+	}
+  .x-c {
+		width: 96% !important;
+		background-color: #fd6703 !important;
+		color: #fff !important;
 	}
 </style>

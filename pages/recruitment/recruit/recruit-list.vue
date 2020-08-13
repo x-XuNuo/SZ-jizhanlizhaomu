@@ -1,19 +1,18 @@
 <template>
 	<view>
-		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
-			
-			<!-- <block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block> -->
-			
-		</a-frame>
-		
-		
-		
+		<view class="recruitList">
+			<img src="../../../static/top_Background.png" alt="" style="width: 100%;">
+			<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
+				<!-- <block slot="a-swiper-below">
+						<view class="line-common-inner"></view>
+				</block>
+				<block slot="a-icon-list-below">
+						<view class="line-common-inner"></view>
+				</block> -->
+		<!-- 		<block slot="a-button" style="color: cyan;">
+				</block> -->
+			</a-frame>
+		</view>
 	</view>
 	
 </template>
@@ -80,9 +79,33 @@ export default {
 </script>
 
 <style scoped>
-	.line-common-inner {
+	/* .line-common-inner {
 		background: #f0eff5;
 		height: 20upx;
 		width: 100%;
+	} */
+	>>> .triangle{
+		color: #fff !important;
 	}
+	>>> .triangle-box{
+		border-bottom-color: #fff !important;
+	}
+	>>> .crosswiseTab{
+		color: #fed1b3;
+		position: absolute;
+		top: 130upx;
+	}
+	>>> .date-search{
+			width: 94%;
+			position: absolute;
+			left: 3%;
+			top : 210upx;
+			padding: 10px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 0 10px #e5e5e5;
+		}
+	>>> .query{		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
+		margin: 20upx 0;	}	>>> .class-nextStep{		width: 90%;		position: fixed;		bottom: 0;		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
+		margin: 10px 5%;	}
 </style>
