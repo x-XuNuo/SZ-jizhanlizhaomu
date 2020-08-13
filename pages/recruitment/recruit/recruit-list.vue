@@ -9,8 +9,9 @@
 				<block slot="a-icon-list-below">
 						<view class="line-common-inner"></view>
 				</block> -->
-		<!-- 		<block slot="a-button" style="color: cyan;">
-				</block> -->
+				<block slot="body" style="color: cyan;">
+					
+				</block>
 			</a-frame>
 		</view>
 	</view>
@@ -28,20 +29,6 @@ export default {
 	components: {},
 	created() {},
 	onLoad(option) {
-		// 测试数据
-		// let userInfo ={
-		// 	"id": "123",
-		// 	"name": "test123",
-		// 	"phone": "手机号码"
-		// }
-		
-		// this.requestParamData = {
-		// 	"id": "456",
-		// 	"name": "test456"
-		// }
-		
-		// uni.setStorageSync("userInfo",userInfo);
-		
 	},
 
 	onReady: function(res) {},

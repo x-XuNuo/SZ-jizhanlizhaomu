@@ -12,13 +12,12 @@
 						:attributesData="$U.processDataFun(item.attributes)"
 						:requestParamData="requestParamData"
 					>
-					{{ 'axTemplate' + index }}
 					</ax-template>
 				</slot>
 				<slot name="ax-template-below"></slot>
 			</block>
 			
-			<!-- 自定义业务组件 -->
+		
 			<block>
 				<slot name="ax-date-search-prove"></slot>
 				

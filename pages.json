@@ -135,16 +135,17 @@
 			"path": "pages/dateSearch/dateSearch",
 			"style": {}
 		}
-	],
-	"subPackages": [{
-		"root": "pages/framework",
-		"pages": [{
-			"path": "a-list",
-			"style": {
-				"navigationBarTitleText": "框架"
-			}
-		}]
-	}],
+	
+    ],
+	// "subPackages": [{
+	// 	"root": "pages/framework",
+	// 	"pages": [{
+	// 		"path": "a-list",
+	// 		"style": {
+	// 			"navigationBarTitleText": "框架"
+	// 		}
+	// 	}]
+	// }],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

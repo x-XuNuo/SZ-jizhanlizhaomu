@@ -1,44 +1,53 @@
 <template>
-	<view>
-	<img src="../../static/top_Background.png" alt="" style="width: 100%;">
-	<view class="dateSearch">
-	<!-- 	<ax-date-search
-			ref="dianji"
-		> -->
-		<ax-date-search>
-		</ax-date-search>
-	</view>
+	<view class="parent" @click="demoClick">
+		<view class="text-area">parent component</view>
+		<!-- 自定义组件 -->
+		<a-frame ref="aFrame" />
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				
-			}
+export default {
+	data() {
+		return {
+			axTemplate: {}
+		};
+	},
+
+	onShow() {
+		let that = this
+		console.log('this.$refs.aFrame:', that.$refs.aFrame);
+
+		setTimeout(() => {
+			that.axTemplate = that.$refs.aFrame.$refs.axTemplate0;
+			console.log('axTemplate:', that.axTemplate);
+		}, 900);
+	},
+	methods: {
+		// 测试父组件传递事件
+		demoClick() {
+			//设置请求回调
+
+			var opdata = {
+				linktype: '',
+				linkrul: '',
+				click: 'myCustomMethod()'
+			};
+			console.log("axTemplate:",this.$refs.aFrame.$refs.axTemplate0);
+			this.$refs.aFrame.$refs.axTemplate0[0].setRequestData({ linkurl: 'https://uniapp.dcloud.io/api/request/request.md?timestamp=1587467727771', param: 'http://www.baidu.com' });
+
+			// this.$refs.aFrame.$refs.axTemplate0[0].setOperateData(opdata);
+
+			// this.$refs.aFrame.$refs.axTemplate0[0].setData({});
+
+			//
 		},
-		mounted() {
-			// this.$refs.dianji.goSearchFun()
-		},
-		methods: {
-			
+		// 父节点定义的函数，进行回调
+		myCustomMethod() {
+			console.log('父容器提供的函数回调 ');
 		}
 	}
+};
 </script>
-<style>
-	 >>> .date-search{
-		width: 88%;
-		position: absolute;
-		left: 3%;
-		padding: 10px;
-		background-color: #fff;
-		border-radius: 10px;
-		box-shadow: 0 0 10px #e5e5e5;
-	}
-	>>> .query{
-		background-color: #fd6703;
-		color: #fff;
-		border-radius: 46upx;
-	}
-</style>
+
+<style></style>
