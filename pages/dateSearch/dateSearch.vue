@@ -45,6 +45,9 @@ export default {
 		// 父节点定义的函数，进行回调
 		myCustomMethod() {
 			console.log('父容器提供的函数回调 ');
+		},
+		searchAction(){
+			
 		}
 	}
 };

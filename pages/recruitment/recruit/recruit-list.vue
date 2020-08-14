@@ -1,8 +1,11 @@
 <template>
 	<view>
-		<view class="recruitList">
+		<view class="recruitList" @click="demoClick">
 			<img src="../../../static/top_Background.png" alt="" style="width: 100%;">
-			<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
+			<a-frame  
+				ref = "aFrame"
+				:requestParamData="requestParamData" 
+				@clickSearch="clickSearch">
 				<!-- <block slot="a-swiper-below">
 						<view class="line-common-inner"></view>
 				</block>
@@ -60,17 +63,25 @@ export default {
 				title:'点击了搜索框'
 			})
 			console.log('点击了搜索框');
+		},
+		demoClick(){
+			// console.log("_~_~_~_~_~_",this.$refs.aFrame.$refs.aCrosswiseTab[0].propsData.tabCur)
+			// let searchView = this.$refs.aFrame.$refs.axDateSearch[0];
+			// let btnOpre = searchView.operateData;
+			// btnOpre.click = 'searchAction()';
+			// searchView.setOperateData(btnOpre);
+		},
+		searchAction(){
+			console.log("测试测试")
 		}
 	}
 };
 </script>
 
 <style scoped>
-	/* .line-common-inner {
-		background: #f0eff5;
-		height: 20upx;
-		width: 100%;
-	} */
+	.recruitList{
+		padding-bottom: 100upx;
+	}
 	>>> .triangle{
 		color: #fff !important;
 	}

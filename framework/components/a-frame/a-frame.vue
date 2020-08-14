@@ -23,6 +23,7 @@
 				
 				<slot name="ax-date-search">
 					<ax-date-search
+						ref="axDateSearch"
 						v-if="item.magicalCoder.identifier == 'ax-date-search'"
 						:attributesData="$U.processDataFun(item.attributes)"
 						:requestParamData="requestParamData"
@@ -208,6 +209,7 @@
 				<slot name="a-crosswise-tab-prove"></slot>
 				<slot name="a-crosswise-tab">
 					<a-crosswise-tab
+						ref="aCrosswiseTab"
 						v-if="item.magicalCoder.identifier == 'a-crosswise-tab'"
 						:attributesData="$U.processDataFun(item.attributes)"
 						:requestParamData="requestParamData"

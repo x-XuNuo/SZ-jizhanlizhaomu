@@ -46,7 +46,12 @@ export default {
 	methods: {
 		// 跳转页面
 		clickEventsFun() {
+			// let that = this
+			// console.log("this.operateData.click：",this.operateData.click)
+			// console.log(this)
+			
 			if (this.operateData.click) {
+				// eval('this.$parent.$parent.' + this.operateData.click);
 				eval(this.operateData.click);
 			}
 
