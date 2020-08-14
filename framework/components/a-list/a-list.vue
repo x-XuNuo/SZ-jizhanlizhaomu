@@ -1,32 +1,38 @@
 <template>
 	<view>
-		 <uscroll-mescroll-body ref="mescrollRef" @init="mescrollInit" :down="downOption" @down="downCallback" @up="upCallback">
-		 	<view class="news-li" v-for="news in dataList" :key="news.id">
-		 		<view>{{news.title}}</view>
-		 		<view class="new-content">{{news.content}}</view>
-		 	</view>
-		 </uscroll-mescroll-body>
-		</view>
+		<ux-load-refresh
+			v-if="this.propsData.dataList"
+			ref="loadRefresh"
+			:backgroundCover="this.propsData.backgroundCover"
+			:pageNo="this.propsData.currPage"
+			:totalPageNo="this.propsData.totalPage"
+			:isRefresh="this.propsData.isRefresh"
+			:refreshTime="this.propsData.refreshTime"
+			@loadMore="loadMore"
+			@refresh="refresh"
+		>
+		<block slot="content-list">
+			
+			<view v-if="this.propsData.mode == 'card'">
+				
+				<view v-for="(item,index) in this.propsData.dataList" :key="index">
+					{{ item }}
+				</view>
+				
+				
+				</view>
+			
+		</block>
+		
+		</ux-load-refresh>
+	</view>
 </template>
 
 <script>
 export default {
 	props: {
 		// json配置属性信息
-		attributesData: Array | Object,
-		// 请求参数
-		requestParamData: Array | Object
-	},
-	watch: {
-		attributesData(value) {
-			this.propsData = value.propsData;
-			this.data = value.data;
-			this.operateData = value.operateData;
-		},
-
-		requestParamData(value) {
-			this.requestParamData = value;
-		}
+		attributesData: Array | Object
 	},
 	data() {
 		return {
@@ -36,11 +42,8 @@ export default {
 			operateData: {},
 			// 业务属性
 			data: {},
-			
-			downOption: {
-				auto: true //是否在初始化后,自动执行downCallback; 默认true
-			},
-			dataList: [{id:'1',title:'文本1',content:'内容1'},{id:'2',title:'文本1',content:'内容1'},{id:'3',title:'文本1',content:'内容1'},{id:'4',title:'文本1',content:'内容1'}]
+			// 请求相关属性
+			reqestData: {}
 		};
 	},
 	mounted() {
@@ -48,75 +51,62 @@ export default {
 		this.propsData = this.attributesData.propsData;
 		this.data = this.attributesData.data;
 		this.operateData = this.attributesData.operateData;
+		this.reqestData = this.attributesData.reqestData;
+
+		console.log('this.propsData:', this.propsData);
+		console.log('this.data:', this.data);
+		console.log('this.operateData:', this.operateData);
+		console.log('this.reqestData:', this.reqestData);
 	},
 
 	methods: {
-		/*下拉刷新的回调 */
-		downCallback() {
-			console.log("downCallback");
-			uni.$emit("downCallback",this.dataList);
-			//联网加载数据
-			// apiNewList().then(data => {
-			// 	//联网成功的回调,隐藏下拉刷新的状态
-			// 	this.mescroll.endSuccess();
-			// 	//设置列表数据
-			// 	this.dataList.unshift(data[0]);
-			// }).catch(()=>{
-			// 	//联网失败的回调,隐藏下拉刷新的状态
-			// 	this.mescroll.endErr();
-			// })
+		//数据接口
+		setPropsData(val) {
+			this.propsData = val;
 		},
-		/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
-		upCallback(page) {
-			uni.$emit("upCallback",this.$data);
-			console.log("page:",page);
-			
-			//联网加载数据
-			// apiNewList(page.num, page.size).then(curPageData=>{
-			// 	//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
-			// 	//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
-				
-			// 	//方法一(推荐): 后台接口有返回列表的总页数 totalPage
-			// 	//this.mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
-				
-			// 	//方法二(推荐): 后台接口有返回列表的总数据量 totalSize
-			// 	//this.mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
-				
-			// 	//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
-			// 	//this.mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
-				
-			// 	//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据.
-				// this.mescroll.endSuccess(curPageData.length);
-				
-			// 	//设置列表数据
-			// 	this.dataList=this.dataList.concat(curPageData);
-			// }).catch(()=>{
-			// 	//联网失败, 结束加载
-			// 	this.mescroll.endErr();
-			// })
+
+		// 业务属性接口
+		setData(data) {
+			this.data = data;
+		},
+
+		//操作属性接口
+		setOperateData(operateData) {
+			this.operateData = operateData;
+		},
+
+		//请求接口
+		setRequestData(reqestData) {
+			this.reqestData = reqestData;
+		},
+		
+		// 组件内方法
+		// 结束单次加载更多
+		loadOver(){
+			this.$refs.loadRefresh.loadOver();
+		},
+		
+		// 事件触发下拉刷新
+		runRefresh(){
+			this.$refs.loadRefresh.runRefresh();
+		},
+		
+		// 事件 - 加载更多
+		loadMore(){
+			if (this.operateData.loadMore) {
+				eval('this.$root.' + this.operateData.loadMore);
+			}
+		},
+		
+		// 事件 - 数据列表刷新
+		refresh(){
+			if (this.operateData.refresh) {
+				eval('this.$root.' + this.operateData.refresh);
+			}
 		}
+		
 	}
 };
 </script>
 
-<style scoped>
-	/*说明*/
-	.notice{
-		font-size: 30upx;
-		padding: 40upx 0;
-		border-bottom: 1upx solid #eee;
-		text-align: center;
-	}
-	/*展示上拉加载的数据列表*/
-	.news-li{
-		font-size: 32upx;
-		padding: 32upx;
-		border-bottom: 1upx solid #eee;
-	}
-	.news-li .new-content{
-		font-size: 28upx;
-		margin-top: 10upx;
-		margin-left: 20upx;
-		color: #666;
-	}
-</style>
+<style scoped></style>

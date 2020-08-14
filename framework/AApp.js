@@ -1,6 +1,5 @@
 import Vue from 'vue'
-import aRouter from '@/framework/ARouter.js'
-import uMescrollMixin from '@/framework/components/uscroll-mescroll-uni/uscroll-mescroll-mixins.js';
+import aRouter from '@/framework/ARouter.js';
 import uView from "@/framework/libs/uView";
 
 class AApp extends Vue {
@@ -57,9 +56,7 @@ class AApp extends Vue {
 	}
 
 	// 初始化mixins 
-	initMixins() {
-		Vue.mixin(uMescrollMixin);
-	}
+	initMixins() {}
 
 	// 统一路由管理
 	async main(query) {

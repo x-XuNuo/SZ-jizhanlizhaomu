@@ -1,9 +1,16 @@
 <template>
 	<view>
-		<view @click="compclick">{{ this.reqestData.linkurl }}</view>
-
-		<!-- 根据mode类型不同的视图封装 -->
-		<block v-if="this.propsData.mode == 0"><view>业务 data</view></block>
+		<u-empty
+			:color="this.propsData.color"
+			:text="this.propsData.text"
+			:icon-color="this.propsData.iconColor"
+			:icon-size="this.propsData.iconSize"
+			:src="this.propsData.src"
+			:font-size="this.propsData.fontSize"
+			:mode="this.propsData.mode"
+			:show="this.propsData.show"
+			:margin-top="this.propsData.marginTop"
+		></u-empty>
 	</view>
 </template>
 
@@ -38,7 +45,7 @@ export default {
 		setPropsData(val) {
 			this.propsData = val;
 		},
-		
+
 		// 业务属性接口
 		setData(data) {
 			this.data = data;
@@ -56,42 +63,16 @@ export default {
 
 		// 请求接口示例
 		request() {
-			let requestMode = this.propsData.requestMode;
-			if(this.reqestData.linkurl){
-				
-				this.$apis.requestMode(this.reqestData.linkurl,this.reqestData.data).then((res)=>{
+			this.$apis
+				.POST(this.reqestData.linkurl, this.reqestData.data)
+				.then(res => {
 					if (this.reqestData.success) {
 						this.reqestData.success = res;
-					}else{
-						console.log("success:",success);
 					}
-					
+
 					this.data = res;
-					
-				}).catch((err)=>{
-					
-					if (this.reqestData.error) {
-						this.reqestData.error = err;
-					}else{
-						console.log("error:",error);
-					}
-					
-				});
-			}else{
-				
-				console.log('无请求接口，请检查参数');
-				return;
-				
-			}
-
-		},
-		// 子控制默认事件响应
-		compclick() {
-			//如果存在传放的事件，注入事件
-			if (this.operateData.click) {
-				eval('this.$root.' + this.operateData.click);
-			}
-
+				})
+				.catch(err => {});
 		}
 	}
 };

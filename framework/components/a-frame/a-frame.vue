@@ -1,7 +1,7 @@
 <template>
 	<view v-if="pages && pageData">
 		<view v-for="(item, index) in pageData" :key="index">
-			<!-- 自定义业务组件 -->
+			<!-- 组件模板 -->
 			<block>
 				<slot name="ax-template-prove"></slot>
 				
@@ -249,6 +249,7 @@
 				<slot name="a-list-prove"></slot>
 				<slot name="a-list">
 					<a-list
+						ref="aList"
 						v-if="item.magicalCoder.identifier == 'a-list'"
 						:attributesData="$U.processDataFun(item.attributes)"
 						:requestParamData="requestParamData"
