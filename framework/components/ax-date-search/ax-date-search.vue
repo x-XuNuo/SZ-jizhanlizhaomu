@@ -29,7 +29,6 @@ export default {
 			operateData: {},
 			// 业务属性
 			data: {},
-			uwwuu:{}
 			// 请求相关属性
 			// reqestData: { linkurl: 'www.qq.com', param: '' }
 		};
@@ -40,7 +39,6 @@ export default {
 		this.data = this.attributesData.data;
 		this.operateData = this.attributesData.operateData;
 		// this.reqestData = this.attributesData.reqestData;
-		// console.log(this.attributesData.operateData)
 	},
 	
 	methods: {
