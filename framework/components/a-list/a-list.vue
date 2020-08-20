@@ -121,8 +121,6 @@ export default {
 							} else {
 								console.log('请检查参数是否正确！');
 							}
-							// 组件内部方法 -- 结束单次加载更多
-							this.loadOver();
 						} else {
 							console.log('success-参数:', this.requestData.success);
 						}
