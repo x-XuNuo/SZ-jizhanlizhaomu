@@ -27,9 +27,11 @@ export default {
 
 	onReady: function(res) {},
 
-	onShow() {},
+	onShow() {
+		},
 	onHide() {},
 	mounted() {
+		// console.log('39:',this.$refs.aFrame.$refs.aList2);
 	},
 	activated() {},
 	onUnload() {},

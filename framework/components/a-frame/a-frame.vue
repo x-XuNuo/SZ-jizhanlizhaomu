@@ -295,6 +295,20 @@
 				</slot>
 				<slot name="ax-date-search-below"></slot>
 			</block>
+				<!-- 业务列表 -->
+			<block>
+				<slot name="ax-list-prove"></slot>
+				<slot name="ax-list">
+					<ax-list
+						ref="axDateSearch"
+						v-if="item.magicalCoder.identifier == 'ax-list'"
+						:attributesData="$U.processDataFun(item.attributes)"
+						:requestParamData="requestParamData"
+					>
+					</ax-list>
+				</slot>
+				<slot name="ax-date-search-below"></slot>
+			</block>
 		</view>
 	</view>
 </template>

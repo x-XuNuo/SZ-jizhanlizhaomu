@@ -13,14 +13,27 @@
 		>
 			<block slot="content-list">
 				<view v-if="this.propsData.mode == 'card'">
-					<view v-for="(item, index) in this.data.list" :key="index" class="bg-fff pt15 color999">{{ item }}</view>
+					<view v-for="(item, index) in this.data.list" :key="index" class="bg-fff pt15 color999">
+						<slot name="a-card-prove"></slot>
+						<slot name="a-card">
+							<a-card 
+								:ref="'aCard' + index" 
+								:attributesData="$U.processDataFun(attributes)">
+							
+							 </a-card>
+						</slot>
+						<slot name="a-card-below"></slot>
+					</view>
 				</view>
 			</block>
 		</ux-load-refresh>
 	</view>
 </template>
 
+
 <script>
+import aCard from "../../../a-card.js"
+
 export default {
 	props: {
 		// json配置属性信息
@@ -46,7 +59,8 @@ export default {
 				pageSize: 10,
 				isRefresh: true
 			},
-			isLoading: false
+			isLoading: false,
+			attributes : {},
 		};
 	},
 	mounted() {
@@ -57,12 +71,14 @@ export default {
 		this.requestData = this.attributesData.requestData;
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
+		this.attributes = aCard.data.attributes
 		//初始化数据
 		this.request();
 		// console.log('this.propsData:', this.propsData);
 		// console.log('this.data:', this.data);
 		// console.log('this.operateData:', this.operateData);
 		// console.log('this.requestData:', this.requestData);
+		
 	},
 
 	methods: {
