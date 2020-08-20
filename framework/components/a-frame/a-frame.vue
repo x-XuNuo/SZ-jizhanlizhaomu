@@ -20,20 +20,6 @@
 					<ax-placeholder :ref="'axPlaceholder' + index" v-if="item.magicalCoder.identifier == 'ax-placeholder'"></ax-placeholder>
 				</slot>
 			</block>
-				<!-- 日历查找组件 -->
-			<block>
-				<slot name="ax-date-search-prove"></slot>
-				<slot name="ax-date-search">
-					<ax-date-search
-						ref="axDateSearch"
-						v-if="item.magicalCoder.identifier == 'ax-date-search'"
-						:attributesData="$U.processDataFun(item.attributes)"
-						:requestParamData="requestParamData"
-					>
-					</ax-date-search>
-				</slot>
-				<slot name="ax-date-search-below"></slot>
-			</block>
 			<!-- 标题栏 -->
 			<block v-if="item.magicalCoder.identifier == 'a-title-bar'">
 				<slot name="a-title-bar-prove"></slot>
@@ -276,6 +262,38 @@
 					<a-form :ref="'aForm' + index" v-if="item.magicalCoder.identifier == 'a-form'" :attributesData="$U.processAttribute(item.attributes)"></a-form>
 				</slot>
 				<slot name="a-form-below"></slot>
+			</block>
+			
+			<!-- 业务组件 -->
+			
+				<!-- 日历查找组件 -->
+			<block>
+				<slot name="ax-date-search-prove"></slot>
+				<slot name="ax-date-search">
+					<ax-date-search
+						ref="axDateSearch"
+						v-if="item.magicalCoder.identifier == 'ax-date-search'"
+						:attributesData="$U.processDataFun(item.attributes)"
+						:requestParamData="requestParamData"
+					>
+					</ax-date-search>
+				</slot>
+				<slot name="ax-date-search-below"></slot>
+			</block>
+			
+				<!-- 业务按钮 -->
+			<block>
+				<slot name="ax-button-prove"></slot>
+				<slot name="ax-button">
+					<ax-button
+						ref="axDateSearch"
+						v-if="item.magicalCoder.identifier == 'ax-button'"
+						:attributesData="$U.processDataFun(item.attributes)"
+						:requestParamData="requestParamData"
+					>
+					</ax-button>
+				</slot>
+				<slot name="ax-date-search-below"></slot>
 			</block>
 		</view>
 	</view>

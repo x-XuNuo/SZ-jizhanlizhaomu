@@ -1,18 +1,18 @@
 <template>
 	<view>
 		
-		拟聘人员列表与申请进度
-		<!-- <a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
-			
+		<!-- 拟聘人员列表与申请进度 -->
+		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
+<!-- 			
 			<block slot="a-swiper-below">
 					<view class="line-common-inner"></view>
 			</block>
 			
 			<block slot="a-icon-list-below">
 					<view class="line-common-inner"></view>
-			</block>
+			</block> -->
 			
-		</a-frame> -->
+		</a-frame>
 		
 		
 		
