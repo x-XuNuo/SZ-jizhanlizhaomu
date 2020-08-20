@@ -6,15 +6,6 @@
 				ref = "aFrame"
 				:requestParamData="requestParamData" 
 				@clickSearch="clickSearch">
-				<!-- <block slot="a-swiper-below">
-						<view class="line-common-inner"></view>
-				</block>
-				<block slot="a-icon-list-below">
-						<view class="line-common-inner"></view>
-				</block> -->
-				<block slot="body" style="color: cyan;">
-					
-				</block>
 			</a-frame>
 		</view>
 	</view>

@@ -1,19 +1,13 @@
 <template>
 	<view>
-		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
-			
-			<block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-		</a-frame>
-		
-		
-		
+		<view class="recruitList">
+			<img src="../../../static/top_Background.png" alt="" class="imgs">
+				<a-frame
+					ref = "aFrame"  
+					:requestParamData="requestParamData" 
+					@clickSearch="clickSearch">
+				</a-frame>
+		</view>
 	</view>
 	
 </template>
@@ -80,9 +74,44 @@ export default {
 </script>
 
 <style scoped>
+	.recruitList{
+		padding-top: 150upx;
+	}
+	.imgs{
+		width: 100%;
+		position: absolute;
+		top: 0;
+	}
 	.line-common-inner {
 		background: #f0eff5;
 		height: 20upx;
 		width: 100%;
+	}
+	>>> .newaAdded{
+				width: 90%;
+				position: absolute;
+				left: 5%;
+				top: 300upx;
+				background-color: #fff1ea;
+				color: #fd7012;
+				border-radius: 46upx;
+	}
+	>>> .back{
+			width: 45%;
+			position: fixed;
+			left: 3%;
+			bottom: 20upx;
+			background-color: #ffe8d9;
+			color: #fd6c0a;
+			border-radius: 46upx;
+		}
+	>>> .nextStep{
+			width: 45%;
+			position: fixed;
+			right: 3%;
+			bottom: 20upx;
+			background-color: #fd6703;
+			color: #fff;
+			border-radius: 46upx;
 	}
 </style>

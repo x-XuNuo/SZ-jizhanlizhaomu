@@ -27,6 +27,7 @@ export default {
 		attributesData: Array | Object
 	},
 	data() {
+		let that = this;
 		return {
 			// json配置属性信息
 			propsData: {},
@@ -47,8 +48,6 @@ export default {
 		};
 	},
 	mounted() {
-		console.log("50-attributesData:",this.attributesData);
-		
 		// props参数处理
 		this.propsData = this.attributesData.propsData;
 		this.data = this.attributesData.data;
@@ -91,9 +90,8 @@ export default {
 
 		// 网络请求
 		request() {
-			let that = this;
+			let that =this
 			let requestApi = '';
-
 			if (!this.isLoading && this.requestData.requestMode && this.requestData.remoteApi) {
 				if (this.requestData.requestMode == 'POST') {
 					requestApi = this.$apis.POST(this.requestData.remoteApi, this.requestData.requestParam, this.requestData.isEnable);
@@ -105,6 +103,9 @@ export default {
 
 				requestApi
 					.then(res => {
+						console.log("106：",res)
+						// 初始化数据
+						that.isLoading = false;
 						if (this.requestData.success) {
 							if (typeof this.requestData.success == 'function') {
 								this.requestData.success(res);
@@ -126,18 +127,18 @@ export default {
 
 						// 调用接口返回成功后，逻辑如下
 						if (res && res.data) {
+							console.log("129：，",res.data)
 							if (that.pageInfo.pageNo > that.pageInfo.totalPageNo) {
 								return;
 							}
-							console.log("132:",res)
 							if (that.pageInfo.isRefresh) {
-								// that.data = res.data;
-								that.data.list = that.data.list.concat(res.data.list);
+								that.data.list = res.data.list;
+								// that.data.list = that.data.list.concat(res.data.list);
 								// 组件内部方法 -- 事件触发下拉刷新
 								this.runRefresh();
 								// 初始化数据
 								that.pageInfo.isRefresh = false;
-								that.isLoading = false;
+								
 							} else {
 								that.data.list = that.data.list.concat(res.data.list);
 								// 组件内部方法 -- 结束单次加载更多

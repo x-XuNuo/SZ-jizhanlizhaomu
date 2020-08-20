@@ -1,19 +1,21 @@
 <template>
-	<view>
-		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
-			
-			<block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
+	<view style="background-color:#f5f5f5; padding-top: 20upx;">
+		<a-frame
+			ref = "aFrame"  
+			:requestParamData="requestParamData" 
+			@clickSearch="clickSearch">
+			<!-- 模拟列表组件 -->
+			<block slot="a-button-prove">
+				<view style="display: flex; background-color: #fff; padding: 30upx;">
+					<text style="flex: 1;" >姓名</text>
+					<input style="flex: 3;" type="text" placeholder="请输入姓名">
+				</view>
+				<view style="display: flex; background-color: #fff; padding: 30upx;">
+					<text style="flex: 1;" >身份证号</text>
+					<input style="flex: 3;" type="text" placeholder="请输入身份证号">
+				</view>
 			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
 		</a-frame>
-		
-		
-		
 	</view>
 	
 </template>
@@ -80,17 +82,13 @@ export default {
 </script>
 
 <style scoped>
-	.line-common-inner {
-		background: #f0eff5;
-		height: 20upx;
-		width: 100%;
+	.recruitList{
+		padding-top: 150upx;
 	}
-	
-	>>> .nextStep{
+	>>> .confirm{
 			width: 90%;
-			position: fixed;
 			bottom: 0;
-			background-color: #fd6703;
+			background-color: #ff7a45;
 			color: #fff;
 			border-radius: 46upx;
 			margin: 10px 5%;
