@@ -77,13 +77,6 @@ export default {
 				this.data = res;
 			}).catch();
 		},
-		xuanze(){
-			console.log("测试")
-		},
-		// 点击事件
-		dianji(){
-			console.log("测试测试")
-		},
 		// 子控制默认事件响应
 		compclick() {
 			this.request();
