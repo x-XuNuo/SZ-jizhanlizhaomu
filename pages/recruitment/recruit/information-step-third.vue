@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<!-- 第三步 添加附件 -->
 		<view class="recruitList">
 			<img src="../../../static/top_Background.png" alt="" class="imgs">
 				<a-frame

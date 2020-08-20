@@ -1,5 +1,6 @@
 <template>
 	<view style="background-color:#f5f5f5; padding-top: 20upx;">
+		<!-- 新增拟聘人员页面 -->
 		<a-frame
 			ref = "aFrame"  
 			:requestParamData="requestParamData" 

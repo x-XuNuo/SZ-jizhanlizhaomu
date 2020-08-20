@@ -1,7 +1,8 @@
 <template>
 	<view class="date-search">
+		<view v-if="this.propsData.mode == 'dialog' ">
 			<a-calendar 
-			 ref='test'
+				ref='test'
 				:attributesData="attributesData"
 				:requestParamData="requestParamData">
 			</a-calendar>
@@ -11,6 +12,7 @@
 				:requestParamData="requestParamData">
 			</a-button>
 		</view>
+	</view>
 </template>
 
 <script>

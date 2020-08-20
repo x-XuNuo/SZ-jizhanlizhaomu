@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
+		附件详情
+	<!-- 	<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
 			
 			<block slot="a-swiper-below">
 					<view class="line-common-inner"></view>
@@ -11,7 +12,7 @@
 			</block>
 			
 		</a-frame>
-		
+		 -->
 		
 		
 	</view>

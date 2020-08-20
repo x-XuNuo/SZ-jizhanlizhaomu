@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<!-- 第二步添加人员 -->
 		<view class="recruitList">
 			<img src="../../../static/top_Background.png" alt="" class="imgs">
 				<a-frame
