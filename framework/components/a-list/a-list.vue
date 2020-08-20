@@ -3,9 +3,9 @@
 		<ux-load-refresh
 			v-if="this.data.list"
 			ref="loadRefresh"
-			:backgroundCover="this.propsData.backgroundCover"
-			:pageNo="parseInt(this.propsData.pageNo)"
-			:totalPageNo="parseInt(this.propsData.totalPageNo)"
+			:backgroundCover="'ffffff'"
+			:pageNo="this.pageInfo.pageNo"
+			:totalPageNo="this.pageInfo.totalPageNo"
 			:isRefresh="this.propsData.isRefresh == 'true' ? true : false"
 			:refreshTime="parseInt(this.propsData.refreshTime)"
 			@loadMore="loadMore"
@@ -34,7 +34,9 @@ export default {
 			// 操作相关属性
 			operateData: {},
 			// 业务属性
-			data: {},
+			data: {
+				list:''
+			},
 			// 请求相关属性
 			requestData: {},
 			//页面列表参数
@@ -50,10 +52,11 @@ export default {
 	mounted() {
 		// props参数处理
 		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
+		this.data = this.attributesData.data?this.attributesData.data:{};
 		this.operateData = this.attributesData.operateData;
 		this.requestData = this.attributesData.requestData;
-		this.pageInfo.pageNo = this.propsData.pageNo;
+		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
+		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
 		//初始化数据
 		this.request();
 		// console.log('this.propsData:', this.propsData);
@@ -85,7 +88,7 @@ export default {
 
 		// string转换成函数
 		evalFun(ev) {
-			eval(ev);
+			// eval(ev);
 		},
 
 		// 网络请求
@@ -100,12 +103,11 @@ export default {
 				} else {
 					console.log('请检查参数是否正确！');
 				}
+				this.isLoading = true;
 
 				requestApi
 					.then(res => {
-						console.log("106：",res)
-						// 初始化数据
-						that.isLoading = false;
+						this.isLoading = false;
 						if (this.requestData.success) {
 							if (typeof this.requestData.success == 'function') {
 								this.requestData.success(res);
@@ -119,8 +121,6 @@ export default {
 							} else {
 								console.log('请检查参数是否正确！');
 							}
-							// 组件内部方法 -- 结束单次加载更多
-							this.loadOver();
 						} else {
 							console.log('success-参数:', this.requestData.success);
 						}
@@ -132,28 +132,22 @@ export default {
 								return;
 							}
 							if (that.pageInfo.isRefresh) {
+								that.$set(that.data,'list')
 								that.data.list = res.data.list;
-								// that.data.list = that.data.list.concat(res.data.list);
-								// 组件内部方法 -- 事件触发下拉刷新
-								this.runRefresh();
-								// 初始化数据
-								that.pageInfo.isRefresh = false;
-								
+								console.log("------ 数据刷新了 ------")
 							} else {
 								that.data.list = that.data.list.concat(res.data.list);
-								// 组件内部方法 -- 结束单次加载更多
-								this.loadOver();
+								console.log("----- 加载了更多数据 ------")
 							}
 
 							// 数据累加
-							that.pageInfo.totalPageNo = res.data.totalPageNo;
+							that.pageInfo.totalPageNo = parseInt(res.data.totalPageNo);
 							that.pageInfo.pageNo += 1;
 						} else {
-							that.pageInfo.isRefresh = false;
-							that.isLoading = false;
 							console.log('+++++++++ 返回数据异常 ++++++++++');
 							return;
 						}
+						that.pageInfo.isRefresh = false;
 					})
 					.catch(error => {
 						// 初始化数据
@@ -162,25 +156,17 @@ export default {
 						console.log('error:', error);
 					});
 			} else {
+				that.pageInfo.isRefresh = false;
+				that.isLoading = false;
 				console.log('请检查参数是否正确！');
-				return;
 			}
-		},
-
-		// 组件内方法
-		// 结束单次加载更多
-		loadOver() {
-			this.$refs.loadRefresh.loadOver();
-		},
-
-		// 事件触发下拉刷新
-		runRefresh() {
-			this.$refs.loadRefresh.runRefresh();
 		},
 
 		// 事件 - 加载更多
 		loadMore() {
 			if (this.operateData.loadMore) {
+				this.pageInfo.isRefresh = false;
+				this.request();
 				try {
 					let string = 'this.$root.' + this.operateData.loadMore;
 					this.evalFun(string);
@@ -193,8 +179,10 @@ export default {
 		// 事件 - 数据列表刷新
 		refresh() {
 			if (this.operateData.refresh) {
+				this.pageInfo.isRefresh = true;
+				this.pageInfo.pageNo = 0;
+				this.request();
 				try {
-					this.runRefresh();
 					let string = 'this.$root.' + this.operateData.refresh;
 					this.evalFun(string);
 				} catch (e) {
