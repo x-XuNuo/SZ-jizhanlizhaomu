@@ -1,11 +1,22 @@
 <template>
-	<view>
-		<view @click="compclick">{{ this.reqestData.linkurl }}</view>
+	<view class="card">
+		<view @click="compclick">
 
 		<!-- 根据mode类型不同的视图封装 -->
-		<block v-if="this.propsData.mode == 'icon-card'">
-			<view>业务 data</view>
-		</block>
+		<!-- <block v-if="this.propsData.mode == 'icon-card'"> -->
+			<view class="title"> {{dataSource.recruitTitle}} </view>
+			<view style="padding-top: 20upx; background-color: #fff;">
+				<view class="apply">
+					<text>申请日期:</text>
+					<text>{{dataSource.recruitTime}}</text>
+				</view>
+				<view class="apply">
+					<text>审批状态:</text>
+					<text>已通过</text>
+				</view>
+			</view>
+		<!-- </block> -->
+		</view>
 	</view>
 </template>
 
@@ -13,7 +24,8 @@
 export default {
 	props: {
 		// json配置属性信息
-		attributesData: Array | Object
+		attributesData: Array | Object,
+		dataSource : Array | Object,
 	},
 	data() {
 		return {
@@ -28,11 +40,10 @@ export default {
 		};
 	},
 	mounted() {
-		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
-		this.reqestData = this.attributesData.reqestData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		// this.data = this.attributesData ? this.attributesData.propsData : {};
+		this.operateData = this.attributesData ? this.attributesData.propsData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.propsData : {};
 	},
 
 	methods: {
@@ -99,4 +110,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+	.card{
+		margin: 20upx 40upx;	
+		border-radius: 15upx;
+		overflow: hidden;
+		box-shadow: 0 0 10px #e5e5e5;
+	}
+	.title{
+		width: 100%;
+		background-color: #f5f5f5;
+		padding: 20upx;
+		font-size: 28upx;
+	}
+	.apply{
+		padding: 20upx;
+	}
+</style>

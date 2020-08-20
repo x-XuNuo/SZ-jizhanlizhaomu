@@ -2,7 +2,7 @@
 	<view>
 		
 		<!-- 拟聘人员列表与申请进度 -->
-		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
+		<!-- <a-frame :requestParamData="requestParamData" @clickSearch="clickSearch"> -->
 <!-- 			
 			<block slot="a-swiper-below">
 					<view class="line-common-inner"></view>
@@ -12,7 +12,7 @@
 					<view class="line-common-inner"></view>
 			</block> -->
 			
-		</a-frame>
+		<!-- </a-frame> -->
 		
 		
 		

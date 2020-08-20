@@ -2,14 +2,11 @@
 	<view class="date-search">
 		<view v-if="this.propsData.mode == 'dialog' ">
 			<a-calendar 
-				ref='test'
-				:attributesData="attributesData"
-				:requestParamData="requestParamData">
+				ref='calendar'
+				>
 			</a-calendar>
 			<a-button
-			  ref='test11'
-				:attributesData="attributesData"
-				:requestParamData="requestParamData">
+			  ref='btn'>
 			</a-button>
 		</view>
 	</view>
@@ -40,9 +37,22 @@ export default {
 		this.propsData = this.attributesData.propsData;
 		this.data = this.attributesData.data;
 		this.operateData = this.attributesData.operateData;
-		console.log(this.operateData)
-		// this.ceshi()
 		this.reqestData = this.attributesData.reqestData;
+		
+		let dateInfo = {
+			date : "",
+			mode : "dialog",
+			titleText : "请选择日期"
+		}
+		let btnInfo = {
+			text : "点击查询",
+			class:"query"
+		} 
+		this.$nextTick( ()=> {
+			// console.log("42this:",this.$refs.calendar)
+			this.$refs.calendar.setPropsData(dateInfo)
+			this.$refs.btn.setPropsData(btnInfo)
+		})
 	},
 	
 	methods: {

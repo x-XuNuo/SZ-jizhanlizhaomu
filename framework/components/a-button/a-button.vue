@@ -38,9 +38,10 @@ export default {
 	},
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.propsData : {};
+		this.operateData = this.attributesData ? this.attributesData.propsData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.propsData : {};
 	},
 
 	methods: {
@@ -57,7 +58,11 @@ export default {
 			} else if (this.operateData.linkType == "1") {
 				this.$R.jumpLink(this.operateData.link + coverParam);
 			}
-		}
+		},
+		
+		setPropsData(val){
+			this.propsData = val
+		},
 	}
 };
 </script>

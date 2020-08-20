@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view style="background-color: #f4f4f4; margin-top: 60upx;">
 		<ux-load-refresh
 			v-if="this.data.list"
 			ref="loadRefresh"
@@ -13,8 +13,8 @@
 		>
 			<block slot="content-list">
 				<view v-if="this.propsData.mode == 'card'">
-					<view v-for="(item, index) in this.data.list" :key="index" class="bg-fff pt15 color999">
-						<slot name="a-card-prove"></slot>
+					<view v-for="(item, index) in this.data.list" :key="index" class="pt15 color999">
+						<!-- <slot name="a-card-prove"></slot>
 						<slot name="a-card">
 							<a-card 
 								:ref="'aCard' + index" 
@@ -22,7 +22,16 @@
 							
 							 </a-card>
 						</slot>
-						<slot name="a-card-below"></slot>
+						<slot name="a-card-below"></slot> -->
+						<slot name="ax-card-prove"></slot>
+						<slot name="ax-card">
+							<ax-card
+								ref="axDateSearch"
+								:data = item
+							>
+							</ax-card>
+						</slot>
+						<slot name="ax-card-below"></slot>
 					</view>
 				</view>
 			</block>

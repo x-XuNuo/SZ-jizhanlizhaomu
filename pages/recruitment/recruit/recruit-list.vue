@@ -75,6 +75,7 @@ export default {
 <style scoped>
 	.recruitList{
 		padding-bottom: 100upx;
+		background-color: #f5f6f7;
 	}
 	>>> .triangle{
 		color: #fff !important;

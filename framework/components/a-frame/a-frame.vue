@@ -293,7 +293,7 @@
 					>
 					</ax-button>
 				</slot>
-				<slot name="ax-date-search-below"></slot>
+				<slot name="ax--button-below"></slot>
 			</block>
 				<!-- 业务列表 -->
 			<block>
@@ -307,7 +307,21 @@
 					>
 					</ax-list>
 				</slot>
-				<slot name="ax-date-search-below"></slot>
+				<slot name="ax-list-below"></slot>
+			</block>
+				<!-- 业务卡片 -->
+			<block>
+				<slot name="ax-card-prove"></slot>
+				<slot name="ax-card">
+					<ax-card
+						ref="axDateSearch"
+						v-if="item.magicalCoder.identifier == 'ax-card'"
+						:attributesData="$U.processDataFun(item.attributes)"
+						:requestParamData="requestParamData"
+					>
+					</ax-card>
+				</slot>
+				<slot name="ax-card-below"></slot>
 			</block>
 		</view>
 	</view>
