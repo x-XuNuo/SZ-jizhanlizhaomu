@@ -30,7 +30,7 @@ export default {
 			// 业务属性
 			data: {},
 			// 请求相关属性
-			// reqestData: { linkurl: 'www.qq.com', param: '' }
+			reqestData: {}
 		};
 	},
 	mounted() {
@@ -38,7 +38,9 @@ export default {
 		this.propsData = this.attributesData.propsData;
 		this.data = this.attributesData.data;
 		this.operateData = this.attributesData.operateData;
-		// this.reqestData = this.attributesData.reqestData;
+		console.log(this.operateData)
+		// this.ceshi()
+		this.reqestData = this.attributesData.reqestData;
 	},
 	
 	methods: {
@@ -67,33 +69,20 @@ export default {
 
 		// 请求接口示例
 		request() {
-			// uni.request({
-			// 	url: this.reqestData.linkurl, //仅为示例，并非真实接口地址。
-			// 	data: this.reqestData.data,
-			// 	success: res => {
-			// 		if (this.reqestData.success) {
-			// 			this.reqestData.success(res);
-			// 		}
-			// 		this.data = res;
-			// 	}
-			// });
-			console.log("71:",this.reqestData.linkurl);
+			// console.log("71:",this.reqestData.linkurl);
 			this.$apis.GET(this.reqestData.linkurl,false).then((res)=>{
-				
 				if (this.reqestData.success) {
 					this.reqestData.success = res;
 				}
-				
 				this.data = res;
-				
 			}).catch();
-
-
+		},
+		xuanze(){
+			console.log("测试")
 		},
 		// 点击事件
 		dianji(){
 			console.log("测试测试")
-			eval('this.$root.' + this.operateData.click);
 		},
 		// 子控制默认事件响应
 		compclick() {

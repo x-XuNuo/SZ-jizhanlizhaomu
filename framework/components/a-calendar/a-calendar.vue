@@ -90,7 +90,7 @@ export default {
 	},
 	methods: {
 		// 日期改变，insert :ture 时生效
-		change(){
+		change(e){
 			if(this.operateData.change){
 				console.log(this.operateData.change);
 			}else{
@@ -99,14 +99,15 @@ export default {
 		},
 		
 		// 确认选择insert :false 时生效
-		confirm(){
+		confirm(e){
+			// console.log("e:",e);
 			if(this.operateData.confirm){
 				eval(this.$U.htmlDecodeByRegExp(this.operateData.confirm));
 			}
 		},
 		
 		// 切换月份时触发
-		monthSwitch(){
+		monthSwitch(e){
 			if(this.operateData.monthSwitch){
 				eval(this.$U.htmlDecodeByRegExp(this.operateData.monthSwitch));
 			}

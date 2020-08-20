@@ -3,6 +3,7 @@
 		<view
 			v-if="showUploadList"
 			class="u-list-item u-preview-wrap"
+			:class="listClass"
 			v-for="(item, index) in lists"
 			:key="index"
 			:style="{
@@ -88,6 +89,7 @@
  * @event {Function} on-uploaded 所有图片上传完毕触发
  * @event {Function} on-choose-complete 每次选择图片后触发，只是让外部可以得知每次选择后，内部的文件列表
  * @example <u-upload :action="action" :file-list="fileList" ></u-upload>
+ * @property {String} listClass 展示图片列表样式 （新增，非原框架字段）
  */
 export default {
 	name: 'u-upload',
@@ -236,8 +238,13 @@ export default {
 			type: Array,
 			default() {
 				return ['png', 'jpg', 'jpeg', 'webp', 'gif'];
-			}
+			},
 		},
+		// list 样式
+		listClass: {
+			type: String,
+			default: ''
+		}
 	},
 	mounted() {},
 	data() {

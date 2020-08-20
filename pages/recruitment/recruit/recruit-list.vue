@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="recruitList" @click="demoClick">
+		<view class="recruitList">
 			<img src="../../../static/top_Background.png" alt="" style="width: 100%;">
 			<a-frame  
 				ref = "aFrame"
@@ -64,16 +64,17 @@ export default {
 			})
 			console.log('点击了搜索框');
 		},
-		demoClick(){
+		// demoClick(){
 			// console.log("_~_~_~_~_~_",this.$refs.aFrame.$refs.aCrosswiseTab[0].propsData.tabCur)
 			// let searchView = this.$refs.aFrame.$refs.axDateSearch[0];
 			// let btnOpre = searchView.operateData;
 			// btnOpre.click = 'searchAction()';
 			// searchView.setOperateData(btnOpre);
-		},
+		// },
 		searchAction(){
 			console.log("测试测试")
-		}
+		},
+		
 	}
 };
 </script>

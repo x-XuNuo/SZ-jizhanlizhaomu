@@ -85,4 +85,14 @@ export default {
 		height: 20upx;
 		width: 100%;
 	}
+	
+	>>> .nextStep{
+			width: 90%;
+			position: fixed;
+			bottom: 0;
+			background-color: #fd6703;
+			color: #fff;
+			border-radius: 46upx;
+			margin: 10px 5%;
+	}
 </style>

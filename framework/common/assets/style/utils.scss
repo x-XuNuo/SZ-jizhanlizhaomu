@@ -392,6 +392,22 @@ div.dib {
 	margin-bottom: 30upx;
 }
 
+.margin6{
+	margin:12upx !important;
+}
+
+.margin9{
+	margin:18upx !important;
+}
+
+.margin10{
+	margin:20upx !important;
+}
+
+.margin15{
+	margin:30upx;
+}
+
 .font-weightbold {
 	font-weight: bold;
 }
@@ -622,4 +638,25 @@ div.dib {
 	background-color: #dd6161 !important;
 	border-color: #dd6161 !important;
 	color: #ccc !important;
+}
+
+// 按钮基础样式
+.circleBtn{
+	font-size: 30upx;
+	    height: 80upx;
+	    line-height: 80upx;
+		border-radius: 100upx;
+		color: #606266;
+		border: 1px solid #c0c4cc;
+		background-color: #ffffff;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		padding: 0 40upx;
+		z-index: 1;
+		box-sizing: border-box;
+		transition: all 0.15s;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 }

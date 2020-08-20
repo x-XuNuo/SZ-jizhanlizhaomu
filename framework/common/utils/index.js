@@ -385,15 +385,17 @@ export default {
 		let operateData = {};
 		// 业务属性
 		let data = {};
+		// 请求相关属性
+		let requestData = {};
 
-		// console.log('params:', params);
+		console.log('params:', params);
 
 		for (let item in params) {
 			// 组件属性
 			if (item.indexOf('PD') != (-1)) {
 				let processParam = item.split('-')[1];
-
-				if (item.indexOf('List') != (-1) && item) {
+				
+				if (item && item.indexOf('List') != (-1) || item.indexOf('Option') != (-1)) {
 					let temp = params[item];
 					temp = this.htmlDecodeByRegExp(temp);
 					// temp = temp.replace(/&quot;/g, "\"");
@@ -450,21 +452,62 @@ export default {
 					operateData[processParam] = params[item];
 				}
 
-
-
 			}
 
+			// 请求相关属性
+			if (item.indexOf('RD') != (-1)) {
+				
+				let processParam = item.split('-')[1];
+				let attributeList = [];
+				attributeList = ['requestParam'];
+			
+				if (attributeList.indexOf(processParam) != (-1) ) {
+					let temp = params[item];
+			
+					temp = this.htmlDecodeByRegExp(temp);
+					// temp = temp.replace(/&quot;/g, "\"");
+			
+					temp = JSON.parse(temp);
+			
+					requestData[processParam] = temp;
+			
+				} else {
+					requestData[processParam] = params[item];
+				}
+			
+			
+			
+			}
 
 		}
+		// console.log("propsData:",propsData);
+		// console.log("data:",data);
+		// console.log("operateData:",operateData);
+		console.log("requestData:",requestData);
 		// console.log('转换结果:',JSON.stringify(operateData))
 		return {
 			propsData: propsData,
 			data: data,
-			operateData: operateData
+			operateData: operateData,
+			requestData:requestData
 		};
 
 	},
-
+	
+	// 处理传入组件内部数据
+	processAttribute(param){
+		let attributeData = {};
+		attributeData = {
+			propsData: param.propsData || {},
+			data: param.data || {},
+			operateData: param.operateData || {},
+			requestData:param.requestData || {}
+		};
+		console.log("attributeData:",attributeData);
+		return attributeData;
+		
+	},
+	
 	// ---------------------组件初始化---起----------------------------
 
 	async initPages() {
@@ -489,7 +532,7 @@ export default {
 			queryPageJson = decodeURIComponent(res.page);
 			queryPageJson = JSON.parse(queryPageJson);
 
-			// console.log('queryPageJson:', queryPageJson);
+			console.log('queryPageJson:', queryPageJson);
 		}
 		return queryPageJson;
 	},

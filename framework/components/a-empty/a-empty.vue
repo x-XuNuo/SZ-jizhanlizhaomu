@@ -29,7 +29,7 @@ export default {
 			// 业务属性
 			data: {},
 			// 请求相关属性
-			reqestData: {}
+			requestData: {}
 		};
 	},
 	mounted() {
@@ -37,45 +37,64 @@ export default {
 		this.propsData = this.attributesData.propsData;
 		this.data = this.attributesData.data;
 		this.operateData = this.attributesData.operateData;
-		this.reqestData = this.attributesData.reqestData;
+		this.requestData = this.attributesData.requestData;
 	},
 
 	methods: {
 		//数据接口
-		setPropsData(val) {
-			this.propsData = val;
+		setPropsData(propsData) {
+			this.propsData = propsData;
 		},
-
+		
 		// 业务属性接口
 		setData(data) {
 			this.data = data;
 		},
-
+		
 		//操作属性接口
 		setOperateData(operateData) {
 			this.operateData = operateData;
 		},
-
+		
 		//请求接口
-		setRequestData(reqestData) {
-			this.reqestData = reqestData;
+		setRequestData(requestData) {
+			this.requestData = requestData;
 		},
-
-		// 请求接口示例
+		
+		// string转换成函数
+		evalFun(ev) {
+			eval(ev);
+		},
+		
+		// 网络请求
 		request() {
-			this.$apis
-				.POST(this.reqestData.linkurl, this.reqestData.data)
-				.then(res => {
-					if (this.reqestData.success) {
-						this.reqestData.success = res;
-					}
+			let requestMode = this.requestData.requestMode || '';
+			if (requestMode && this.requestData.linkurl) {
+				this.$apis
+					.requestMode(this.requestData.linkurl, this.requestData.data)
+					.then(res => {
+						if (this.requestData.success) {
+							this.requestData.success = res;
+						} else {
+							console.log('success:', success);
+						}
 
-					this.data = res;
-				})
-				.catch(err => {});
+						this.data = res;
+					})
+					.catch(err => {
+						if (this.requestData.error) {
+							this.requestData.error = err;
+						} else {
+							console.log('error:', error);
+						}
+					});
+			} else {
+				console.log('无请求接口，请检查参数');
+				return;
+			}
 		}
 	}
 };
 </script>
 
-<style></style>
+<style scoped></style>
