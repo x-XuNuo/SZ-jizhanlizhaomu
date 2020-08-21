@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="card" v-if="this.propsData.mode == 'icon-card'">
+		<view class="card" v-if="this.model == 0 ">
 		<!-- <view class="card"> -->
 			<view @click="compclick">
 
@@ -22,8 +22,8 @@
 			</view>
 		</view>
 		
-		<!-- <view class="card" v-if="this.propsData.mode == 'icon-card'"> -->
-		<view>
+		<view class="card" v-if="this.model == 1 ">
+		<!-- <view> -->
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
 				<view>
 					<view>
@@ -49,6 +49,7 @@ export default {
 		// json配置属性信息
 		attributesData: Array | Object,
 		dataSource : Array | Object,
+		model : 0 ,
 	},
 	data() {
 		return {
@@ -64,9 +65,9 @@ export default {
 	},
 	mounted() {
 		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
-		// this.data = this.attributesData ? this.attributesData.propsData : {};
-		this.operateData = this.attributesData ? this.attributesData.propsData : {};
-		this.current = parseInt(this.propsData) ? this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
 	},
 
 	methods: {

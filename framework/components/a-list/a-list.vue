@@ -14,24 +14,22 @@
 			<block slot="content-list">
 				<view v-if="this.propsData.mode == 'card'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
-						<!-- <slot name="a-card-prove"></slot>
-						<slot name="a-card">
-							<a-card 
-								:ref="'aCard' + index" 
-								:attributesData="$U.processDataFun(attributes)">
-							
-							 </a-card>
-						</slot>
-						<slot name="a-card-below"></slot> -->
-						<slot name="ax-card-prove"></slot>
-						<slot name="ax-card">
 							<ax-card
 								ref="axDateSearch"
-								:dataSource = item
+								:dataSource = "item"
+								:model = "0"
 							>
 							</ax-card>
-						</slot>
-						<slot name="ax-card-below"></slot>
+					</view>
+				</view>
+				<view v-if="this.propsData.mode == 'card-delete'">
+					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
+							<ax-card
+								ref="axDateSearch"
+								:dataSource = "item"
+								:model = "1"
+							>
+							</ax-card>
 					</view>
 				</view>
 			</block>
