@@ -13,7 +13,7 @@
 		>
 			<block slot="content-list">
 				<view v-if="this.propsData.mode == 'card'">
-					<view v-for="(item, index) in this.data.list" :key="index" class="pt15 color999">
+					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 						<!-- <slot name="a-card-prove"></slot>
 						<slot name="a-card">
 							<a-card 
@@ -27,7 +27,7 @@
 						<slot name="ax-card">
 							<ax-card
 								ref="axDateSearch"
-								:data = item
+								:dataSource = item
 							>
 							</ax-card>
 						</slot>

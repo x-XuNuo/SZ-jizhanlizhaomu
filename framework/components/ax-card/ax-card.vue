@@ -1,21 +1,44 @@
 <template>
-	<view class="card">
-		<view @click="compclick">
+	<view>
+		<view class="card" v-if="this.propsData.mode == 'icon-card'">
+		<!-- <view class="card"> -->
+			<view @click="compclick">
 
 		<!-- 根据mode类型不同的视图封装 -->
-		<!-- <block v-if="this.propsData.mode == 'icon-card'"> -->
-			<view class="title"> {{dataSource.recruitTitle}} </view>
-			<view style="padding-top: 20upx; background-color: #fff;">
-				<view class="apply">
-					<text>申请日期:</text>
-					<text>{{dataSource.recruitTime}}</text>
+				<view class="title"> 
+					<image src="../../../static/recruit-list/txt.png" mode="" style="width: 40upx;height: 40upx;"></image>
+					{{dataSource.recruitTitle}} 
 				</view>
-				<view class="apply">
-					<text>审批状态:</text>
-					<text>已通过</text>
+				<view style="padding-top: 20upx; background-color: #fff;">
+					<view class="apply">
+						<text>申请日期:</text>
+						<text>{{dataSource.recruitTime}}</text>
+					</view>
+					<view class="apply">
+						<text>审批状态:</text>
+						<text>{{ dataSource.recruitStatus == 0 ? "未通过" :(dataSource.recruitStatus == 1 ? "已通过" :"已驳回")}}</text>
+					</view>
 				</view>
 			</view>
-		<!-- </block> -->
+		</view>
+		
+		<!-- <view class="card" v-if="this.propsData.mode == 'icon-card'"> -->
+		<view>
+			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
+				<view>
+					<view>
+						<text style="font-size: 30upx;">乔凡</text>
+						<text style="font-size: 28upx; color: #9a9a9a; margin: 0 10upx;">26</text>
+						<text class=""></text>
+					</view>
+					<view  style="font-size: 25upx; color: #9a9a9a; margin-top: 10upx ;">
+						320502199401010059 
+					</view>
+				</view>
+				<view style="position: absolute;top: 50%; right: 20upx; transform: translate(-50%, -50%); ">
+					<image src="../../../static/delete.png" mode="" style="width: 40upx; height: 40upx;"></image>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -112,7 +135,7 @@ export default {
 
 <style>
 	.card{
-		margin: 20upx 40upx;	
+		margin: 30upx 40upx;	
 		border-radius: 15upx;
 		overflow: hidden;
 		box-shadow: 0 0 10px #e5e5e5;

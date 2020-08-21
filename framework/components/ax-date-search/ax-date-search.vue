@@ -44,6 +44,7 @@ export default {
 			mode : "dialog",
 			titleText : "请选择日期"
 		}
+		// this.propsData.titleText = e.fulldate
 		let btnInfo = {
 			text : "点击查询",
 			class:"query"
