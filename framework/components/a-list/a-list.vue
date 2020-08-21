@@ -1,5 +1,5 @@
 <template>
-	<view style="background-color: #f4f4f4; margin-top: 60upx;">
+	<view style="background-color: #f5f5f5; margin-top: 50upx;">
 		<ux-load-refresh
 			v-if="this.data.list"
 			ref="loadRefresh"
@@ -18,6 +18,7 @@
 								ref="axDateSearch"
 								:dataSource = "item"
 								:model = "0"
+								@cardClick = "cardclick(item.recruitId)"
 							>
 							</ax-card>
 					</view>
@@ -25,7 +26,7 @@
 				<view v-if="this.propsData.mode == 'card-delete'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 							<ax-card
-								ref="axDateSearch"
+								ref="axDateDEle"
 								:dataSource = "item"
 								:model = "1"
 							>
@@ -73,11 +74,19 @@ export default {
 	mounted() {
 		// props参数处理
 		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data?this.attributesData.data:{};
+		this.data = this.attributesData.data ?this.attributesData.data:{};
 		this.operateData = this.attributesData.operateData;
 		this.requestData = this.attributesData.requestData;
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
+		// setTimeout( () =>{
+		// 	this.$nextTick( ()=> {
+		// 		console.log("82：",this.$refs.axDateSearch)
+		// 		let cardOpData = this.$refs.axDateSearch.operateData
+		// 		cardOpData.click = this.cardclick(cardOpData)
+		// 		this.$refs.axDateSearch.setOperateData()
+		// 	})
+		// },1000)
 		this.attributes = aCard.data.attributes
 		//初始化数据
 		this.request();
@@ -212,6 +221,14 @@ export default {
 					console.log('错误信息：', e);
 				}
 			}
+		},
+		// 列表跳转
+		cardclick(index){
+			// console.log(index)
+			let url = "/pages/recruitment/recruit/information-detail?id=" + index
+			uni.navigateTo({
+				url: url
+			})
 		}
 	}
 };

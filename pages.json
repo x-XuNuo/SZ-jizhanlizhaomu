@@ -96,6 +96,17 @@
 				}
 			}
 		},
+		{ //聘才-查看详情
+			"path": "pages/recruitment/recruit/information-detail",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "查看详情",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
 		{
 			"path": "pages/frame/frame",
 			"style": {

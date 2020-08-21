@@ -6,6 +6,7 @@
 				>
 			</a-calendar>
 			<a-button
+				style="border: none;"
 			  ref='btn'>
 			</a-button>
 		</view>

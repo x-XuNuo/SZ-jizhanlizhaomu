@@ -1,35 +1,33 @@
 <template>
 	<view>
 		<view class="card" v-if="this.model == 0 ">
-		<!-- <view class="card"> -->
 			<view @click="compclick">
 
-		<!-- 根据mode类型不同的视图封装 -->
+			<!-- 根据mode类型不同的视图封装 -->
 				<view class="title"> 
-					<image src="../../../static/recruit-list/txt.png" mode="" style="width: 40upx;height: 40upx;"></image>
-					{{dataSource.recruitTitle}} 
+					<img src="../../../static/recruit-list/txt.png" class="imgStyle"></img>
+				  <text style="vertical-align: middle;">{{dataSource.recruitTitle}} </text>
 				</view>
 				<view style="padding-top: 20upx; background-color: #fff;">
 					<view class="apply">
-						<text>申请日期:</text>
+						<text>申请日期：</text>
 						<text>{{dataSource.recruitTime}}</text>
 					</view>
 					<view class="apply">
-						<text>审批状态:</text>
+						<text>审批状态：</text>
 						<text>{{ dataSource.recruitStatus == 0 ? "未通过" :(dataSource.recruitStatus == 1 ? "已通过" :"已驳回")}}</text>
 					</view>
 				</view>
 			</view>
 		</view>
 		
-		<view class="card" v-if="this.model == 1 ">
-		<!-- <view> -->
+		<view v-if="this.model == 1 ">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
 				<view>
-					<view>
-						<text style="font-size: 30upx;">乔凡</text>
+					<view >
+						<text style="font-size: 30upx; color: #000000;">乔凡</text>
 						<text style="font-size: 28upx; color: #9a9a9a; margin: 0 10upx;">26</text>
-						<text class=""></text>
+						<img src="../../../static/man.png" mode="" style="width: 40upx;vertical-align: middle;"></img>
 					</view>
 					<view  style="font-size: 25upx; color: #9a9a9a; margin-top: 10upx ;">
 						320502199401010059 
@@ -74,6 +72,9 @@ export default {
 		//数据接口
 		setPropsData(val) {
 			this.propsData = val;
+		},
+		
+		cardClick (){
 		},
 		
 		// 业务属性接口
@@ -124,6 +125,8 @@ export default {
 		},
 		// 子控制默认事件响应
 		compclick() {
+			this.$emit("cardClick")
+			console.log("this.operateData.click",this.operateData)
 			//如果存在传放的事件，注入事件
 			if (this.operateData.click) {
 				eval('this.$root.' + this.operateData.click);
@@ -143,9 +146,16 @@ export default {
 	}
 	.title{
 		width: 100%;
-		background-color: #f5f5f5;
-		padding: 20upx;
+		background-color: #fafafa;
+		height: 90upx;
+		line-height: 90upx;
 		font-size: 28upx;
+	}
+	.imgStyle{
+		width: 40upx;
+		height: 40upx; 
+		padding: 0 20upx; 
+		vertical-align: middle;
 	}
 	.apply{
 		padding: 20upx;

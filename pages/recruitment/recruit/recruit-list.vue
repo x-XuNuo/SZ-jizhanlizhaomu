@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<view class="recruitList">
+	<view  class="recruitList">
+		<view>
 			<img src="../../../static/top_Background.png" alt="" style="width: 100%;">
 			<a-frame  
 				ref = "aFrame"
@@ -75,7 +75,9 @@ export default {
 <style scoped>
 	.recruitList{
 		padding-bottom: 100upx;
-		background-color: #f5f6f7;
+		background-color: #f5f5f5;
+		height: 100%;
+		overflow: hidden;
 	}
 	>>> .triangle{
 		color: #fff !important;
@@ -92,13 +94,14 @@ export default {
 			width: 94%;
 			position: absolute;
 			left: 3%;
-			top : 210upx;
+			top : 206upx;
 			padding: 10px;
 			background-color: #fff;
 			border-radius: 10px;
-			box-shadow: 0 0 10px #e5e5e5;
+			box-shadow: 0 0 5px #000000d;
 		}
 	>>> .query{		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
-		margin: 20upx 0;	}	>>> .class-nextStep{		width: 90%;		position: fixed;		bottom: 0;		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
+		margin: 20upx 0;
+		/* border: none !important; */	}	>>> .class-nextStep{		width: 90%;		position: fixed;		bottom: 0;		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
 		margin: 10px 5%;	}
 </style>
