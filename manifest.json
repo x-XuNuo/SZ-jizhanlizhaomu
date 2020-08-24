@@ -76,7 +76,7 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "lowcode-frame",
+        "title" : "招募",
         "domain" : "https://jizhanlipeixun.sicbcore.com",
         "devServer" : {
             "https" : false,

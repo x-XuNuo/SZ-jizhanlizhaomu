@@ -45,7 +45,6 @@ export default {
 			mode : "dialog",
 			titleText : "请选择日期"
 		}
-		// this.propsData.titleText = e.fulldate
 		let btnInfo = {
 			text : "点击查询",
 			mode:"default",
@@ -53,14 +52,14 @@ export default {
 		} 
 		this.$nextTick( ()=> {
 			let calendarOD = this.$refs.calendar.operateData
-			let btnOD = this.$refs.btn.operateData
+			// let btnOD = this.$refs.btn.operateData
 			calendarOD.confirm = "this.propsData.titleText = e.fulldate"
 			// btnOD.link = "http://easy-mock.liuup.com/mock/5f36392d339f163501d50421/example/restful/list"
 			// btnOD.linkType = "1"
 			this.$refs.calendar.setPropsData(dateInfo),
 			this.$refs.calendar.setOperateData(calendarOD)
 			this.$refs.btn.setPropsData(btnInfo)			
-			this.$refs.calendar.setOperateData(btnOD)
+			// this.$refs.calendar.setOperateData(btnOD)
 		})
 	},
 	
