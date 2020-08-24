@@ -1,8 +1,9 @@
 <template>
-	<view>
-		
-		<!-- 拟聘人员列表与申请进度 -->
-		<!-- <a-frame :requestParamData="requestParamData" @clickSearch="clickSearch"> -->
+	<view style="background-color: #f5f5f5;">
+		<a-frame 
+			ref = "aFrame" 
+			:requestParamData="requestParamData" 
+			@clickSearch="clickSearch">
 <!-- 			
 			<block slot="a-swiper-below">
 					<view class="line-common-inner"></view>
@@ -12,7 +13,7 @@
 					<view class="line-common-inner"></view>
 			</block> -->
 			
-		<!-- </a-frame> -->
+		</a-frame>
 		
 		
 		
@@ -86,5 +87,8 @@ export default {
 		background: #f0eff5;
 		height: 20upx;
 		width: 100%;
+	}
+	>>> .listmat{
+		margin-top: 0;
 	}
 </style>

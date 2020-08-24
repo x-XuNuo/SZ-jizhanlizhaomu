@@ -206,7 +206,7 @@
 			<block>
 				<slot name="a-list-prove"></slot>
 				<slot name="a-list">
-					<a-list :ref="'aList' + index" v-if="item.magicalCoder.identifier == 'a-list'" :attributesData="$U.processDataFun(item.attributes)"></a-list>
+					<a-list ref="aList" v-if="item.magicalCoder.identifier == 'a-list'" :attributesData="$U.processDataFun(item.attributes)"></a-list>
 				</slot>
 				<slot name="a-list-below"></slot>
 			</block>

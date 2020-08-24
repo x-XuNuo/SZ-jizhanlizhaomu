@@ -88,10 +88,10 @@
                 }
             }
         },
-        "template" : "h5.template.html",
+        "template" : "",
         "router" : {
             "mode" : "hash",
-            "base" : "/lowcode/"
+            "base" : "/recruit/"
         },
         "optimization" : {
             "treeShaking" : {

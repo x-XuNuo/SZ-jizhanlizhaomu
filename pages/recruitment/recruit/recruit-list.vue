@@ -103,6 +103,12 @@ export default {
 		}
 	>>> .query{		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
 		margin: 20upx 0;
-		/* border: none !important; */	}	>>> .class-nextStep{		width: 90%;		position: fixed;		bottom: 0;		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
+		/* border: none !important; */	}
+	>>> .bGCfff{
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		background-color: #FFF;
+	}	>>> .class-nextStep{		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
 		margin: 10px 5%;	}
 </style>

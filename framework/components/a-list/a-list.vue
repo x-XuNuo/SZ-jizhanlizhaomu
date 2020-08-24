@@ -1,5 +1,5 @@
 <template>
-	<view style="background-color: #f5f5f5; margin-top: 40upx;">
+	<view class="listmat">
 		<ux-load-refresh
 			v-if="this.data.list"
 			ref="loadRefresh"
@@ -17,7 +17,7 @@
 							<ax-card
 								ref="axDateSearch"
 								:dataSource = "item"
-								:model = "0"
+								model = "default"
 								@cardClick = "cardclick(item.recruitId)"
 							>
 							</ax-card>
@@ -25,16 +25,32 @@
 				</view>
 				<view v-if="this.propsData.mode == 'card-delete'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
+						<ax-card
+							ref="axDateDEle"
+							:dataSource = "item"
+							model = "dele"
+							@cellDelete = "cellDelete(index)"
+						>
+						</ax-card>
+					</view>
+				</view>
+				<view v-if="this.propsData.mode == 'card-personnel'">
+					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 							<ax-card
-								ref="axDateDEle"
+								ref="axDatepersonnel"
 								:dataSource = "item"
-								:model = "1"
+								model = "img"
 							>
 							</ax-card>
 					</view>
 				</view>
 			</block>
 		</ux-load-refresh>
+		
+		<a-modal
+			ref = "alert"
+		>
+		</a-modal>
 	</view>
 </template>
 
@@ -75,18 +91,20 @@ export default {
 		// props参数处理
 		this.propsData = this.attributesData.propsData;
 		this.data = this.attributesData.data ?this.attributesData.data:{};
+		console.log("78:",this.attributesData)
 		this.operateData = this.attributesData.operateData;
 		this.requestData = this.attributesData.requestData;
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
-		// setTimeout( () =>{
-		// 	this.$nextTick( ()=> {
-		// 		console.log("82：",this.$refs.axDateSearch)
-		// 		let cardOpData = this.$refs.axDateSearch.operateData
-		// 		cardOpData.click = this.cardclick(cardOpData)
-		// 		this.$refs.axDateSearch.setOperateData()
-		// 	})
-		// },1000)
+	
+		this.$nextTick(() =>{
+			let modalPD = this.$refs.alert.propsData
+			console.log("99：",this.$refs.alert)
+			// let show = true
+			modalPD.show = true
+			modalPD.showCancelButton = false
+			this.$refs.alert.setPropsData(modalPD)
+		})
 		this.attributes = aCard.data.attributes
 		//初始化数据
 		this.request();
@@ -229,9 +247,18 @@ export default {
 			uni.navigateTo({
 				url: url
 			})
+		},
+		// 删除事件
+		cellDelete(index){
+			this.data.list.splice(index,1)
 		}
 	}
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+	.listmat{
+		background-color: #f5f5f5;
+		margin-top: 40upx;
+	}
+</style>

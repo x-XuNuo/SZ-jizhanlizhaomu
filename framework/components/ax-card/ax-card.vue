@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="card" v-if="this.model == 0 ">
+		<view class="card" v-if="this.model == 'default' ">
 			<view @click="compclick">
 
 			<!-- 根据mode类型不同的视图封装 -->
@@ -15,32 +15,49 @@
 					</view>
 					<view class="apply">
 						<text>审批状态：</text>
-						<text>{{ dataSource.recruitStatus == 0 ? "已驳回" :(dataSource.recruitStatus == 1 ? "已通过" :"审批中")}}</text>
-						<text v-if="dataSource.recruitStatus == 0">
+						<text>{{ dataSource.recruitStatus == 2 ? "已驳回" :(dataSource.recruitStatus == 1 ? "已通过" :"审批中")}}</text>
+						<text v-if="dataSource.recruitStatus == 2" @click.stop="tips()" >
 							<img src="../../../static/sigh.png" mode="" style="width:40upx; vertical-align: middle;  margin: 0 20upx;"/>
-	<!-- 						<a-modal>
-								
-							</a-modal> -->
 						</text>
 					</view>
 				</view>
 			</view>
 		</view>
 		
-		<view v-if="this.model == 1 " class="renlist">
+		<view v-if="this.model == 'dele' " class="renlist">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
 				<view>
 					<view >
-						<text style="font-size: 30upx; color: #000000;">乔凡</text>
-						<text style="font-size: 28upx; color: #9a9a9a; margin: 0 10upx;">26</text>
-						<img src="../../../static/man.png" mode="" style="width: 40upx;vertical-align: middle;"></img>
+						<text style="font-size: 30upx; color: #000000;">{{dataSource.applicantName}}</text>
+						<text style="font-size: 28upx; color: #9a9a9a; margin: 0 10upx;">{{dataSource.applicantAge}}</text>
+						<img v-if="dataSource.applicantSex == 0" src="../../../static/woman.png" mode="" style="width: 40upx;vertical-align: middle;"></img>
+						<img v-if="dataSource.applicantSex == 1" src="../../../static/man.png" mode="" style="width: 40upx;vertical-align: middle;"></img>
 					</view>
 					<view  style="font-size: 25upx; color: #9a9a9a; margin-top: 10upx ;">
-						320502199401010059 
+						{{dataSource.userIdentityCard}} 
 					</view>
 				</view>
-				<view style="position: absolute;top: 50%; right: 20upx; transform: translate(-50%, -50%); ">
+				<view style="position: absolute;top: 50%; right: 20upx; transform: translate(-50%, -50%); " @click="Dele(dataSource)">
 					<image src="../../../static/delete.png" mode="" style="width: 40upx; height: 40upx; "></image>
+				</view>
+			</view>
+		</view>
+		
+		<view v-if="this.model == 'img'" style="margin: 20upx;">
+			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
+				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; margin-right: 20upx;"></img>
+				<view style="flex: 4;">
+					<view >
+						<text style="font-size: 35upx; color: #000000;">{{dataSource.applicantName}}</text>
+						<text 
+							:class="[{'no':dataSource.applicantStatus == 2 },{'yes':dataSource.applicantStatus == 1 },{'stay':dataSource.applicantStatus == 0}]" 
+								style="font-size: 28upx; float: right; margin: 0 10upx;">{{dataSource.applicantStatus == 2 ? "已驳回" :(dataSource.applicantStatus == 1 ? "已通过" :"审批中")}}</text>
+					</view>
+					<view  style="font-size: 25upx; color: #000; margin-top: 10upx ;">
+						<text>
+							拟聘职位：{{dataSource.rankName}}
+						</text> 
+					</view>
 				</view>
 			</view>
 		</view>
@@ -53,7 +70,7 @@ export default {
 		// json配置属性信息
 		attributesData: Array | Object,
 		dataSource : Array | Object,
-		model : 0 ,
+		model :"" ,
 	},
 	data() {
 		return {
@@ -79,15 +96,20 @@ export default {
 		setPropsData(val) {
 			this.propsData = val;
 		},
-		
 		cardClick (){
 		},
-		
+		// 驳回原因提醒
+		tips(){
+			console.log("34567890-09876")
+		},
+		// 删除事件
+		Dele(e){
+			this.$emit("cellDelete")
+		},
 		// 业务属性接口
 		setData(data) {
 			this.data = data;
 		},
-
 		//操作属性接口
 		setOperateData(operateData) {
 			this.operateData = operateData;
@@ -149,6 +171,15 @@ export default {
 		border-radius: 15upx;
 		overflow: hidden;
 		box-shadow: 0 0 10px #e5e5e5;
+	}
+	.yes{
+		color: #5eb1ff;
+	}
+	.stay{
+		color: #fd7012 ;
+	}
+	.no{
+		color: #9a9a9a;
 	}
 	.title{
 		width: 100%;

@@ -15,7 +15,9 @@
 			}
 		},
 		onLoad() {
-
+			uni.reLaunch({
+				url:"/pages/recruitment/recruitIndex"
+			})
 		},
 		methods: {
 

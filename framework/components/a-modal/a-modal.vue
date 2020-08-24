@@ -47,10 +47,10 @@ export default {
 	},
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
-		this.requestData = this.attributesData.requestData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
 	},
 
 	methods: {

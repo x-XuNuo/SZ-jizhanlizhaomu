@@ -2,7 +2,6 @@
 	<view>
 		<!-- 第二步添加人员 -->
 		<view class="recruitList">
-			<!-- <img src="../../../static/top_Background.png" alt="" class="imgs"> -->
 				<a-frame
 					ref = "aFrame"  
 					:requestParamData="requestParamData" 
@@ -24,52 +23,28 @@ export default {
 	components: {},
 	created() {},
 	onLoad(option) {
-		// 测试数据
-		// let userInfo ={
-		// 	"id": "123",
-		// 	"name": "test123",
-		// 	"phone": "手机号码"
-		// }
-		
-		// this.requestParamData = {
-		// 	"id": "456",
-		// 	"name": "test456"
-		// }
-		
-		// uni.setStorageSync("userInfo",userInfo);
-		
 	},
-
 	onReady: function(res) {},
-
 	onShow() {},
 	onHide() {},
 	mounted() {
+		this.$nextTick (() => {
+			console.log("31：",this.$refs.aFrame.$refs)
+		})
 	},
 	activated() {},
 	onUnload() {},
 	onHide() {},
 	onPullDownRefresh() {
-		console.log('onPullDownRefresh');
-		setTimeout(function() {
-			uni.stopPullDownRefresh();
-			console.log('stopPullDownRefresh');
-		}, 1000);
 	},
 	// 监听APP点击按钮 调起分享菜单
 	onNavigationBarButtonTap(val) {},
 	// 点击返回按钮
 	onBackPress() {},
 	methods: {
-		// 点击搜索框
-		clickSearch() {
-			// this.$emit('goSearchFun');
-			uni.showToast({
-				icon:'none',
-				title:'点击了搜索框'
-			})
-			console.log('点击了搜索框');
-		}
+		dele(){
+			console.log("删除事件")
+		},
 	}
 };
 </script>
@@ -78,7 +53,6 @@ export default {
 	.recruitList{
 		padding-top: 150upx;
 		background-image: url(../../../static/top_Background.png);
-		
 	}
 	.imgs{
 		width: 100%;
@@ -90,7 +64,7 @@ export default {
 		height: 20upx;
 		width: 100%;
 	}
-	>>>  .list{
+	>>> .list{
 		margin-top: 120upx;
 	}
 	>>> .newaAdded{
@@ -103,8 +77,9 @@ export default {
 		padding: 5%;
 		border-radius: 30upx 30upx 0 0;
 		position: absolute;
-		/* top: 300upx; */
-		background-color: #fff
+		margin-top: 20upx;
+		background-color: #fff;
+		z-index: 99;
 	}
 	>>> .back{
 			width: 45%;

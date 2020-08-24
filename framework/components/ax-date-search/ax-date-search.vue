@@ -54,10 +54,6 @@ export default {
 			let calendarOD = this.$refs.calendar.operateData
 			let btnOD =  this.$refs.btn.operateData
 			calendarOD.confirm = "this.propsData.titleText = e.fulldate"
-			// btnOD.click = "console.log('57:',e)"
-			// console.log("58：",btnOD)
-			// btnOD.link = "http://easy-mock.liuup.com/mock/5f36392d339f163501d50421/example/restful/list"
-			// btnOD.linkType = "1"
 			this.$refs.calendar.setPropsData(dateInfo),
 			this.$refs.calendar.setOperateData(calendarOD)
 			this.$refs.btn.setPropsData(btnInfo)			
