@@ -2,7 +2,7 @@
 	<view>
 		<!-- 第一步信息录入 -->
 		<view class="recruitList">
-			<img src="../../../static/top_Background.png" alt="" class="imgs">
+			<img src="../../../static/top_Background.png" alt="" class="imgs" />
 				<a-frame
 					ref = "aFrame"  
 					:requestParamData="requestParamData" 

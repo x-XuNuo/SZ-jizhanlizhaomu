@@ -35,10 +35,10 @@ export default {
 	},
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
-		this.reqestData = this.attributesData.reqestData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
 		
 		let dateInfo = {
 			date : "",
@@ -48,12 +48,19 @@ export default {
 		// this.propsData.titleText = e.fulldate
 		let btnInfo = {
 			text : "点击查询",
+			mode:"default",
 			class:"query"
 		} 
 		this.$nextTick( ()=> {
-			// console.log("42this:",this.$refs.calendar)
-			this.$refs.calendar.setPropsData(dateInfo)
-			this.$refs.btn.setPropsData(btnInfo)
+			let calendarOD = this.$refs.calendar.operateData
+			let btnOD = this.$refs.btn.operateData
+			calendarOD.confirm = "this.propsData.titleText = e.fulldate"
+			// btnOD.link = "http://easy-mock.liuup.com/mock/5f36392d339f163501d50421/example/restful/list"
+			// btnOD.linkType = "1"
+			this.$refs.calendar.setPropsData(dateInfo),
+			this.$refs.calendar.setOperateData(calendarOD)
+			this.$refs.btn.setPropsData(btnInfo)			
+			this.$refs.calendar.setOperateData(btnOD)
 		})
 	},
 	
@@ -100,7 +107,8 @@ export default {
 				eval('this.$root.' + this.operateData.click);
 			}
 
-		}
+		},
+		
 	}
 };
 </script>

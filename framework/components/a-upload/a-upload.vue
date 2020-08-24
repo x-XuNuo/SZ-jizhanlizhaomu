@@ -47,7 +47,7 @@
 		<!-- mode=1 点击按钮弹出 -->
 		<view v-if="this.propsData.mode == '1'">
 			<u-upload
-				ref="uUpload"
+			  ref="uUpload"
 				:action="this.propsData.action"
 				:max-count="this.propsData.maxCount"
 				:width="this.propsData.width"
@@ -86,7 +86,7 @@
 				@on-choose-complete="onChooseComplete"
 				@on-list-change="onListChange"
 			>
-				<view v-if="this.propsData.customBtn == 'true'" slot="addBtn" class="slot-btn" hover-class="slot-btn__hover" hover-stay-time="150">
+				<view v-if="this.propsData.customBtn == true" slot="addBtn" class="slot-btn" hover-class="slot-btn__hover" hover-stay-time="150">
 					<!-- 自定义按钮样式 -->
 					<view class="circleBtn" :class="this.propsData.btnClass">
 						<u-icon name="photo" size="40" class="mr5" :color="$u.color['lightColor']" />

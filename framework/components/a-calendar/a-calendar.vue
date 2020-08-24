@@ -115,6 +115,9 @@ export default {
 		setPropsData(val){
 			this.propsData = val
 		},
+		setOperateData(val){
+			this.operateData = val
+		},
 		// 关闭日历弹窗触发
 		close(){
 			if(this.operateData.close){

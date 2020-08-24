@@ -2,7 +2,7 @@
 	<view>
 		<!-- 第二步添加人员 -->
 		<view class="recruitList">
-			<img src="../../../static/top_Background.png" alt="" class="imgs">
+			<!-- <img src="../../../static/top_Background.png" alt="" class="imgs"> -->
 				<a-frame
 					ref = "aFrame"  
 					:requestParamData="requestParamData" 
@@ -77,6 +77,8 @@ export default {
 <style scoped>
 	.recruitList{
 		padding-top: 150upx;
+		background-image: url(../../../static/top_Background.png);
+		
 	}
 	.imgs{
 		width: 100%;
@@ -88,14 +90,21 @@ export default {
 		height: 20upx;
 		width: 100%;
 	}
+	>>>  .list{
+		margin-top: 120upx;
+	}
 	>>> .newaAdded{
-				width: 90%;
-				position: absolute;
-				left: 5%;
-				top: 300upx;
-				background-color: #fff1ea;
-				color: #fd7012;
-				border-radius: 46upx;
+		background-color: #fff1ea;
+		color: #fd7012;
+		border-radius: 46upx;
+	}
+	>>> .bGCfff{
+		width: 100%;
+		padding: 5%;
+		border-radius: 30upx 30upx 0 0;
+		position: absolute;
+		/* top: 300upx; */
+		background-color: #fff
 	}
 	>>> .back{
 			width: 45%;

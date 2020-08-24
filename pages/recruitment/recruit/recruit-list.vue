@@ -98,7 +98,8 @@ export default {
 			padding: 10px;
 			background-color: #fff;
 			border-radius: 10px;
-			box-shadow: 0 0 5px #000000d;
+			box-shadow: 0 0 5px rgba(255,255,255,.6);
+			z-index: 999 !important;
 		}
 	>>> .query{		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
 		margin: 20upx 0;

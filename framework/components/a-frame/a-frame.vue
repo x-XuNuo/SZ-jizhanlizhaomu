@@ -280,13 +280,12 @@
 				</slot>
 				<slot name="ax-date-search-below"></slot>
 			</block>
-			
 				<!-- 业务按钮 -->
 			<block>
 				<slot name="ax-button-prove"></slot>
 				<slot name="ax-button">
 					<ax-button
-						ref="axDateSearch"
+						ref="axButton"
 						v-if="item.magicalCoder.identifier == 'ax-button'"
 						:attributesData="$U.processDataFun(item.attributes)"
 						:requestParamData="requestParamData"

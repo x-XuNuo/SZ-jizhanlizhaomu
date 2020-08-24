@@ -15,13 +15,19 @@
 					</view>
 					<view class="apply">
 						<text>审批状态：</text>
-						<text>{{ dataSource.recruitStatus == 0 ? "未通过" :(dataSource.recruitStatus == 1 ? "已通过" :"已驳回")}}</text>
+						<text>{{ dataSource.recruitStatus == 0 ? "已驳回" :(dataSource.recruitStatus == 1 ? "已通过" :"审批中")}}</text>
+						<text v-if="dataSource.recruitStatus == 0">
+							<img src="../../../static/sigh.png" mode="" style="width:40upx; vertical-align: middle;  margin: 0 20upx;"/>
+	<!-- 						<a-modal>
+								
+							</a-modal> -->
+						</text>
 					</view>
 				</view>
 			</view>
 		</view>
 		
-		<view v-if="this.model == 1 ">
+		<view v-if="this.model == 1 " class="renlist">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
 				<view>
 					<view >
@@ -34,7 +40,7 @@
 					</view>
 				</view>
 				<view style="position: absolute;top: 50%; right: 20upx; transform: translate(-50%, -50%); ">
-					<image src="../../../static/delete.png" mode="" style="width: 40upx; height: 40upx;"></image>
+					<image src="../../../static/delete.png" mode="" style="width: 40upx; height: 40upx; "></image>
 				</view>
 			</view>
 		</view>

@@ -1,20 +1,21 @@
 <template>
 	<view>
-		<!-- <view v-if="this.propsData.mode == 'dialog' "> -->
-			<a-button
-				:attributesData="attributesData"
-				:requestParamData="requestParamData">
-			</a-button>
+		<view v-if="this.propsData.mode == 'bgcBtn' ">
+			<view class="bGCfff">
+				<a-button
+					ref="radBtn"
+				>
+				</a-button>
+			</view>
 		</view>
-	<!-- </view> -->
+	</view>
 </template>
 
 <script>
 export default {
 	props: {
 		// json配置属性信息
-		attributesData: Array | Object,
-		requestParamData: Array | Object
+		attributesData: Array | Object
 	},
 	data() {
 		return {
@@ -30,10 +31,18 @@ export default {
 	},
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
-		this.reqestData = this.attributesData.reqestData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
+		let btnInfo = {
+			text : `拟聘人员`,
+			class:"newaAdded",
+			icon : "../../../static/add.png"
+		} 
+		this.$nextTick( ()=> {
+			this.$refs.radBtn.setPropsData(btnInfo)
+		})
 	},
 
 	methods: {
@@ -100,4 +109,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+	
+</style>

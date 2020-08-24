@@ -1,5 +1,5 @@
 <template>
-	<view style="background-color: #f5f5f5; margin-top: 50upx;">
+	<view style="background-color: #f5f5f5; margin-top: 40upx;">
 		<ux-load-refresh
 			v-if="this.data.list"
 			ref="loadRefresh"
