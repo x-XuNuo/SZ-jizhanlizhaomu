@@ -106,13 +106,12 @@ export default {
 		this.requestData = this.attributesData.requestData;
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
-	
+		let modalPD = {
+			show : true,
+			showCancelButton : false,
+			zIndex : "1075"
+		}
 		this.$nextTick(() =>{
-			let modalPD = this.$refs.alert.propsData
-			console.log("99：",this.$refs.alert)
-			// let show = true
-			modalPD.show = true
-			modalPD.showCancelButton = false
 			this.$refs.alert.setPropsData(modalPD)
 		})
 		this.attributes = aCard.data.attributes

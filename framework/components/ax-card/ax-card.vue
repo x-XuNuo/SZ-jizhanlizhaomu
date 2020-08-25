@@ -41,12 +41,11 @@
 						<text>{{ dataSource.recruitStatus == 2 ? "已停止" :"招聘中"}}</text>
 					</view>
 				</view>
-				<view style="background-color: #fff;">
+				<view style="background-color: #fff; overflow: hidden;">
 					<a-button
 						ref='detailsBtn'>
 					</a-button>
 						<a-button
-							v-if="dataSource.recruitStatus != 2"
 							ref='stopBtn'>
 						</a-button>
 				</view>
@@ -119,23 +118,28 @@ export default {
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
-		let details = {
-			text : "查看详情",
-			mode:"default",
-			class:"details"
-		} 
-		// let stop = {
-		// 	text : "停止招聘",
-		// 	mode:"default",
-		// 	class:"details"
-		// }
-		this.$nextTick( () =>{
-			let btnOD =  this.$refs.detailsBtn.operateData
-			btnOD.link = "/pages/increase/increase-details"
-			btnOD.linkType  = "0"
-			this.$refs.detailsBtn.setPropsData(details)	
-			this.$refs.detailsBtn.setOperateData(btnOD)
-		})
+		if(this.model == 'btncard'){
+			let details = {
+				text : "查看详情",
+				mode:"default",
+				class:"details"
+			} 
+			let stop = {
+				text : "停止招聘",
+				mode:"default",
+				class:"details"
+			}
+			this.$nextTick( () =>{
+				let detailsBtnOD =  this.$refs.detailsBtn.operateData
+				detailsBtnOD.link = "/pages/increase/increase-details"
+				detailsBtnOD.linkType  = "0"
+				this.$refs.detailsBtn.setPropsData(details)	
+				if(this.dataSource.recruitStatus != 2){
+					this.$refs.stopBtn.setPropsData(stop)	
+				}
+				this.$refs.detailsBtn.setOperateData(detailsBtnOD)
+			})
+		}
 	},
 
 	methods: {

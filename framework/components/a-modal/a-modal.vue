@@ -1,5 +1,5 @@
 <template>
-	<u-modal
+		<u-modal
 		:show="this.propsData.show == 'true' ? true : false"
 		:z-index="this.propsData.zIndex"
 		:title="this.propsData.title"
@@ -24,6 +24,7 @@
 		@confirm="confirm"
 		@cancel="cancel"
 	></u-modal>
+	
 </template>
 
 <script>
@@ -51,6 +52,7 @@ export default {
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
+		console.log("37:",this.propsData)
 	},
 
 	methods: {

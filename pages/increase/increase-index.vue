@@ -88,7 +88,7 @@ export default {
 		margin: 20upx 20upx 20upx 0;
 		font-size: 28upx;
 		background-color: #fff;
-		border: 1px #f7f7f7 solid;
+		border: 1px #e4e4e4 solid;
 	}
 	
 	/* 底部按钮 */
