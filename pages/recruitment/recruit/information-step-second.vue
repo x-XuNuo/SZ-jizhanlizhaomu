@@ -28,9 +28,6 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
-		this.$nextTick (() => {
-			console.log("31：",this.$refs.aFrame.$refs)
-		})
 	},
 	activated() {},
 	onUnload() {},
@@ -76,10 +73,19 @@ export default {
 		width: 100%;
 		padding: 5%;
 		border-radius: 30upx 30upx 0 0;
-		position: absolute;
-		margin-top: 20upx;
+		/* position: absolute; */
+		margin-top: 30upx;
 		background-color: #fff;
-		z-index: 99;
+		/* z-index: 99; */
+	}
+	>>> .listmat{
+		margin-top: 0;
+	}
+	>>> .cover-container{
+		margin-top: -122upx !important;
+	}
+	>>> .hollow-dots-spinner{
+		height: 0 !important;
 	}
 	>>> .back{
 			width: 45%;
