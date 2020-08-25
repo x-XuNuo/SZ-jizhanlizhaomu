@@ -50,19 +50,10 @@ export default {
 	.recruitList{
 		padding-top: 150upx;
 		background-image: url(../../../static/top_Background.png);
+		/* background-size: 100%,100%; */
 	}
-	.imgs{
-		width: 100%;
-		position: absolute;
-		top: 0;
-	}
-	.line-common-inner {
-		background: #f0eff5;
-		height: 20upx;
-		width: 100%;
-	}
-	>>> .list{
-		margin-top: 120upx;
+	>>> .listmat{
+		margin-top: -2upx;
 	}
 	>>> .newaAdded{
 		background-color: #fff1ea;
@@ -73,16 +64,12 @@ export default {
 		width: 100%;
 		padding: 5%;
 		border-radius: 30upx 30upx 0 0;
-		/* position: absolute; */
 		margin-top: 30upx;
 		background-color: #fff;
 		/* z-index: 99; */
 	}
-	>>> .listmat{
-		margin-top: 0;
-	}
-	>>> .cover-container{
-		margin-top: -122upx !important;
+	>>> .list{
+		margin-top: 90upx;
 	}
 	>>> .hollow-dots-spinner{
 		height: 0 !important;
