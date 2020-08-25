@@ -45,7 +45,7 @@
 					</view>
 				</view>
 				<view v-if="this.propsData.mode == 'card-btncard'">
-					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
+					<view v-for="(item, index) in this.data.list" :key="index">
 							<ax-card
 								ref="axDatepersonnel"
 								:dataSource = "item"

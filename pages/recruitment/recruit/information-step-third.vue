@@ -72,19 +72,15 @@ export default {
 		position: absolute;
 		top: 0;
 	}
-	.line-common-inner {
-		background: #f0eff5;
-		height: 20upx;
-		width: 100%;
-	}
 	>>> .upload{
-				width: 90%;
-				position: absolute;
-				left: 5%;
-				top: 300upx;
-				background-color: #fff1ea;
-				color: #fd7012;
-				border-radius: 46upx;
+		width: 90%;
+		position: absolute;
+		left: 5%;
+		top: 300upx;
+		border: none;
+		background-color: #fff1ea;
+		color: #fd7012;
+		border-radius: 46upx;
 	}
 	>>> .back{
 			width: 45%;

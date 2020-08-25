@@ -1,22 +1,13 @@
 <template>
 	<view>
-		<a-frame 
-			ref = "aFrame" 
-			:requestParamData="requestParamData" 
-			@clickSearch="clickSearch">
-<!-- 			
-			<block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block> -->
-			
-		</a-frame>
-		
-		
-		
+		<!-- 第三步 添加附件 -->
+		<view>
+			<a-frame
+				ref = "aFrame"  
+				:requestParamData="requestParamData" 
+				@clickSearch="clickSearch">
+			</a-frame>
+		</view>
 	</view>
 	
 </template>
@@ -43,11 +34,18 @@ export default {
 	activated() {},
 	onUnload() {},
 	onHide() {},
+	onPullDownRefresh() {
+	},
 	// 监听APP点击按钮 调起分享菜单
 	onNavigationBarButtonTap(val) {},
 	// 点击返回按钮
 	onBackPress() {},
 	methods: {
+		// 点击搜索框
+		clickSearch() {
+		},
+		success(){
+		}
 	}
 };
 </script>
@@ -57,7 +55,8 @@ export default {
 		width: 90%;
 		position: absolute;
 		left: 5%;
-		top: 300upx;
+		top: 20upx;
+		border: none;
 		background-color: #fff1ea;
 		color: #fd7012;
 		border-radius: 46upx;
@@ -65,7 +64,6 @@ export default {
 	>>> .complete{
 		width: 90%;
 		position: fixed;
-		right: 3%;
 		bottom: 20upx;
 		background-color: #fd6703;
 		color: #fff;

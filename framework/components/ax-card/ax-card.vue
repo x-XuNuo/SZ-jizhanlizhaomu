@@ -45,11 +45,10 @@
 					<a-button
 						ref='detailsBtn'>
 					</a-button>
-					<view  v-if="dataSource.recruitStatus != 2">
 						<a-button
+							v-if="dataSource.recruitStatus != 2"
 							ref='stopBtn'>
 						</a-button>
-					</view>
 				</view>
 			</view>
 		</view>
@@ -82,7 +81,7 @@
 						<text style="font-size: 35upx; color: #000000;">{{dataSource.applicantName}}</text>
 						<text 
 							:class="[{'no':dataSource.applicantStatus == 2 },{'yes':dataSource.applicantStatus == 1 },{'stay':dataSource.applicantStatus == 0}]" 
-								style="font-size: 28upx; float: right; margin: 0 10upx;">{{dataSource.applicantStatus == 2 ? "已驳回" :(dataSource.applicantStatus == 1 ? "已通过" :"审批中")}}</text>
+							style="font-size: 28upx; float: right; margin: 0 10upx;">{{dataSource.applicantStatus == 2 ? "已驳回" :(dataSource.applicantStatus == 1 ? "已通过" :"审批中")}}</text>
 					</view>
 					<view  style="font-size: 25upx; color: #000; margin-top: 10upx ;">
 						<text>
@@ -120,22 +119,23 @@ export default {
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
-		if(this.item == 'btncard'){
-			let details = {
-				text : "查看详情",
-				mode:"default",
-				class:"details"
-			} 
-			let stop = {
-				text : "停止招聘",
-				mode:"default",
-				class:"details"
-			}
-			this.$nextTick( () =>{
-				this.$refs.detailsBtn.setPropsData(details)
-				this.$refs.stopBtn.setPropsData(stop)
-			})
-		}
+		let details = {
+			text : "查看详情",
+			mode:"default",
+			class:"details"
+		} 
+		// let stop = {
+		// 	text : "停止招聘",
+		// 	mode:"default",
+		// 	class:"details"
+		// }
+		this.$nextTick( () =>{
+			let btnOD =  this.$refs.detailsBtn.operateData
+			btnOD.link = "/pages/increase/increase-details"
+			btnOD.linkType  = "0"
+			this.$refs.detailsBtn.setPropsData(details)	
+			this.$refs.detailsBtn.setOperateData(btnOD)
+		})
 	},
 
 	methods: {
