@@ -107,6 +107,64 @@
 				}
 			}
 		},
+		
+		// 增员计划
+		
+		{ // 增员计划
+			"path" : "pages/increase/increase-index",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "计划跟踪",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path" : "pages/increase/increase-details",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "增员计划详情",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{ // 增员计划 查看附件
+			"path" : "pages/increase/increase-enclosure",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "查看附件",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{// 增员计划拟聘人员及进度
+			"path" : "pages/increase/increase-progress",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "拟聘人员及进度",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path" : "pages/increase/increase-Input",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "增员计划",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
 		{
 			"path": "pages/frame/frame",
 			"style": {
@@ -146,7 +204,6 @@
 			"path": "pages/dateSearch/dateSearch",
 			"style": {}
 		}
-	
     ],
 	// "subPackages": [{
 	// 	"root": "pages/framework",

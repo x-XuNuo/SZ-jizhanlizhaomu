@@ -24,6 +24,37 @@
 			</view>
 		</view>
 		
+		<!-- 带有按钮的card -->
+		<view class="card" v-if="this.model == 'btncard' ">
+			<view>
+				<view class="title"> 
+					<img src="../../../static/recruit-list/txt.png" class="imgStyle"></img>
+				  <text style="vertical-align: middle;">{{dataSource.recruitTitle}} </text>
+				</view>
+				<view style="padding-top: 20upx; background-color: #fff;">
+					<view class="apply">
+						<text>制定计划时间：</text>
+						<text>{{dataSource.recruitTime}}</text>
+					</view>
+					<view class="apply">
+						<text>状态：</text>
+						<text>{{ dataSource.recruitStatus == 2 ? "已停止" :"招聘中"}}</text>
+					</view>
+				</view>
+				<view style="background-color: #fff;">
+					<a-button
+						ref='detailsBtn'>
+					</a-button>
+					<view  v-if="dataSource.recruitStatus != 2">
+						<a-button
+							ref='stopBtn'>
+						</a-button>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		
 		<view v-if="this.model == 'dele' " class="renlist">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
 				<view>
@@ -89,6 +120,22 @@ export default {
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
+		if(this.item == 'btncard'){
+			let details = {
+				text : "查看详情",
+				mode:"default",
+				class:"details"
+			} 
+			let stop = {
+				text : "停止招聘",
+				mode:"default",
+				class:"details"
+			}
+			this.$nextTick( () =>{
+				this.$refs.detailsBtn.setPropsData(details)
+				this.$refs.stopBtn.setPropsData(stop)
+			})
+		}
 	},
 
 	methods: {
