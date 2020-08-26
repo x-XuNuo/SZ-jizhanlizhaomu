@@ -52,7 +52,6 @@
 			</view>
 		</view>
 		
-		
 		<view v-if="this.model == 'dele' " class="renlist">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; position: relative;">
 				<view>
@@ -72,7 +71,8 @@
 			</view>
 		</view>
 		
-		<view v-if="this.model == 'img'" style="margin: 20upx;">
+		<!-- 带有照片 -->
+		<view v-if="this.model == 'photo'" style="margin: 20upx;">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
 				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; margin-right: 20upx;"></img>
 				<view style="flex: 4;">
@@ -86,6 +86,50 @@
 						<text>
 							拟聘职位：{{dataSource.rankName}}
 						</text> 
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 纯图片列表 -->
+		<view v-if="this.model == 'img'" style="margin: 20upx;">
+			tututu
+	<!-- 		<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
+				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; margin-right: 20upx;"></img>
+				<view style="flex: 4;">
+					<view >
+						<text style="font-size: 35upx; color: #000000;">{{dataSource.applicantName}}</text>
+						<text 
+							:class="[{'no':dataSource.applicantStatus == 2 },{'yes':dataSource.applicantStatus == 1 },{'stay':dataSource.applicantStatus == 0}]" 
+							style="font-size: 28upx; float: right; margin: 0 10upx;">{{dataSource.applicantStatus == 2 ? "已驳回" :(dataSource.applicantStatus == 1 ? "已通过" :"审批中")}}</text>
+					</view>
+					<view  style="font-size: 25upx; color: #000; margin-top: 10upx ;">
+						<text>
+							拟聘职位：{{dataSource.rankName}}
+						</text> 
+					</view>
+				</view>
+			</view> -->
+		</view>
+		
+		
+		<view class="card" v-if="this.model == 'personnelCard' ">
+			<view>
+				<view class="head"> 
+				  <text class="ml15">{{dataSource.applicantName}} </text>
+				  <text class="ml10">{{dataSource.applicantSex == 1 ? '男':'女' }} </text>
+				  <text class="ml10">{{dataSource.recruitTitle || 17817817878}} </text>
+				  <text class="fr mr10" style="color:#a7a7a7; font-weight: 400;">{{dataSource.recruitTitle || "待面试" }} </text>
+				</view>
+				<view class="pt10" style="background-color: #fff;">
+					<view class="pl15" style="color:#a7a7a7;">
+						<text>注册时间：</text>
+						<text>{{dataSource.recruitTime}}</text>
+					</view>
+					<view class="x-f margin15" style="color: #ed6b1c;">
+						<text class="flex1" @click="dianji()">求职表</text>
+						<text class="flex1" @click="dianji()">上岗详情</text>
+						<text class="flex1" @click="dianji()">测评结果</text>
+						<text class="flex1" @click="dianji()">上岗初审</text>
 					</view>
 				</view>
 			</view>
@@ -156,6 +200,9 @@ export default {
 		// 删除事件
 		Dele(e){
 			this.$emit("cellDelete")
+		},
+		dianji(){
+			console.log("234567898765")
 		},
 		// 业务属性接口
 		setData(data) {
@@ -239,6 +286,15 @@ export default {
 		line-height: 90upx;
 		font-size: 28upx;
 	}
+	.head{
+		width: 100%;
+		background-color: #fff;
+		height: 90upx;
+		line-height: 90upx;
+		font-size: 28upx;
+		border-bottom: 1px solid #ddd;
+		font-weight: 800;
+	}
 	.imgStyle{
 		width: 40upx;
 		height: 40upx; 
@@ -247,5 +303,8 @@ export default {
 	}
 	.apply{
 		padding: 20upx;
+	}
+	.apply{
+		
 	}
 </style>

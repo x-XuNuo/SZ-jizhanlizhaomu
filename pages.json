@@ -165,6 +165,45 @@
 				}
 			}
 		},
+		
+		// 增员邀约
+		
+		{ //邀约首页
+			"path" : "pages/invitation/invitation-index",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "邀约首页",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		{
+			"path" : "pages/invitation/invitation-letter",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "邀请函",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
+		
+		// 我的增员
+		
+		{// 增员列表
+			"path" : "pages/my-increase/my-increase",
+			"style": {
+				//#ifndef H5
+				"navigationBarTitleText": "增员列表",
+				//#endif
+				"h5": {
+					"titleNView": false
+				}
+			}
+		},
 		{
 			"path": "pages/frame/frame",
 			"style": {
@@ -199,6 +238,7 @@
 			"path": "pages/user/user",
 			"style": {}
 		}
+        
     ],
 	// "subPackages": [{
 	// 	"root": "pages/framework",
