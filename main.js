@@ -8,6 +8,7 @@ import aConfig from '@/framework/config/';
 import aStore from '@/store'
 import * as apis from '@/framework/apis/'
 import utils from '@/framework/common/utils/'
+import utils_p from '@/utils/'
 Vue.config.productionTip = false
 App.mpType = 'app'
 
@@ -16,6 +17,7 @@ Vue.prototype.$R = aRouter;
 Vue.prototype.$C = aConfig;
 Vue.prototype.$S = aStore;
 Vue.prototype.$U = utils;
+Vue.prototype.$PU = utils_p;
 Vue.prototype.$apis = apis;
 
 const app = new Vue({

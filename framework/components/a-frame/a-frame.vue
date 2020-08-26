@@ -357,6 +357,7 @@ export default {
 				if (val.magicalCoder) {
 					this.pageData = val.magicalCoder.children;
 					// console.log('this.pageDta:', this.pageData);
+					uni.$emit(this.$PU.key_mounted_not());
 				} else {
 					console.log('请检查JSON是否正确');
 				}
