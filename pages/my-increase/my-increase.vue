@@ -28,6 +28,9 @@ export default {
 		},
 	onHide() {},
 	mounted() {
+		this.$PU.a_mounted("axDatepersonnel",(e) => {
+			console.log(e)
+		})
 		// console.log('39:',this.$refs.aFrame.$refs.aList2);
 	},
 	activated() {},

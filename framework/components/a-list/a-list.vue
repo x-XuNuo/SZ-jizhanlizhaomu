@@ -15,7 +15,7 @@
 				<view v-if="this.propsData.mode == 'card'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 							<ax-card
-								ref="axDateSearch"
+								ref="cell_dateSearch"
 								:dataSource = "item"
 								model = "default"
 								@cardClick = "cardclick(item.recruitId)"
@@ -218,6 +218,7 @@ export default {
 							if (that.pageInfo.isRefresh) {
 								that.$set(that.data,'list')
 								that.data.list = res.data.list;
+								this.$PU.register_mounted();
 								console.log("------ 数据刷新了 ------")
 							} else {
 								that.data.list = that.data.list.concat(res.data.list);

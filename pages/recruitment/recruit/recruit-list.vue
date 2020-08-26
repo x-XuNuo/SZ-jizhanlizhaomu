@@ -31,6 +31,9 @@ export default {
 		},
 	onHide() {},
 	mounted() {
+		this.$PU.a_mounted("cell_dateSearch",(e) => {
+			console.log("35:",e)
+		})
 		// console.log('39:',this.$refs.aFrame.$refs.aList2);
 	},
 	activated() {},

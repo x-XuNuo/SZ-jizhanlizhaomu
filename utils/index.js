@@ -104,8 +104,8 @@ export default {
 			}
 		})
 	},
-	key_mounted_not(){
-		return key_mounted_not;
+	register_mounted(){
+		uni.$emit(key_mounted_not);
 	}
 }
 
@@ -117,6 +117,7 @@ function query_callBack(key){
 	}
 }
 
+
 function init(){
 	uni.$on(key_mounted_not,function(data){
         console.log('监听到事件来自 '+key_mounted_not+' ，携带参数 msg 为：' + data);
@@ -124,7 +125,8 @@ function init(){
 		page.$nextTick(function(){
 			var obj = query_callBack(page.route);
 			if(!obj){
-				console.error(page.route+"路径下未注册a_mounted方法");
+				console.warn(page.route+"路径下未注册a_mounted方法");
+				return;
 			}
 			var context = a_context(page,obj.name);
 			if(context){
