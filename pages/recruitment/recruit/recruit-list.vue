@@ -74,7 +74,7 @@ export default {
 
 <style scoped>
 	.recruitList{
-		padding-bottom: 100upx;
+		padding-bottom: 134upx;
 		background-color: #f5f5f5;
 		height: 100%;
 		overflow: hidden;

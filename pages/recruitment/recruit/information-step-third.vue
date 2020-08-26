@@ -72,11 +72,16 @@ export default {
 		position: absolute;
 		top: 0;
 	}
-	>>> .upload{
-		width: 90%;
+	>>> .slot-btn{
+		width: 100%;
 		position: absolute;
-		left: 5%;
-		top: 300upx;
+		padding: 5%;
+		top: 280upx;
+		background-color: #fff;
+		border-radius: 30upx 30upx 0 0;
+	}
+	
+	>>> .upload{
 		border: none;
 		background-color: #fff1ea;
 		color: #fd7012;
@@ -99,5 +104,8 @@ export default {
 			background-color: #fd6703;
 			color: #fff;
 			border-radius: 46upx;
+	}
+	>>> .bgf{
+		background-color: cyan;
 	}
 </style>

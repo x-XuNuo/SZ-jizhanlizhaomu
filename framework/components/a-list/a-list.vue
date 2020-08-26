@@ -23,6 +23,7 @@
 							</ax-card>
 					</view>
 				</view>
+				
 				<view v-if="this.propsData.mode == 'card-delete'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 						<ax-card
@@ -34,22 +35,46 @@
 						</ax-card>
 					</view>
 				</view>
-				<view v-if="this.propsData.mode == 'card-personnel'">
+				
+				<view v-if="this.propsData.mode == 'card-photo'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
-							<ax-card
-								ref="axDatepersonnel"
-								:dataSource = "item"
-								model = "img"
-							>
-							</ax-card>
+						<ax-card
+							ref="axDatepersonnel"
+							:dataSource = "item"
+							model = "photo"
+						>
+						</ax-card>
 					</view>
 				</view>
+				
 				<view v-if="this.propsData.mode == 'card-btncard'">
+					<view v-for="(item, index) in this.data.list" :key="index">
+						<ax-card
+							ref="axDatepersonnel"
+							:dataSource = "item"
+							model = "btncard"
+						>
+						</ax-card>
+					</view>
+				</view>
+				
+				<view v-if="this.propsData.mode == 'card-personnel'">
+					<view v-for="(item, index) in this.data.list" :key="index">
+						<ax-card
+							ref="axDatepersonnel"
+							:dataSource = "item"
+							model = "personnelCard"
+						>
+						</ax-card>
+					</view>
+				</view>
+				
+				<view v-if="this.propsData.mode == 'card-img'">
 					<view v-for="(item, index) in this.data.list" :key="index">
 							<ax-card
 								ref="axDatepersonnel"
 								:dataSource = "item"
-								model = "btncard"
+								model = "img"
 							>
 							</ax-card>
 					</view>
@@ -107,8 +132,8 @@ export default {
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
 		let modalPD = {
-			show : true,
-			showCancelButton : false,
+			show : 'true',
+			showCancelButton : 'false',
 			zIndex : "1075"
 		}
 		this.$nextTick(() =>{
