@@ -189,19 +189,14 @@
 				"navigationBarTitleText": "uni-app"
 			}
 		},
-		{
-			"path": "pages/common-page/common-link",
-			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
+		// {
+		// 	"path": "pages/common-page/common-link",
+		// 	"style": {
+		// 		"navigationBarTitleText": ""
+		// 	}
+		// },
 		{
 			"path": "pages/user/user",
-			"style": {}
-		},
-		// 查找日历组件查询测试页面
-		{
-			"path": "pages/dateSearch/dateSearch",
 			"style": {}
 		}
     ],

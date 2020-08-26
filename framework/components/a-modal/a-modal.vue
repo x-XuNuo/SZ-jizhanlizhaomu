@@ -52,13 +52,14 @@ export default {
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
-		console.log("37:",this.propsData)
+
 	},
 
 	methods: {
 		//数据接口
 		setPropsData(propsData) {
 			this.propsData = propsData;
+					console.log("37:",this.propsData)
 		},
 		
 		// 业务属性接口

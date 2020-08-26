@@ -107,8 +107,8 @@ export default {
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
 		let modalPD = {
-			show : true,
-			showCancelButton : false,
+			show : 'true',
+			showCancelButton : 'false',
 			zIndex : "1075"
 		}
 		this.$nextTick(() =>{
