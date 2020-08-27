@@ -96,7 +96,6 @@
 				ref="imagePreview"
 			>
 			</a-image-preview>
-
 		</view>
 		
 		
@@ -105,13 +104,13 @@
 				<view class="head"> 
 				  <text class="ml15">{{dataSource.applicantName}} </text>
 				  <text class="ml10">{{dataSource.applicantSex == 1 ? '男':'女' }} </text>
-				  <text class="ml10">{{dataSource.recruitTitle || 17817817878}} </text>
-				  <text class="fr mr10" style="color:#a7a7a7; font-weight: 400;">{{dataSource.recruitTitle || "待面试" }} </text>
+				  <text class="ml10">{{dataSource.applicantPhone}} </text>
+				  <text class="fr mr10" style="color:#a7a7a7; font-weight: 400;">{{dataSource.applicantStatus == 1 ? '待审核':"待面试" }} </text>
 				</view>
 				<view class="pt10" style="background-color: #fff;">
 					<view class="pl15" style="color:#a7a7a7;">
 						<text>注册时间：</text>
-						<text>{{dataSource.recruitTime}}</text>
+						<text>{{dataSource.applicantTime}}</text>
 					</view>
 					<view class="x-f margin15" style="color: #ed6b1c;">
 						<text class="flex1" @click="dianji()">求职表</text>
