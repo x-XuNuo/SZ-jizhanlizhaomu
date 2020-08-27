@@ -105,7 +105,7 @@
 				  <text class="ml15">{{dataSource.applicantName}} </text>
 				  <text class="ml10">{{dataSource.applicantSex == 1 ? '男':'女' }} </text>
 				  <text class="ml10">{{dataSource.applicantPhone}} </text>
-				  <text class="fr mr10" style="color:#a7a7a7; font-weight: 400;">{{dataSource.applicantStatus == 1? '待审核' :'已通过'}} </text>
+				  <text class="fr mr10" style="color:#a7a7a7; font-weight: 400;">{{dataSource.applicantStatus == 1 ? '待审核':"待面试" }} </text>
 				</view>
 				<view class="pt10" style="background-color: #fff;">
 					<view class="pl15" style="color:#a7a7a7;">
