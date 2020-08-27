@@ -167,7 +167,6 @@ export default {
 				detailsBtnOD.link = "/pages/increase/increase-details"
 				detailsBtnOD.linkType  = "0"
 				this.$refs.detailsBtn.setPropsData(details)
-				this.$refs.imagePreview.setPropsData(cardImg)
 				if(this.dataSource.recruitStatus != 2){
 					this.$refs.stopBtn.setPropsData(stop)	
 				}
