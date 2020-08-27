@@ -4,15 +4,6 @@
 			ref = "aFrame" 
 			:requestParamData="requestParamData" 
 			@clickSearch="clickSearch">
-<!-- 			
-			<block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block> -->
-			
 		</a-frame>
 		
 		
@@ -32,19 +23,6 @@ export default {
 	components: {},
 	created() {},
 	onLoad(option) {
-		// 测试数据
-		// let userInfo ={
-		// 	"id": "123",
-		// 	"name": "test123",
-		// 	"phone": "手机号码"
-		// }
-		
-		// this.requestParamData = {
-		// 	"id": "456",
-		// 	"name": "test456"
-		// }
-		
-		// uni.setStorageSync("userInfo",userInfo);
 		
 	},
 
@@ -53,16 +31,15 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
+		this.$PU.a_mounted("axCardPhoto",(e) => {
+			console.log("35:",e)
+		})
 	},
 	activated() {},
 	onUnload() {},
 	onHide() {},
 	onPullDownRefresh() {
-		console.log('onPullDownRefresh');
-		setTimeout(function() {
-			uni.stopPullDownRefresh();
-			console.log('stopPullDownRefresh');
-		}, 1000);
+		
 	},
 	// 监听APP点击按钮 调起分享菜单
 	onNavigationBarButtonTap(val) {},

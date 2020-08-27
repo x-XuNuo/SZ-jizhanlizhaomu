@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<a-frame 
-				ref = "aFrame"
+			ref = "aFrame"
 			:requestParamData="requestParamData" 
 			@clickSearch="clickSearch">
 		</a-frame>

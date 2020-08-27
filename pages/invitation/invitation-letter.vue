@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view :style= "{ height: height + 'px' }">
+		<view :style= "{ height: height + 'px' }" class="bgi">
 			<img src="../../static/invitation/yulan_01.png" mode="" style="height: 100%; width: 100%;"></img>
 		</view>
 		<a-frame  
@@ -50,12 +50,10 @@ export default {
 </script>
 
 <style scoped>
-	uni-page-body{
-/* 		background-image: url(../../static/invitation/yulan_01.png);
-		background-size: 100%;
-		height: 100%; */
-		/* margin-bottom: 130upx; */
-	}
+/* 	.bgi{
+		background-image: url(../../static/invitation/yulan_01.png);
+		background-size: 100% 100%;
+	} */
 	>>> .bGCfff{
 		width: 100%;
 		background-color: #fff;

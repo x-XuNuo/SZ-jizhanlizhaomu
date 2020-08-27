@@ -64,6 +64,7 @@ export default {
 	>>> .complete{
 		width: 90%;
 		position: fixed;
+		left: 5%;
 		bottom: 20upx;
 		background-color: #fd6703;
 		color: #fff;

@@ -92,23 +92,11 @@
 		</view>
 		<!-- 纯图片列表 -->
 		<view v-if="this.model == 'img'" style="margin: 20upx;">
-			tututu
-	<!-- 		<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
-				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; margin-right: 20upx;"></img>
-				<view style="flex: 4;">
-					<view >
-						<text style="font-size: 35upx; color: #000000;">{{dataSource.applicantName}}</text>
-						<text 
-							:class="[{'no':dataSource.applicantStatus == 2 },{'yes':dataSource.applicantStatus == 1 },{'stay':dataSource.applicantStatus == 0}]" 
-							style="font-size: 28upx; float: right; margin: 0 10upx;">{{dataSource.applicantStatus == 2 ? "已驳回" :(dataSource.applicantStatus == 1 ? "已通过" :"审批中")}}</text>
-					</view>
-					<view  style="font-size: 25upx; color: #000; margin-top: 10upx ;">
-						<text>
-							拟聘职位：{{dataSource.rankName}}
-						</text> 
-					</view>
-				</view>
-			</view> -->
+			<a-image-preview
+				ref="imagePreview"
+			>
+			</a-image-preview>
+
 		</view>
 		
 		
@@ -177,11 +165,27 @@ export default {
 				let detailsBtnOD =  this.$refs.detailsBtn.operateData
 				detailsBtnOD.link = "/pages/increase/increase-details"
 				detailsBtnOD.linkType  = "0"
-				this.$refs.detailsBtn.setPropsData(details)	
+				this.$refs.detailsBtn.setPropsData(details)
+				this.$refs.imagePreview.setPropsData(cardImg)
 				if(this.dataSource.recruitStatus != 2){
 					this.$refs.stopBtn.setPropsData(stop)	
 				}
 				this.$refs.detailsBtn.setOperateData(detailsBtnOD)
+			})
+		} else if(this.model == 'img'){
+			let cardImg = {
+				fileList:[ 
+				 {
+						"url":"https://img.yzcdn.cn/vant/apple-1.jpg"
+					},
+					{
+						"url":"https://img.yzcdn.cn/vant/apple-2.jpg"
+					}
+				],
+				"mode":"default"
+			}
+			this.$nextTick( () =>{
+				this.$refs.imagePreview.setPropsData(cardImg)
 			})
 		}
 	},

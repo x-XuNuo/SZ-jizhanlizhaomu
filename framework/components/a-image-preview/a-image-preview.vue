@@ -45,13 +45,13 @@ export default {
 	},
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
-		this.requestData = this.attributesData.requestData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
+			console.log("52：",this.propsData)
 		//初始化数据
 		this.request();
-		
 		// 测试数据
 		// this.propsData.fileList = this.fileList;
 		
@@ -61,6 +61,7 @@ export default {
 		//数据接口
 		setPropsData(propsData) {
 			this.propsData = propsData;
+			console.log("63：",this.propsData)
 		},
 
 		// 业务属性接口

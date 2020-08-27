@@ -28,8 +28,8 @@ export default {
 		},
 	onHide() {},
 	mounted() {
-		this.$PU.a_mounted("axDatepersonnel",(e) => {
-			console.log(e)
+		this.$PU.a_mounted("axCardpersonnel",(e) => {
+			console.log("35:",e)
 		})
 		// console.log('39:',this.$refs.aFrame.$refs.aList2);
 	},

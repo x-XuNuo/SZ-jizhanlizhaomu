@@ -78,6 +78,7 @@ export default {
 		height: 100%;
 		overflow: hidden;
 	}
+	
 	>>> .triangle{
 		color: #fff !important;
 	}

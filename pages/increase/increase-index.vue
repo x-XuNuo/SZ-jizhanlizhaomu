@@ -31,7 +31,9 @@ export default {
 		},
 	onHide() {},
 	mounted() {
-		// console.log('39:',this.$refs.aFrame.$refs.aList2);
+		this.$PU.a_mounted("axCardBtncard",(e) => {
+			console.log("35：",e)
+		})
 	},
 	activated() {},
 	onUnload() {},

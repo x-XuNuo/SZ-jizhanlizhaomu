@@ -28,6 +28,9 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
+		this.$PU.a_mounted("axCardDEle",(e) => {
+			console.log("32:",e)
+		})
 	},
 	activated() {},
 	onUnload() {},
