@@ -1,7 +1,7 @@
 <template>
 	<view>
-		<view>
-			<img src="../../static/invitation/yulan_01.png" mode="" style="width: 100%;"></img>
+		<view :style= "{ height: height + 'px' }">
+			<img src="../../static/invitation/yulan_01.png" mode="" style="height: 100%; width: 100%;"></img>
 		</view>
 		<a-frame  
 			ref = "aFrame"
@@ -17,7 +17,8 @@ export default {
 		return {
 			myBtn: "btn-text",
 			// 请求参数
-			requestParamData:{}
+			requestParamData:{},
+			height:0,
 		};
 	},
 	components: {},
@@ -31,7 +32,8 @@ export default {
 		},
 	onHide() {},
 	mounted() {
-		// console.log('39:',this.$refs.aFrame.$refs.aList2);
+		console.log("34:",uni.getSystemInfoSync().screenHeight)
+		this.height = uni.getSystemInfoSync().screenHeight -54
 	},
 	activated() {},
 	onUnload() {},

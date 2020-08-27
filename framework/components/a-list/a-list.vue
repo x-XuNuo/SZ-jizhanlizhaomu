@@ -15,7 +15,7 @@
 				<view v-if="this.propsData.mode == 'card'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 							<ax-card
-								ref="cell_dateSearch"
+								ref="axCardDefault"
 								:dataSource = "item"
 								model = "default"
 								@cardClick = "cardclick(item.recruitId)"
@@ -27,7 +27,7 @@
 				<view v-if="this.propsData.mode == 'card-delete'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 						<ax-card
-							ref="axDateDEle"
+							ref="axCardDEle"
 							:dataSource = "item"
 							model = "dele"
 							@cellDelete = "cellDelete(index)"
@@ -39,7 +39,7 @@
 				<view v-if="this.propsData.mode == 'card-photo'">
 					<view v-for="(item, index) in this.data.list" :key="index" class="color999">
 						<ax-card
-							ref="axDatepersonnel"
+							ref="axCardPhoto"
 							:dataSource = "item"
 							model = "photo"
 						>
@@ -50,7 +50,7 @@
 				<view v-if="this.propsData.mode == 'card-btncard'">
 					<view v-for="(item, index) in this.data.list" :key="index">
 						<ax-card
-							ref="axDatepersonnel"
+							ref="axCardBtncard"
 							:dataSource = "item"
 							model = "btncard"
 						>
@@ -61,7 +61,7 @@
 				<view v-if="this.propsData.mode == 'card-personnel'">
 					<view v-for="(item, index) in this.data.list" :key="index">
 						<ax-card
-							ref="axDatepersonnel"
+							ref="axCardpersonnel"
 							:dataSource = "item"
 							model = "personnelCard"
 						>
@@ -72,7 +72,7 @@
 				<view v-if="this.propsData.mode == 'card-img'">
 					<view v-for="(item, index) in this.data.list" :key="index">
 							<ax-card
-								ref="axDatepersonnel"
+								ref="axCardImg"
 								:dataSource = "item"
 								model = "img"
 							>

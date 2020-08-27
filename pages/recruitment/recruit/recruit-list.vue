@@ -31,7 +31,7 @@ export default {
 		},
 	onHide() {},
 	mounted() {
-		this.$PU.a_mounted("cell_dateSearch",(e) => {
+		this.$PU.a_mounted("axCardDefault",(e) => {
 			console.log("35:",e)
 		})
 		// console.log('39:',this.$refs.aFrame.$refs.aList2);
@@ -40,11 +40,7 @@ export default {
 	onUnload() {},
 	onHide() {},
 	onPullDownRefresh() {
-		console.log('onPullDownRefresh');
-		setTimeout(function() {
-			uni.stopPullDownRefresh();
-			console.log('stopPullDownRefresh');
-		}, 1000);
+		
 	},
 	// 监听APP点击按钮 调起分享菜单
 	onNavigationBarButtonTap(val) {},
