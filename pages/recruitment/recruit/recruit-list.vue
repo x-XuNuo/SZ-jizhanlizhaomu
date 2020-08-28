@@ -90,6 +90,12 @@ export default {
 		position: absolute;
 		top: 130upx;
 	}
+	>>> .refresh {
+		background-color: #f5f5f5 !important;
+	}
+	>>> .list{
+		background-color: #f5f5f5;
+	}
 	>>> .date-search{
 			width: 94%;
 			position: absolute;

@@ -129,6 +129,7 @@ export default {
 		
 		// 点击确认按钮时触发
 		confirm(){
+			console.log("2345678908765")
 			if (this.operateData.confirm) {
 				let string = 'this.$root.' + this.operateData.confirm;
 				this.evalFun(string);

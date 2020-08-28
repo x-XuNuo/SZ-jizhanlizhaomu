@@ -72,13 +72,22 @@ export default {
 		position: absolute;
 		top: 0;
 	}
-	>>> .slot-btn{
+	>>> .u-upload{
 		width: 100%;
 		position: absolute;
 		padding: 5%;
 		top: 280upx;
 		background-color: #fff;
 		border-radius: 30upx 30upx 0 0;
+		overflow:hidden;
+	}
+	>>> .slot-btn{
+		/* width: 100%; */
+		/* position: absolute; */
+		/* padding: 5%; */
+		/* top: 280upx; */
+		/* background-color: #fff; */
+		/* border-radius: 30upx 30upx 0 0; */
 	}
 	
 	>>> .upload{

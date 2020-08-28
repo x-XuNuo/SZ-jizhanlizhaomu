@@ -294,17 +294,20 @@ export default {
 		tipsClick(index){
 			let modalPD = {
 				show: 'true',
-				showCancelButton: 'false',
 				title : "驳回原因",
 				content:"本次聘才申请人数不符合部门招聘计划，请重新申请",
-				showConfirmButton : "true",
-				// confirmColor:"#fd6703",
+				showConfirmButtom : "true",
+				confirmColor:"#fd6703",
+				asyncClose:"true",
 				maskCloseAble:"true",
 			};
 			this.$nextTick(() => {
+				let modalOD = this.$refs.alert.operateData
+				modalOD.confirm = "confirm()"
 				this.$refs.alert.setPropsData(modalPD);
+				this.$refs.alert.setOperateData(modalOD);
 			});
-			
+			console.log("306：",this.$refs.alert)
 		},
 			
 		// 删除事件
