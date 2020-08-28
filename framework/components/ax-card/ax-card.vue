@@ -74,7 +74,7 @@
 		<!-- 带有照片 -->
 		<view v-if="this.model == 'photo'" style="margin: 20upx;">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
-				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; margin-right: 20upx;"></img>
+				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; height: 100upx; margin-right: 20upx;"></img>
 				<view style="flex: 4;">
 					<view >
 						<text style="font-size: 35upx; color: #000000;">{{dataSource.applicantName}}</text>
@@ -200,7 +200,7 @@ export default {
 		},
 		// 驳回原因提醒
 		tips(){
-			console.log("34567890-09876")
+			this.$emit("tipsClick")
 		},
 		// 删除事件
 		Dele(e){

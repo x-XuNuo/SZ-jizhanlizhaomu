@@ -19,6 +19,7 @@
 								:dataSource = "item"
 								model = "default"
 								@cardClick = "cardclick(item.recruitId)"
+								@tipsClick = "tipsClick(item)"
 							>
 							</ax-card>
 					</view>
@@ -131,14 +132,7 @@ export default {
 		this.requestData = this.attributesData.requestData;
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
-		let modalPD = {
-			show: 'true',
-			showCancelButton: 'false',
-			zIndex: '1075'
-		};
-		this.$nextTick(() => {
-			this.$refs.alert.setPropsData(modalPD);
-		});
+		
 		this.attributes = aCard.data.attributes;
 		//初始化数据
 		this.request();
@@ -296,6 +290,23 @@ export default {
 				url: url
 			})
 		},
+		// 模态框显示
+		tipsClick(index){
+			let modalPD = {
+				show: 'true',
+				showCancelButton: 'false',
+				title : "驳回原因",
+				content:"本次聘才申请人数不符合部门招聘计划，请重新申请",
+				showConfirmButton : "true",
+				// confirmColor:"#fd6703",
+				maskCloseAble:"true",
+			};
+			this.$nextTick(() => {
+				this.$refs.alert.setPropsData(modalPD);
+			});
+			
+		},
+			
 		// 删除事件
 		cellDelete(index){
 			this.data.list.splice(index,1)

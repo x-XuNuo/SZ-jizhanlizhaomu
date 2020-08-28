@@ -1,6 +1,6 @@
 <template>
 		<u-modal
-		:show="this.propsData.show == 'true' ? true : false"
+		v-model="this.propsData.show == 'true' ? true : false"
 		:z-index="this.propsData.zIndex"
 		:title="this.propsData.title"
 		:width="this.propsData.width"
@@ -59,7 +59,7 @@ export default {
 		//数据接口
 		setPropsData(propsData) {
 			this.propsData = propsData;
-					console.log("37:",this.propsData)
+			console.log("37:",this.propsData)
 		},
 		
 		// 业务属性接口
