@@ -53,7 +53,7 @@ export default {
 	.recruitList{
 		padding-top: 150upx;
 		background-image: url(../../../static/top_Background.png);
-		/* background-size: 100%,100%; */
+		height: 100%;
 	}
 	>>> .listmat{
 		margin-top: -2upx;
@@ -73,6 +73,7 @@ export default {
 	}
 	>>> .list{
 		margin-top: 90upx;
+		height: 100% !important;
 	}
 	>>> .hollow-dots-spinner{
 		height: 0 !important;
