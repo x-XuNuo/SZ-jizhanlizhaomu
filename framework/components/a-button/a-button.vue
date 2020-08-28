@@ -60,10 +60,11 @@
 			methods: {
 				// 跳转页面
 				clickEventsFun() {
-					if (this.operateData.click) {
+					if (this.operateData.click && typeof(this.operateData.click) == 'function') {
+						this.operateData.click();
+					}else{
 						eval(this.operateData.click);
 					}
-		
 					let coverParam = this.data ? '?' + this.$U.convertObj(this.data.jointParam) : '';
 					if (this.operateData.linkType == "0") {
 						this.$R.push(this.operateData.link + coverParam);

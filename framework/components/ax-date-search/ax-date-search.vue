@@ -6,7 +6,6 @@
 				>
 			</a-calendar>
 			<a-button
-				style="border: none;"
 			  ref='btn'>
 			</a-button>
 		</view>
@@ -54,6 +53,8 @@ export default {
 			let calendarOD = this.$refs.calendar.operateData
 			let btnOD =  this.$refs.btn.operateData
 			calendarOD.confirm = "this.propsData.titleText = e.fulldate"
+			btnOD.click = this.chaxun
+			console.log("56:",btnOD)
 			this.$refs.calendar.setPropsData(dateInfo),
 			this.$refs.calendar.setOperateData(calendarOD)
 			this.$refs.btn.setPropsData(btnInfo)			
@@ -82,7 +83,6 @@ export default {
 		//请求接口
 		setRequestData(reqestData) {
 			this.reqestData = reqestData;
-			// console.log('this.reqestData:', this.reqestData);
 		},
 
 		// 请求接口示例
@@ -103,9 +103,10 @@ export default {
 			if (this.operateData.click) {
 				eval('this.$root.' + this.operateData.click);
 			}
-
 		},
-		
+		chaxun(){
+			
+		},
 	}
 };
 </script>

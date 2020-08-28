@@ -53,17 +53,17 @@ export default {
 
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data;
-		this.operateData = this.attributesData.operateData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
 		this.textFlex = this.propsData.textFlex == 'true' ? true : false;
 
-		console.log('this.propsData:', this.propsData);
-		console.log('this.data:', this.data);
-		console.log('this.operateData:', this.operateData);
 	},
 	methods:{
-		    tabChange(index) {this.propsData.tabCur = index;},
+		tabChange(index) {
+			this.propsData.tabCur = index;
+		},
 	}
 };
 </script>

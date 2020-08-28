@@ -83,10 +83,6 @@ export default {
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
-
-		console.log('this.propsData:', this.propsData);
-		console.log('this.data:', this.data);
-		console.log('this.operateData:', this.operateData);
 	},
 	methods: {
 		// 日期改变，insert :ture 时生效

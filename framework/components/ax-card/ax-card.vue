@@ -150,8 +150,10 @@ export default {
 		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.requestData = this.attributesData ? this.attributesData.requestData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
 		if(this.model == 'btncard'){
+		this.requestData = this.attributesData ? this.attributesData.requestData : {};
 			let details = {
 				text : "查看详情",
 				mode:"default",
@@ -168,7 +170,10 @@ export default {
 				detailsBtnOD.linkType  = "0"
 				this.$refs.detailsBtn.setPropsData(details)
 				if(this.dataSource.recruitStatus != 2){
+					let stopBtnOD =  this.$refs.stopBtn.operateData
+					stopBtnOD.click = this.stopRecruit
 					this.$refs.stopBtn.setPropsData(stop)	
+					this.$refs.stopBtn.setOperateData(stopBtnOD)
 				}
 				this.$refs.detailsBtn.setOperateData(detailsBtnOD)
 			})
@@ -204,6 +209,10 @@ export default {
 		// 删除事件
 		Dele(e){
 			this.$emit("cellDelete")
+		},
+		// 停止招聘提示
+		stopRecruit(){
+			console.log("停止招聘")
 		},
 		dianji(){
 			console.log("234567898765")

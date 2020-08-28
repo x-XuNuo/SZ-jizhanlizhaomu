@@ -125,22 +125,16 @@ export default {
 	},
 	mounted() {
 		// props参数处理
-		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data ? this.attributesData.data : {};
-		console.log('78:', this.attributesData);
-		this.operateData = this.attributesData.operateData;
-		this.requestData = this.attributesData.requestData;
+		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
+		this.data = this.attributesData ? this.attributesData.data : {};
+		this.operateData = this.attributesData ? this.attributesData.operateData : {};
+		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
+		this.requestData = this.attributesData ? this.attributesData.requestData : {};
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
-		
 		this.attributes = aCard.data.attributes;
 		//初始化数据
-		this.request();
-		// console.log('this.propsData:', this.propsData);
-		// console.log('this.data:', this.data);
-		// console.log('this.operateData:', this.operateData);
-		// console.log('this.requestData:', this.requestData);
-		
+		this.request();;
 	},
 
 	methods: {
@@ -290,6 +284,16 @@ export default {
 				url: url
 			})
 		},
+		// 模态框关闭
+		modalOff(){
+			console.log("234567qekfb7")
+			let off = {
+				show: 'false',
+			}
+			this.$nextTick(() => {
+				this.$refs.alert.setPropsData(off);
+			});
+		},
 		// 模态框显示
 		tipsClick(index){
 			let modalPD = {
@@ -303,11 +307,12 @@ export default {
 			};
 			this.$nextTick(() => {
 				let modalOD = this.$refs.alert.operateData
-				modalOD.confirm = "confirm()"
+				modalOD.confirm = this.modalOff
+				// btnOD.click = this.chaxun
 				this.$refs.alert.setPropsData(modalPD);
 				this.$refs.alert.setOperateData(modalOD);
 			});
-			console.log("306：",this.$refs.alert)
+			console.log("306：",index)
 		},
 			
 		// 删除事件

@@ -47,22 +47,6 @@ export default {
 	// 点击返回按钮
 	onBackPress() {},
 	methods: {
-		// 点击搜索框
-		clickSearch() {
-			// this.$emit('goSearchFun');
-			uni.showToast({
-				icon:'none',
-				title:'点击了搜索框'
-			})
-			console.log('点击了搜索框');
-		},
-		// demoClick(){
-			// console.log("_~_~_~_~_~_",this.$refs.aFrame.$refs.aCrosswiseTab[0].propsData.tabCur)
-			// let searchView = this.$refs.aFrame.$refs.axDateSearch[0];
-			// let btnOpre = searchView.operateData;
-			// btnOpre.click = 'searchAction()';
-			// searchView.setOperateData(btnOpre);
-		// },
 		searchAction(){
 			console.log("测试测试")
 		},

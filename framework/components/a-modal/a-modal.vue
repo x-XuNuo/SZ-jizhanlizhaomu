@@ -16,7 +16,7 @@
 		:title-style="this.propsData.titleStyle"
 		:content-style="this.propsData.contentStyle"
 		:cancel-style="this.propsData.cancelStyle"
-		:confirm-style="this.propsData.confirmColor"
+		:confirm-style="this.propsData.confirmStyle"
 		:zoom="this.propsData.zoom == 'true' ? true : false"
 		:async-close="this.propsData.asyncClose == 'true' ? true :false"
 		:mask-close-able="this.propsData.maskCloseAble == 'true' ? true : false"
@@ -129,7 +129,6 @@ export default {
 		
 		// 点击确认按钮时触发
 		confirm(){
-			console.log("2345678908765")
 			if (this.operateData.confirm) {
 				let string = 'this.$root.' + this.operateData.confirm;
 				this.evalFun(string);
