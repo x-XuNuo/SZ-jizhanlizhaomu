@@ -21,7 +21,7 @@
 			
 			<block slot="a-button-prove">
 				<view class="button-prove">
-					sdfghjkl;
+					<!-- sdfghjkl; -->
 				</view>
 			</block>
 		</a-frame>

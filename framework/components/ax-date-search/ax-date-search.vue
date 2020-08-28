@@ -53,8 +53,7 @@ export default {
 			let calendarOD = this.$refs.calendar.operateData
 			let btnOD =  this.$refs.btn.operateData
 			calendarOD.confirm = "this.propsData.titleText = e.fulldate"
-			btnOD.click = this.chaxun
-			console.log("56:",btnOD)
+			btnOD.click = this.query
 			this.$refs.calendar.setPropsData(dateInfo),
 			this.$refs.calendar.setOperateData(calendarOD)
 			this.$refs.btn.setPropsData(btnInfo)			
@@ -104,8 +103,8 @@ export default {
 				eval('this.$root.' + this.operateData.click);
 			}
 		},
-		chaxun(){
-			
+		query(){
+			console.log("列表刷新")
 		},
 	}
 };
