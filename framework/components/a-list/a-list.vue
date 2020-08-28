@@ -3,7 +3,7 @@
 		<ux-load-refresh
 			v-if="this.data.list"
 			ref="loadRefresh"
-			:backgroundCover="'ffffff'"
+			:backgroundCover="'#ffffff'"
 			:pageNo="this.pageInfo.pageNo"
 			:totalPageNo="this.pageInfo.totalPageNo"
 			:isRefresh="this.propsData.isRefresh == 'true' ? true : false"
@@ -19,6 +19,7 @@
 								:dataSource = "item"
 								model = "default"
 								@cardClick = "cardclick(item.recruitId)"
+								@tipsClick = "tipsClick(item)"
 							>
 							</ax-card>
 					</view>
@@ -119,27 +120,20 @@ export default {
 				isRefresh: true
 			},
 			isLoading: false,
-			attributes : {},
+			attributes: {}
 		};
 	},
 	mounted() {
 		// props参数处理
 		this.propsData = this.attributesData.propsData;
-		this.data = this.attributesData.data ?this.attributesData.data:{};
-		console.log("78:",this.attributesData)
+		this.data = this.attributesData.data ? this.attributesData.data : {};
+		console.log('78:', this.attributesData);
 		this.operateData = this.attributesData.operateData;
 		this.requestData = this.attributesData.requestData;
 		this.pageInfo.pageNo = parseInt(this.propsData.pageNo);
 		this.pageInfo.totalPageNo = parseInt(this.propsData.totalPageNo);
-		let modalPD = {
-			show : 'true',
-			showCancelButton : 'false',
-			zIndex : "1075"
-		}
-		this.$nextTick(() =>{
-			this.$refs.alert.setPropsData(modalPD)
-		})
-		this.attributes = aCard.data.attributes
+		
+		this.attributes = aCard.data.attributes;
 		//初始化数据
 		this.request();
 		// console.log('this.propsData:', this.propsData);
@@ -153,6 +147,7 @@ export default {
 		//数据接口
 		setPropsData(propsData) {
 			this.propsData = propsData;
+			console.log('propsData:', propsData);
 		},
 
 		// 业务属性接口
@@ -177,7 +172,7 @@ export default {
 
 		// 网络请求
 		request() {
-			let that =this
+			let that = this;
 			let requestApi = '';
 			if (!this.isLoading && this.requestData.requestMode && this.requestData.remoteApi) {
 				if (this.requestData.requestMode == 'POST') {
@@ -211,18 +206,18 @@ export default {
 
 						// 调用接口返回成功后，逻辑如下
 						if (res && res.data) {
-							console.log("129：，",res.data)
+							console.log('129：', res.data);
 							if (that.pageInfo.pageNo > that.pageInfo.totalPageNo) {
 								return;
 							}
 							if (that.pageInfo.isRefresh) {
-								that.$set(that.data,'list')
+								that.$set(that.data, 'list');
 								that.data.list = res.data.list;
 								this.$PU.register_mounted();
-								console.log("------ 数据刷新了 ------")
+								console.log('------ 数据刷新了 ------');
 							} else {
 								that.data.list = that.data.list.concat(res.data.list);
-								console.log("----- 加载了更多数据 ------")
+								console.log('----- 加载了更多数据 ------');
 							}
 
 							// 数据累加
@@ -247,11 +242,23 @@ export default {
 			}
 		},
 
+		// 组件内方法
+		// 结束单次加载更多
+		loadOver() {
+			this.$refs.loadRefresh.loadOver();
+		},
+
+		// 事件触发下拉刷新
+		runRefresh() {
+			this.$refs.loadRefresh.runRefresh();
+		},
+
 		// 事件 - 加载更多
 		loadMore() {
 			if (this.operateData.loadMore) {
 				this.pageInfo.isRefresh = false;
 				this.request();
+				this.loadOver();
 				try {
 					let string = 'this.$root.' + this.operateData.loadMore;
 					this.evalFun(string);
@@ -283,6 +290,23 @@ export default {
 				url: url
 			})
 		},
+		// 模态框显示
+		tipsClick(index){
+			let modalPD = {
+				show: 'true',
+				showCancelButton: 'false',
+				title : "驳回原因",
+				content:"本次聘才申请人数不符合部门招聘计划，请重新申请",
+				showConfirmButton : "true",
+				// confirmColor:"#fd6703",
+				maskCloseAble:"true",
+			};
+			this.$nextTick(() => {
+				this.$refs.alert.setPropsData(modalPD);
+			});
+			
+		},
+			
 		// 删除事件
 		cellDelete(index){
 			this.data.list.splice(index,1)
