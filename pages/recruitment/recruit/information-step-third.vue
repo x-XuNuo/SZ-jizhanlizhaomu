@@ -82,7 +82,7 @@ export default {
 		overflow:hidden;
 	}
 	>>> .slot-btn{
-		/* width: 100%; */
+		width: 100%;
 		/* position: absolute; */
 		/* padding: 5%; */
 		/* top: 280upx; */

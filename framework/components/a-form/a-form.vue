@@ -1,397 +1,280 @@
 <template>
-	<view class="wrap">
-		<u-form :model="model" :rules="rules" ref="uForm" :errorType="errorType">
-			
-			<view v-for="(item, index) in pageData" :key="index">
-				<u-form-item
-					v-if="item.magicalCoder.identifier == 'u-input'"
-					:required="true"
-					:leftIconStyle="{ color: '#888', fontSize: '32rpx' }"
-					left-icon="account"
-					label-width="120"
-					:label-position="labelPosition"
-					label="姓名"
-					prop="name"
+	<view class="height100 pb50">
+		<view v-if="formDataJson && formDataJson.propsData.currentPage == index" v-for="(item, index) in formDataJson.propsData.pages" :key="index">
+			<view v-for="(item2, index2) in item.columns" :key="index2">
+				<!-- 栏目 -->
+				<view
+					v-if="item2.columnsInfo"
+					:style="{ 'background-color': item2.columnsInfo.columnBgColor, color: item2.columnsInfo.columnColor }"
+					@click="item2.columnsInfo.isShowForm = !item2.columnsInfo.isShowForm"
 				>
-					<u-input :border="border" placeholder="请输入姓名" :disabled="true" v-model="model.name" type="text"></u-input>
-				</u-form-item>
-				
-				<u-form-item v-if="item.magicalCoder.identifier == 'u-checkbox'" :label-position="labelPosition" label="水果品种" label-width="150" prop="likeFruit">
-					<u-checkbox-group @change="checkboxGroupChange" :width="radioCheckWidth" :wrap="radioCheckWrap">
-						<u-checkbox v-model="item.checked" v-for="(item, index) in checkboxList" :key="index" :name="item.name">{{ item.name }}</u-checkbox>
-					</u-checkbox-group>
-				</u-form-item>
-				
-				<u-form-item v-if="item.magicalCoder.identifier == 'u-radio'" :label-position="labelPosition" label="结算方式" prop="payType" label-width="150">
-					<u-radio-group v-model="radio" @change="radioGroupChange" :width="radioCheckWidth" :wrap="radioCheckWrap">
-						<u-radio shape="circle" v-model="item.checked" v-for="(item, index) in radioList" :key="index" :name="item.name">{{ item.name }}</u-radio>
-					</u-radio-group>
-				</u-form-item>
-				
-				<!-- 此处switch的slot为right，如果不填写slot名，也即<u-switch v-model="model.remember"></u-switch>，将会左对齐 -->
-				<u-form-item v-if="item.magicalCoder.identifier == 'u-switch'" :label-position="labelPosition" label="记住密码" prop="remember" label-width="150">
-					<u-switch v-model="model.remember" slot="right"></u-switch>
-				</u-form-item>
-				<u-form-item v-if="item.magicalCoder.identifier == 'u-upload'" :label-position="labelPosition" label="上传图片" prop="photo" label-width="150"><u-upload width="160"></u-upload></u-form-item>
-				
+					<view class="x-bc pt10 pb10 mr15 ml15">
+						<view class="x-start-center width80 one-t">
+							<u-icon :name="item2.columnsInfo.columnIcon" :color="item2.columnsInfo.columnColor" size="40" class="mr5"></u-icon>
+							<text>{{ item2.columnsInfo.columnName }}</text>
+						</view>
+
+						<view>
+							<u-icon v-if="item2.columnsInfo.isShowForm == true" name="arrow-up-fill" :color="item2.columnsInfo.columnColor" size="32"></u-icon>
+							<u-icon v-if="item2.columnsInfo.isShowForm == false" name="arrow-down-fill" :color="item2.columnsInfo.columnColor" size="32"></u-icon>
+						</view>
+					</view>
+				</view>
+				<!-- 表单 -->
+				<u-form
+					v-if="!item2.columnsInfo || item2.columnsInfo.isShowForm"
+					class="pl15 pr15"
+					ref="uForm"
+					:model="formModelJson"
+					:rules="formRulesJson"
+					:error-type="formDataJson.propsData.errorType"
+				>
+					<block v-for="(item3, index3) in item2.elementList" :key="index3">
+						<!-- 录入框 标准键盘 text 0101 -->
+						<u-form-item v-if="item3.elementType == '0101'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-input type="text" input-align="right" :placeholder="item3.attributesData.propsData.placeholder" v-model="formModelJson[item3.prop]"></u-input>
+						</u-form-item>
+
+						<!-- 录入框 数字键盘 number 0102 -->
+						<u-form-item v-if="item3.elementType == '0102'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-input type="number" input-align="right" :placeholder="item3.attributesData.propsData.placeholder" v-model="formModelJson[item3.prop]"></u-input>
+						</u-form-item>
+
+						<!-- 录入框  textarea 0104 -->
+						<u-form-item
+							v-if="item3.elementType == '0104'"
+							label-width="150"
+							label-position="top"
+							:label="item3.label"
+							:prop="item3.prop"
+							:required="item3.elementInfo.required"
+						>
+							<u-input type="textarea" :placeholder="item3.attributesData.propsData.placeholder" v-model="formModelJson[item3.prop]"></u-input>
+						</u-form-item>
+
+						<!-- 选择器 一级 0201 -->
+						<u-form-item v-if="item3.elementType == '0201'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-input
+								type="select"
+								input-align="right"
+								:select-open="singleColumnShow"
+								v-model="formModelJson[item3.prop]"
+								:placeholder="item3.attributesData.propsData.placeholder"
+								@click="singleColumnShow = true"
+							></u-input>
+							<u-select
+								mode="single-column"
+								:list="item3.attributesData.propsData.selectList"
+								v-model="singleColumnShow"
+								@confirm="singleColumnConfirm($event, item3.prop)"
+							></u-select>
+						</u-form-item>
+
+						<!-- 选择器 多级联动 0202 -->
+						<u-form-item v-if="item3.elementType == '0202'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-input
+								type="select"
+								input-align="right"
+								:select-open="mutilColumnAutoShow"
+								v-model="formModelJson[item3.prop]"
+								:placeholder="item3.attributesData.propsData.placeholder"
+								@click="mutilColumnAutoShow = true"
+							></u-input>
+							<u-select
+								mode="mutil-column-auto"
+								:list="item3.attributesData.propsData.selectList"
+								v-model="mutilColumnAutoShow"
+								@confirm="mutilColumnConfirm($event, item3.prop)"
+							></u-select>
+						</u-form-item>
+
+						<!-- 日期选择器 04 -->
+						<u-form-item v-if="item3.elementType == '04'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-input
+								type="select"
+								input-align="right"
+								:select-open="calendarShow"
+								v-model="formModelJson[item3.prop]"
+								:placeholder="item3.attributesData.propsData.placeholder"
+								@click="calendarShow = true"
+							></u-input>
+							<u-calendar v-model="calendarShow" mode="date" @change="calendarConfirm(($event, item3.prop))"></u-calendar>
+						</u-form-item>
+
+						<!-- 不可修改的文本框 07 -->
+						<u-form-item v-if="item3.elementType == '07'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-input type="text" :clearable="false" input-align="right" :disabled="true" v-model="formModelJson[item3.prop]"></u-input>
+						</u-form-item>
+
+						<!-- 点击按钮 触发上传 09 -->
+						<u-form-item v-if="item3.elementType == '0901'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<u-upload
+								:action="item3.action"
+								:show-progress="false"
+								ref="uUpload"
+								:file-list="formModelJson[item3.prop] || []"
+								@on-list-change="onListChange($event, item3.prop)"
+							>
+							</u-upload>
+						</u-form-item>
+						<!-- 点击按钮 触发上传 09 -->
+						<u-form-item v-if="item3.elementType == '0902'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+							<ux-upload
+								:action="item3.action"
+								:show-progress="false"
+								:custom-btn="true"
+								ref="uUpload"
+								:file-list="formModelJson[item3.prop] || []"
+								@on-list-change="onListChange($event, item3.prop)"
+							>
+								<view slot="addBtn" class="slot-btn" hover-class="slot-btn__hover" hover-stay-time="150">
+									<!-- 自定义按钮样式 -->
+									<view class="circleBtn width100" :class="item3.attributesData.propsData.btnClass">
+										<u-icon name="photo" size="40" class="mr5" :color="$u.color['lightColor']" />
+										请拍照或上传附件
+									</view>
+								</view>
+							</ux-upload>
+						</u-form-item>
+
+						<!-- 点击按钮跳转页面 将isShowList参数变成true后 新增后展示列表 10 -->
+						<block v-if="item3.elementType == '10'">
+							<u-form-item v-if="item3.elementType == '10'" :prop="item3.prop" :required="item3.elementInfo.required" label-width="150" :border-bottom="false">
+								<u-button shape="circle" class="width100" :class="item3.elementInfo.buttonClass" @click="uButtonClick(item3.elementInfo.functionName)">
+									<u-icon :name="item3.elementInfo.leftIcon" :color="item3.elementInfo.leftIconColor" size="40" class="mr5"></u-icon>
+									<text>{{ item3.elementInfo.buttonName }}</text>
+								</u-button>
+							</u-form-item>
+
+							<view v-if="item3.elementInfo.isShowList">
+								<u-cell-group v-for="(item4, index4) in item3.attributesData.propsData.addRecruitersList" :key="index4" :border="false">
+									<u-cell-item :label="item3.label" :arrow="false">
+										<view slot="title">
+											<text v-if="item4.title" class="mr5">{{ item4.title }}</text>
+											<text v-if="item4.subTitle" class="mr5">{{ item4.subTitle }}</text>
+											<u-icon v-if="item4.icon" :name="item4.icon" :color="item4.iconColor"></u-icon>
+										</view>
+
+										<u-icon
+											slot="right-icon"
+											size="40"
+											:name="item4.rightIcon"
+											:color="item4.rightIconColor"
+											@click="deleteListClick(item3.prop, item3.attributesData.propsData.addRecruitersList, index4)"
+										></u-icon>
+									</u-cell-item>
+								</u-cell-group>
+							</view>
+						</block>
+					</block>
+				</u-form>
 			</view>
-			
-			
-			
-			
-			<!-- <u-form-item :label-position="labelPosition" label="所在地区" prop="region" label-width="150">
-				<u-input :border="border" type="select" :select-open="pickerShow" v-model="model.region" placeholder="请选择地区" @click="pickerShow = true"></u-input>
-			</u-form-item>
-			<u-form-item :label-position="labelPosition" label="商品类型" prop="goodsType" label-width="150">
-				<u-input :border="border" type="select" :select-open="selectShow" v-model="model.goodsType" placeholder="请选择商品类型" @click="selectShow = true"></u-input>
-			</u-form-item>
-			<u-form-item
-				:rightIconStyle="{ color: '#888', fontSize: '32rpx' }"
-				right-icon="kefu-ermai"
-				:label-position="labelPosition"
-				label="手机号码"
-				prop="phone"
-				label-width="150"
-			>
-				<u-input :border="border" placeholder="请输入手机号" v-model="model.phone" type="number"></u-input>
-			</u-form-item>
-			<u-form-item :label-position="labelPosition" label="验证码" prop="code" label-width="150">
-				<u-input :border="border" placeholder="请输入验证码" v-model="model.code" type="text"></u-input>
-				<u-button slot="right" type="success" size="mini" @click="getCode">{{ codeTips }}</u-button>
-			</u-form-item> -->
-			
-			
-		</u-form>
-		<!-- <view class="agreement">
-			<u-checkbox v-model="check" @change="checkboxChange"></u-checkbox>
-			<view class="agreement-text">勾选代表同意uView的版权协议</view>
-		</view> -->
-		<u-button @click="submit">提交</u-button>
-		<u-action-sheet :list="actionSheetList" v-model="actionSheetShow" @click="actionSheetCallback"></u-action-sheet>
-		<u-select mode="single-column" :list="selectList" v-model="selectShow" @confirm="selectConfirm"></u-select>
-		<!-- <u-picker mode="region" v-model="pickerShow" @confirm="regionConfirm"></u-picker> -->
-		<!-- <u-verification-code seconds="60" ref="uCode" @change="codeChange"></u-verification-code> -->
-		<!-- <view class="u-config-wrap">
-			<view class="u-config-title u-border-bottom">参数配置</view>
-			<view class="u-config-item">
-				<view class="u-item-title">label对齐方式</view>
-				<u-subsection vibrateShort :list="['左边', '上方']" @change="labelPositionChange"></u-subsection>
+
+			<!-- 表单底部按钮 -->
+
+			<view class="btnBottom bg-fff">
+				<view class="x-c padding10">
+					<view
+						v-for="(btnItem, btnIndex) in item.pageInfo.tabBar"
+						:key="btnIndex"
+						class="round-circle page-button"
+						:class="[{ 'single-btn': item.pageInfo.tabBar.length == 1 }, { 'page-button-next ml15': btnIndex % 2 != 0 }]"
+						@click="buttonClick(btnItem.functionName)"
+					>
+						{{ btnItem.buttonName }}
+					</view>
+				</view>
 			</view>
-			<view class="u-config-item">
-				<view class="u-item-title">边框</view>
-				<u-subsection vibrateShort :current="borderCurrent" :list="['显示', '隐藏']" @change="borderChange"></u-subsection>
-			</view>
-			<view class="u-config-item">
-				<view class="u-item-title">radio、checkbox样式</view>
-				<u-subsection vibrateShort :list="['自适应', '换行', '50%宽度']" @change="radioCheckboxChange"></u-subsection>
-			</view>
-			<view class="u-config-item">
-				<view class="u-item-title">错误提示方式</view>
-				<u-subsection vibrateShort :list="['message', 'toast', '下划线', '输入框']" @change="errorChange"></u-subsection>
-			</view>
-		</view> -->
+		</view>
 	</view>
 </template>
 
 <script>
+// 测试数据
+import initFormJson from '@/framework/common/formTestData.js';
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
+
 export default {
 	name: 'a-form',
 	props: {},
 	data() {
 		let that = this;
 		return {
-			// 请求页面组件JSON
-			pages: {},
-			// 页面组件信息
-			pageData: [],
-			// 页面配置信息
-			attributesData: {},
-			// json配置属性信息
-			propsData: {},
-			// 操作相关属性
-			operateData: {},
-			// 业务属性
-			data: {},
-			// 请求相关属性
-			requestData: {},
-			model: {
-				name: '111',
-				sex: '',
-				likeFruit: '',
-				intro: '',
-				payType: '支付宝',
-				agreement: false,
-				region: '',
-				goodsType: '',
-				phone: '',
-				code: '',
-				password: '',
-				rePassword: '',
-				remember: false,
-				photo: ''
-			},
-			selectList: [
-				{
-					value: '电子产品',
-					label: '电子产品'
-				},
-				{
-					value: '服装',
-					label: '服装'
-				},
-				{
-					value: '工艺品',
-					label: '工艺品'
-				}
-			],
-			rules: {
-				name: [
-					{
-						required: true,
-						message: '请输入姓名',
-						trigger: 'blur'
-					},
-					{
-						min: 3,
-						max: 5,
-						message: '姓名长度在3到5个字符',
-						trigger: ['change', 'blur']
-					},
-					{
-						// 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
-						validator: (rule, value, callback) => {
-							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
-							return this.$u.test.chinese(value);
-						},
-						message: '姓名必须为中文',
-						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-						trigger: ['change', 'blur']
-					}
-					// 异步验证，用途：比如用户注册时输入完账号，后端检查账号是否已存在
-					// {
-					// 	trigger: ['blur'],
-					// 	// 异步验证需要通过调用callback()，并且在里面抛出new Error()
-					// 	// 抛出的内容为需要提示的信息，和其他方式的message属性的提示一样
-					// 	asyncValidator: (rule, value, callback) => {
-					// 		this.$u.post('/ebapi/public_api/index').then(res => {
-					// 			// 如果验证出错，需要在callback()抛出new Error('错误提示信息')
-					// 			if(res.error) {
-					// 				callback(new Error('姓名重复'));
-					// 			} else {
-					// 				// 如果没有错误，也要执行callback()回调
-					// 				callback();
-					// 			}
-					// 		})
-					// 	},
-					// }
-				],
-				sex: [
-					{
-						required: true,
-						message: '请选择性别',
-						trigger: 'change'
-					}
-				],
-				intro: [
-					{
-						required: true,
-						message: '请填写简介'
-					},
-					{
-						min: 5,
-						message: '简介不能少于5个字',
-						trigger: 'change'
-					},
-					// 正则校验示例，此处用正则校验是否中文，此处仅为示例，因为uView有this.$u.test.chinese可以判断是否中文
-					{
-						pattern: /^[\u4e00-\u9fa5]+$/gi,
-						message: '简介只能为中文',
-						trigger: 'change'
-					}
-				],
-				likeFruit: [
-					{
-						required: true,
-						message: '请选择您喜欢的水果',
-						trigger: 'change',
-						type: 'array'
-					}
-				],
-				payType: [
-					{
-						required: true,
-						message: '请选择任意一种支付方式',
-						trigger: 'change'
-					}
-				],
-				region: [
-					{
-						required: true,
-						message: '请选择地区',
-						trigger: 'change'
-					}
-				],
-				goodsType: [
-					{
-						required: true,
-						message: '请选择商品类型',
-						trigger: 'change'
-					}
-				],
-				phone: [
-					{
-						required: true,
-						message: '请输入手机号',
-						trigger: ['change', 'blur']
-					},
-					{
-						validator: (rule, value, callback) => {
-							// 调用uView自带的js验证规则，详见：https://www.uviewui.com/js/test.html
-							return this.$u.test.mobile(value);
-						},
-						message: '手机号码不正确',
-						// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-						trigger: ['change', 'blur']
-					}
-				],
-				code: [
-					{
-						required: true,
-						message: '请输入验证码',
-						trigger: ['change', 'blur']
-					},
-					{
-						type: 'number',
-						message: '验证码只能为数字',
-						trigger: ['change', 'blur']
-					}
-				],
-				password: [
-					{
-						required: true,
-						message: '请输入密码',
-						trigger: ['change', 'blur']
-					},
-					{
-						// 正则不能含有两边的引号
-						pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]+\S{5,12}$/,
-						message: '需同时含有字母和数字，长度在6-12之间',
-						trigger: ['change', 'blur']
-					}
-				],
-				rePassword: [
-					{
-						required: true,
-						message: '请重新输入密码',
-						trigger: ['change', 'blur']
-					},
-					{
-						validator: (rule, value, callback) => {
-							return value === this.model.password;
-						},
-						message: '两次输入的密码不相等',
-						trigger: ['change', 'blur']
-					}
-				]
-			},
-			border: false,
-			check: false,
-			selectStatus: 'close',
-			checkboxList: [
-				{
-					name: '荔枝',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '香蕉',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '橙子',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '草莓',
-					checked: false,
-					disabled: false
-				}
-			],
-			radioList: [
-				{
-					name: '支付宝',
-					checked: true,
-					disabled: false
-				},
-				{
-					name: '微信',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '银联',
-					checked: false,
-					disabled: false
-				},
-				{
-					name: '现金',
-					checked: false,
-					disabled: false
-				}
-			],
-			radio: '支付宝',
-			actionSheetList: [
-				{
-					text: '男'
-				},
-				{
-					text: '女'
-				},
-				{
-					text: '保密'
-				}
-			],
-			actionSheetShow: false,
-			pickerShow: false,
-			selectShow: false,
-			radioCheckWidth: 'auto',
-			radioCheckWrap: false,
-			labelPosition: 'left',
-			codeTips: '',
-			errorType: ['message']
+			initFormJson: initFormJson.form,
+			formModelJson: {},
+			formRulesJson: {},
+			// 表单页面数据
+			pages: [],
+			// 表单子组件校验规则
+			elementRuleList: [],
+			// 控制单列模式的列选择器
+			singleColumnShow: false,
+			// 控制多列模式的列选择器
+			mutilColumnAutoShow: false,
+			// 控制日历显示
+			calendarShow: false
 		};
 	},
 	mounted() {
 		this.init();
 	},
 	computed: {
-		borderCurrent() {
-			return this.border ? 0 : 1;
+		formDataJson() {
+			return this.formData();
 		}
 	},
 	methods: {
-		// 组件初始化
-		init() {
-			this.$U.initPages().then(val => {
-				this.pages = decodeURIComponent(val);
-				this.attributesData = val.attributes;
-				if (val.magicalCoder) {
-					this.pageData = val.magicalCoder.children;
-					console.log('this.pageDta:', this.pageData);
+		async init() {
+			// 调接口
+			// let res = await this.$apis.textFormJson();
+			// if  (res && res.code == '0') {
+			// 	// 将表单数据赋值给vuex的参数
+			// 	this.$store.commit('SET_FORMDATA', res.form);
 
-					// props参数处理
-					this.propsData = this.attributesData.propsData;
-					this.data = this.attributesData.data;
-					this.operateData = this.attributesData.operateData;
-					this.requestData = this.attributesData.requestData;
-					//初始化数据
-					// this.request();
-				} else {
-					console.log('请检查JSON是否正确');
-				}
-			});
+			// 	this.pages = this.formDataJson.propsData.pages;
+			// 	await this.initFormRules();
+			// }
+
+			// 本地测试
+			await this.$store.commit('SET_FORMDATA', this.initFormJson);
+
+			// console.log("formDataJson:",this.formDataJson);
+
+			this.pages = this.formDataJson.propsData.pages;
+			await this.initFormRules();
+		},
+
+		...mapGetters(['formData']),
+		// 上一页
+		previousPage() {
+			if (this.formDataJson.propsData.currentPage <= 0) {
+				this.formDataJson.propsData.currentPage = 0;
+			} else {
+				this.formDataJson.propsData.currentPage -= 1;
+			}
+
+			let setStorageName = 'formModelJson' + this.formDataJson.propsData.currentPage;
+			// this.formModelJson = uni.getStorageSync(setStorageName);
+			this.$set(this.formModelJson, uni.getStorageSync(setStorageName));
+			this.$store.commit('SET_FORMDATA', this.formDataJson);
+		},
+
+		// 下一页
+		nextPage() {
+			// 本地存储当前页数据并切换下一页
+			let setStorageName = 'formModelJson' + this.formDataJson.propsData.currentPage;
+			uni.setStorageSync(setStorageName, this.formModelJson);
+
+			if (this.formDataJson.propsData.currentPage >= this.formDataJson.propsData.pages.length - 1) {
+				this.formDataJson.propsData.currentPage = this.formDataJson.propsData.pages.length - 1;
+			} else {
+				this.formDataJson.propsData.currentPage += 1;
+			}
+
+			this.$store.commit('SET_FORMDATA', this.formDataJson);
+
+			// console.log('this.formModelJson:', this.formModelJson);
+			console.log('this.formRulesJson:', this.formRulesJson);
 		},
 
 		//数据接口
@@ -412,6 +295,14 @@ export default {
 		//请求接口
 		setRequestData(requestData) {
 			this.requestData = requestData;
+		},
+
+		// string转换成函数
+		evalFun(ev) {
+			let evalParam = eval(ev);
+			if (evalParam) {
+				return evalParam;
+			}
 		},
 
 		// 网络请求
@@ -455,23 +346,181 @@ export default {
 				console.log('请检查参数是否正确！');
 				return;
 			}
+		},
+
+		// 初始化表单规则
+		initFormRules() {
+			let propKey = '';
+			for (let item in this.pages) {
+				if (this.pages[item]) {
+					// 循环当前页 栏目
+					let columns = this.pages[item].columns;
+
+					columns.map((item2, index2) => {
+						// 循环当前表单页数据
+						item2.elementList.map((item3, index3) => {
+							// prop 参数作为json中的key值
+							propKey = item3.prop;
+
+							// 表单数据对象
+							if (item3.elementOptionValue) {
+								// 当前情况针对于 不可修改的文本框
+
+								this.formModelJson[item3.prop] = item3.elementOptionValue;
+							} else {
+								this.formModelJson[item3.prop] = '';
+							}
+
+							// 将单个子组件的校验规则赋值给elementRuleList
+							this.elementRuleList = item3.attributesData.data.ruleList;
+
+							if (this.elementRuleList && this.elementRuleList.length > 0) {
+								// 对校验规则参数进行处理
+								this.elementRuleList.map(ruleItem => {
+									for (let key in ruleItem) {
+										let includeList = ['transform', 'validator', 'asyncValidator'];
+										if (includeList.includes(key)) {
+											let string = 'this.$root.' + ruleItem[key];
+											let rulesValue = this.evalFun(string);
+											ruleItem[key] = rulesValue;
+										}
+									}
+								});
+							}
+
+							// 以下参数均是u-form 组件所需参数
+							// 表单子组件校验规则列表
+							this.formRulesJson[item3.prop] = this.elementRuleList || [];
+						});
+
+						// 表单需校验规则
+						if (this.formRulesJson) {
+							this.$refs.uForm[0].setRules(this.formRulesJson);
+						} else {
+							console.log('请检查校验规则是否正确！');
+						}
+					});
+				} else {
+					console.log('请检查propsData > pages参数是否正确！');
+				}
+			}
+
+			// this.$set() 解决动态改变数据 但是无法vue 无法检测数据已更新问题
+			this.$set(this.formModelJson, propKey, this.formModelJson[propKey]);
+			this.$set(this.formRulesJson, propKey, this.formRulesJson[propKey]);
+		},
+
+		// elementType 为 10时 按钮点击事件
+		// 调用页面方法
+		uButtonClick(fnName) {
+			let string = '';
+			if (fnName.indexOf('(') != -1) {
+				string = 'this.$root.' + fnName;
+			} else {
+				string = 'this.$root.' + fnName + '()';
+			}
+
+			this.evalFun(string);
+		},
+
+		// 按钮点击
+		// 调用组件内部方法
+		buttonClick(fnName) {
+			// console.log('fnname:', fnName);
+			let string = '';
+			if (fnName.indexOf('(') != -1) {
+				string = 'this.' + fnName;
+			} else {
+				string = 'this.' + fnName + '()';
+			}
+
+			this.evalFun(string);
+		},
+
+		// 单列选择点击确定后
+		singleColumnConfirm(e, param) {
+			console.log('singleColumnConfirm:', e);
+			e.map((val, index) => {
+				this.formModelJson[param] += this.formModelJson[param] == '' ? val.label : '-' + val.label;
+			});
+		},
+
+		// 多列选择点击确定后
+		mutilColumnConfirm(e, param) {
+			console.log('mutilColumnConfirm:', e);
+			e.map((val, index) => {
+				this.formModelJson[param] += this.formModelJson[param] == '' ? val.label : '-' + val.label;
+			});
+		},
+
+		// 当内部文件列表被加入文件、移除文件，或手动调用clear方法时触发
+		onListChange(lists, param) {
+			console.log('onListChange', lists);
+			this.formModelJson[param] = lists;
+		},
+
+		// 日历选择点击确定后
+		calendarConfirm(e, param) {
+			console.log('calendarConfirm:', e);
+			this.formModelJson[param] = e.result;
+		},
+
+		// elementType 为10时，点击删除icon 删除当前数据
+		deleteListClick(param, lists, index) {
+			console.log('list：', lists);
+			lists.splice(index, 1);
+			this.formModelJson[param] = lists;
+			console.log('this.formModelJson[param]:', this.formModelJson[param]);
+		},
+
+		// 表单提交
+		submit() {
+			console.log('this.formModelJson:', this.formModelJson);
+			// this.$refs.uForm[0].validate(valid => {
+			// 	if (valid) {
+			// 		console.log('验证通过', valid);
+			// 	} else {
+			// 		console.log('验证失败');
+			// 	}
+			// });
 		}
 	}
 };
 </script>
 <style scoped lang="scss">
-.wrap {
-	padding: 30rpx;
+.page-button {
+	flex: 1;
+	height: 80rpx;
+	line-height: 80rpx;
+	background-color: #ffe8d9;
+	color: #fd6703;
+	font-size: 28upx;
+	text-align: center;
+	border: none;
+	uni-button:after {
+		content: ' ';
+		border: none;
+	}
+}
+.page-button-next {
+	flex: 1;
+	background-color: #fd6703 !important;
+	color: #ffffff !important;
+	border-color: #fd6703 !important;
 }
 
-.agreement {
-	display: flex;
-	align-items: center;
-	margin: 40rpx 0;
-
-	.agreement-text {
-		padding-left: 8rpx;
-		color: $u-tips-color;
-	}
+.single-btn {
+	background-color: #ffe8d9 !important;
+	color: #fd6703 !important;
+	border-color: #ffe8d9 !important;
+}
+.btnBottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+.defaultBtnClass {
+	background-color: #fff7f2;
+	color: #fd6703 !important;
 }
 </style>

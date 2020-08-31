@@ -286,7 +286,6 @@ export default {
 		},
 		// 模态框关闭
 		modalOff(){
-			console.log("234567qekfb7")
 			let off = {
 				show: 'false',
 			}
