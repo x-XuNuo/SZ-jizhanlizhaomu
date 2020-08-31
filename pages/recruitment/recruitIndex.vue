@@ -2,28 +2,10 @@
 	<view>
 		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
 			
-			<block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<!-- 测试修改数据 -->
-			<!-- 使用插槽 -->
 			<block slot="a-icon-list-prove">
-				<!-- 渲染数据 -->
-				<view class="" v-for="(item,index) in list" :key="index">
-					{{item.name}}
-				</view>
+					<!-- <view class="line-common-inner"></view> -->
 			</block>
 			
-			<block slot="a-button-prove">
-				<view class="button-prove">
-					<!-- sdfghjkl; -->
-				</view>
-			</block>
 		</a-frame>
 		
 		
@@ -68,14 +50,13 @@ export default {
 </script>
 
 <style scoped>
-	.line-common-inner {
-		background: #FFFFFF;
-		height: 20upx;
+	.line-common-inner{
 		width: 100%;
-	}
-	.button-prove{
+		height: 30px;
 		background-color: cyan;
-		width: 100%;
+		border-radius: 50% 50% 0 0;
+		position: absolute;
+		top: 0;
 	}
   .x-c {
 		width: 96% !important;

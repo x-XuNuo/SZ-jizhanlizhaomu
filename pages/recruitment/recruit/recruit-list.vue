@@ -79,6 +79,7 @@ export default {
 	}
 	>>> .list{
 		background-color: #f5f5f5;
+		height: 730upx !important;
 	}
 	>>> .date-search{
 			width: 94%;
