@@ -62,8 +62,7 @@ export default {
 		border-top: 20upx #f5f5f5 solid;
 	}
 	>>> .list{
-		height: 0;
-		overflow: hidden;
+		height: 100% !important;
 	}
 	>>> .QS-SwiperGrid{
 		border-bottom: 1px #eee solid;
