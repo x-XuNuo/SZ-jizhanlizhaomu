@@ -313,7 +313,6 @@ export default {
 				confirmColor:"#fd6703",
 				asyncClose:"false",
 				maskCloseAble:"true",
-				showCancelButton: "true"
 			};
 			this.$nextTick(() => {
 				let modalOD = this.$refs.alert.operateData
