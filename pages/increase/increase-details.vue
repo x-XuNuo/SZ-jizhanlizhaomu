@@ -36,6 +36,9 @@ export default {
 	// 点击返回按钮
 	onBackPress() {},
 	methods: {
+		success(){
+			console.log("234567898765")
+		}
 	}
 };
 </script>

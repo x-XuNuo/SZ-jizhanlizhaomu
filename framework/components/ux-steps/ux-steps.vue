@@ -130,7 +130,7 @@ export default {
 		// 自定义步骤条样式
 		stepMode: {
 			type: Number || String,
-			default: '0'
+			default: 0
 		}
 	},
 	data() {
@@ -180,8 +180,8 @@ $u-steps-item-dot-width: 20rpx;
 			}
 
 			.u-stepsMode__item__line {
-				left: 63%;
-				width: 75%;
+				left: 60%;
+				width: 80%;
 			}
 		}
 

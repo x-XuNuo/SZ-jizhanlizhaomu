@@ -8,6 +8,11 @@
 					:requestParamData="requestParamData" 
 					@clickSearch="clickSearch">
 				</a-frame>
+	<!-- 			<a-form
+					ref = "aForm"
+					:requestParamData="requestParamData" 
+					@clickSearch="clickSearch"
+				></a-form> -->
 		</view>
 	</view>
 	

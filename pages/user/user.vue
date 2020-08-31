@@ -1,6 +1,8 @@
 <template>
 	<view>
-			user 
+		<a-form>
+			
+		</a-form>
 	</view>
 </template>
 

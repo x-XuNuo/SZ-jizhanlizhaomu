@@ -2,7 +2,7 @@
 	<view>
 		<!-- 第三步 添加附件 -->
 		<view class="recruitList">
-			<img src="../../../static/top_Background.png" alt="" class="imgs">
+			<!-- <img src="../../../static/top_Background.png" alt="" class="imgs"> -->
 				<a-frame
 					ref = "aFrame"  
 					:requestParamData="requestParamData" 
@@ -64,30 +64,17 @@ export default {
 </script>
 
 <style scoped>
-	.recruitList{
-		padding-top: 150upx;
-	}
-	.imgs{
-		width: 100%;
-		position: absolute;
-		top: 0;
+	uni-page-body{
+		padding-top: 170upx;
+		background-image: url(../../../static/top_Background.png);
+		background-repeat: no-repeat;
+		background-size: 100%;
 	}
 	>>> .u-upload{
-		width: 100%;
-		position: absolute;
-		padding: 5%;
-		top: 280upx;
+		padding-bottom: 5%;
+		margin-top: 30upx;
 		background-color: #fff;
 		border-radius: 30upx 30upx 0 0;
-		overflow:hidden;
-	}
-	>>> .slot-btn{
-		width: 100%;
-		/* position: absolute; */
-		/* padding: 5%; */
-		/* top: 280upx; */
-		/* background-color: #fff; */
-		/* border-radius: 30upx 30upx 0 0; */
 	}
 	
 	>>> .upload{
@@ -95,7 +82,9 @@ export default {
 		background-color: #fff1ea;
 		color: #fd7012;
 		border-radius: 46upx;
+		margin: 20upx 20upx 0;
 	}
+	/* 上一步 */
 	>>> .back{
 			width: 45%;
 			position: fixed;
@@ -105,6 +94,7 @@ export default {
 			color: #fd6c0a;
 			border-radius: 46upx;
 		}
+		/* 下一步 */
 	>>> .nextStep{
 			width: 45%;
 			position: fixed;

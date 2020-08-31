@@ -36,7 +36,7 @@
 				:unActiveColor="this.propsData.unActiveColor"
 				:icon="this.propsData.icon"
 				:iconMode ="this.propsData.iconMode"
-				:stepMode="1"
+				:stepMode='1'
 			></ux-steps>
 		</view>
 		

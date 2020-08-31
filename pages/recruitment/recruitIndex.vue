@@ -3,13 +3,9 @@
 		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
 			
 			<block slot="a-icon-list-prove">
-					<!-- <view class="line-common-inner"></view> -->
+					<view class="line-common-inner"></view>
 			</block>
-			
 		</a-frame>
-		
-		
-		
 	</view>
 	
 </template>
@@ -54,10 +50,11 @@ export default {
 		width: 100%;
 		height: 30px;
 		background-color: cyan;
-		border-radius: 50% 50% 0 0;
 		position: absolute;
 		top: 0;
+		border-radius: 50% 50% 0 0;
 	}
+	>>> .
   .x-c {
 		width: 96% !important;
 		background-color: #fd6703 !important;

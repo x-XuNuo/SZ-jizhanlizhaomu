@@ -52,14 +52,17 @@ export default {
 
 <style scoped>
 	>>> .upload{
-		width: 90%;
-		position: absolute;
-		left: 5%;
-		top: 20upx;
+		/* width: 90%; */
+		/* width: 100%; */
+		/* position: absolute; */
+		/* overflow: hidden; */
+		/* left: 5%; */
+		/* top: 20upx; */
 		border: none;
 		background-color: #fff1ea;
 		color: #fd7012;
 		border-radius: 46upx;
+		margin: 20upx 20upx 0;
 	}
 	>>> .complete{
 		width: 90%;
