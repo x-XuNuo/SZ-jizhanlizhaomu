@@ -1,9 +1,12 @@
 <template>
 	<view>
 		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
-			
+			<!-- a-list-prove -->
 			<block slot="a-icon-list-prove">
 					<view class="line-common-inner"></view>
+			</block>
+			<block slot="a-list-prove" >
+				<view class="list-prove"></view>
 			</block>
 		</a-frame>
 	</view>
@@ -48,16 +51,33 @@ export default {
 <style scoped>
 	.line-common-inner{
 		width: 100%;
-		height: 30px;
-		background-color: cyan;
+		height: 50upx;
 		position: absolute;
-		top: 0;
-		border-radius: 50% 50% 0 0;
+		top: 380upx;
+		background-color: #fff;
+		border-radius: 50%;
 	}
-	>>> .
-  .x-c {
-		width: 96% !important;
-		background-color: #fd6703 !important;
-		color: #fff !important;
+	>>> .listmat{
+		margin: 0;
+		border-top: 20upx #f5f5f5 solid;
+	}
+	>>> .list{
+		height: 0;
+		overflow: hidden;
+	}
+	>>> .QS-SwiperGrid{
+		border-bottom: 1px #eee solid;
+	}
+	>>> .taskBtn{
+		font-size: 24upx;    
+		background-color: #fd6703;
+    color: #fff;
+    border-radius:100upx;
+		margin-top: 20upx;
+	}
+	>>> .icon-box{
+		width: 135upx;
+		height: 38upx;
+		vertical-align: middle;
 	}
 </style>

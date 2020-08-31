@@ -66,15 +66,6 @@ export default {
 	// 点击返回按钮
 	onBackPress() {},
 	methods: {
-		// 点击搜索框
-		clickSearch() {
-			// this.$emit('goSearchFun');
-			uni.showToast({
-				icon:'none',
-				title:'点击了搜索框'
-			})
-			console.log('点击了搜索框');
-		}
 	}
 };
 </script>

@@ -80,6 +80,17 @@
 							</ax-card>
 					</view>
 				</view>
+				
+				<view v-if="this.propsData.mode == 'imageText'">
+					<view v-for="(item, index) in this.data.list" :key="index">
+						<ax-card
+							ref="axCardImgText"
+							:dataSource = "item"
+							model = "imageText"
+						>
+						</ax-card>
+					</view>
+				</view>
 			</block>
 		</ux-load-refresh>
 		

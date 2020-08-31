@@ -2,7 +2,6 @@
 	<view>
 		<view class="card" v-if="this.model == 'default' ">
 			<view @click="compclick">
-
 			<!-- 根据mode类型不同的视图封装 -->
 				<view class="title"> 
 					<img src="../../../static/recruit-list/txt.png" class="imgStyle"></img>
@@ -71,7 +70,7 @@
 			</view>
 		</view>
 		
-		<!-- 带有照片 -->
+		<!-- 带有头像 -->
 		<view v-if="this.model == 'photo'" style="margin: 20upx;">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
 				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; height: 100upx; margin-right: 20upx;"></img>
@@ -98,7 +97,31 @@
 			</a-image-preview>
 		</view>
 		
+		<!-- 图文介绍列表 -->
+		<view v-if="this.model == 'imageText'" style="margin: 10upx;">
+			<view class="bg-fff" style="padding: 20upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
+				<view style="flex: 1;">
+					<img :src="dataSource.taskImg" mode="" class="leftImg mr10"></img>
+				</view>
+				<view style="flex:2; padding-top: 8upx;">
+					<view >
+						<text class="f14 font-weightbold text-black">{{dataSource.taskName}}</text>
+					</view>
+					<view class="mt10 text-color999 f13">
+						<text>
+							{{dataSource.taskStartTime}}截止
+						</text> 
+					</view>
+				</view>
+				<view style="flex: 1;">
+					<a-button
+						ref='imgText'>
+					</a-button>
+				</view>
+			</view>
+		</view>
 		
+		<!-- 详情 -->
 		<view class="card" v-if="this.model == 'personnelCard' ">
 			<view>
 				<view class="head"> 
@@ -153,7 +176,7 @@ export default {
 		this.requestData = this.attributesData ? this.attributesData.requestData : {};
 		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
 		if(this.model == 'btncard'){
-		this.requestData = this.attributesData ? this.attributesData.requestData : {};
+			this.requestData = this.attributesData ? this.attributesData.requestData : {};
 			let details = {
 				text : "查看详情",
 				mode:"default",
@@ -180,7 +203,7 @@ export default {
 		} else if(this.model == 'img'){
 			let cardImg = {
 				fileList:[ 
-				 {
+					{
 						"url":"https://img.yzcdn.cn/vant/apple-1.jpg"
 					},
 					{
@@ -191,6 +214,15 @@ export default {
 			}
 			this.$nextTick( () =>{
 				this.$refs.imagePreview.setPropsData(cardImg)
+			})
+		}else if(this.model == "imageText"){
+			let task = {
+				text : "去做任务",
+				mode:"default",
+				class:"taskBtn"
+			} 
+			this.$nextTick( () =>{
+				this.$refs.imgText.setPropsData(task)
 			})
 		}
 	},
@@ -317,7 +349,9 @@ export default {
 	.apply{
 		padding: 20upx;
 	}
-	.apply{
-		
+	.leftImg{
+		width: 160upx;
+		height: 110upx;
+		border-radius: 10upx;
 	}
 </style>
