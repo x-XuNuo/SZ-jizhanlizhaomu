@@ -1,29 +1,31 @@
 <template>
-		<u-modal
-		v-model="this.propsData.show == 'true' ? true : false"
-		:z-index="this.propsData.zIndex"
-		:title="this.propsData.title"
-		:width="this.propsData.width"
-		:content="this.propsData.content"
-		:show-title="this.propsData.showTitle"
-		:show-confirm-button="this.propsData.showConfirmButtom == 'true' ? true :false"
-		:show-cancel-button="this.propsData.showCancelButton == 'true' ? true :false"
-		:confirm-text="this.propsData.confirmText"
-		:cancel-text="this.propsData.cancelText"
-		:cancel-color="this.propsData.cancelColor"
-		:confirm-color="this.propsData.confirmColor"
-		:border-radius="this.propsData.borderRadius"
-		:title-style="this.propsData.titleStyle"
-		:content-style="this.propsData.contentStyle"
-		:cancel-style="this.propsData.cancelStyle"
-		:confirm-style="this.propsData.confirmStyle"
-		:zoom="this.propsData.zoom == 'true' ? true : false"
-		:async-close="this.propsData.asyncClose == 'true' ? true :false"
-		:mask-close-able="this.propsData.maskCloseAble == 'true' ? true : false"
-		:negative-top="this.propsData.negativeTop"
-		@confirm="confirm"
-		@cancel="cancel"
-	></u-modal>
+		<view v-if="this.propsData">
+			<u-modal
+				v-model="show"
+				:z-index="this.propsData.zIndex"
+				:title="this.propsData.title"
+				:width="this.propsData.width"
+				:content="this.propsData.content"
+				:show-title="this.propsData.showTitle"
+				:show-confirm-button="this.propsData.showConfirmButtom == 'true' ? true :false"
+				:show-cancel-button="this.propsData.showCancelButton == 'true' ? true :false"
+				:confirm-text="this.propsData.confirmText"
+				:cancel-text="this.propsData.cancelText"
+				:cancel-color="this.propsData.cancelColor"
+				:confirm-color="this.propsData.confirmColor"
+				:border-radius="this.propsData.borderRadius"
+				:title-style="this.propsData.titleStyle"
+				:content-style="this.propsData.contentStyle"
+				:cancel-style="this.propsData.cancelStyle"
+				:confirm-style="this.propsData.confirmStyle"
+				:zoom="this.propsData.zoom == 'true' ? true : false"
+				:async-close="this.propsData.asyncClose == 'true' ? true :false"
+				:mask-close-able="this.propsData.maskCloseAble == 'true' ? true : false"
+				:negative-top="this.propsData.negativeTop"
+				@confirm="confirm"
+				@cancel="cancel"
+			></u-modal>
+		</view>
 	
 </template>
 
@@ -43,7 +45,8 @@ export default {
 			// 业务属性
 			data: {},
 			// 请求相关属性
-			requestData: {}
+			requestData: {},
+			show:false
 		};
 	},
 	mounted() {
@@ -51,7 +54,7 @@ export default {
 		this.propsData = this.attributesData ?  this.attributesData.propsData : {};
 		this.data = this.attributesData ? this.attributesData.data : {};
 		this.operateData = this.attributesData ? this.attributesData.operateData : {};
-		this.current = parseInt(this.propsData) ? this.attributesData.current : {};
+		this.show = this.propsData.show == 'true' ? true : false;
 
 	},
 
@@ -59,7 +62,7 @@ export default {
 		//数据接口
 		setPropsData(propsData) {
 			this.propsData = propsData;
-			console.log("37:",this.propsData)
+			this.show = this.propsData.show == 'true' ? true : false;
 		},
 		
 		// 业务属性接口
@@ -130,9 +133,10 @@ export default {
 		// 点击确认按钮时触发
 		confirm(){
 			if (this.operateData.confirm) {
-				let string = 'this.$root.' + this.operateData.confirm;
-				this.evalFun(string);
+			let string = 'this.$root.' + this.operateData.confirm;
+			this.evalFun(string);
 			}
+		
 		},
 		
 		// 点击取消按钮时触发

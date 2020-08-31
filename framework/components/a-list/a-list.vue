@@ -297,12 +297,11 @@ export default {
 		},
 		// 模态框关闭
 		modalOff(){
+			console.log("	300");
 			let off = {
 				show: 'false',
 			}
-			this.$nextTick(() => {
-				this.$refs.alert.setPropsData(off);
-			});
+			this.$refs.alert.setPropsData(off);
 		},
 		// 模态框显示
 		tipsClick(index){
@@ -312,17 +311,17 @@ export default {
 				content:"本次聘才申请人数不符合部门招聘计划，请重新申请",
 				showConfirmButtom : "true",
 				confirmColor:"#fd6703",
-				asyncClose:"true",
+				asyncClose:"false",
 				maskCloseAble:"true",
+				showCancelButton: "true"
 			};
 			this.$nextTick(() => {
 				let modalOD = this.$refs.alert.operateData
-				modalOD.confirm = this.modalOff
+				modalOD.confirm = 'modalOff'
 				// btnOD.click = this.chaxun
 				this.$refs.alert.setPropsData(modalPD);
 				this.$refs.alert.setOperateData(modalOD);
 			});
-			console.log("306：",index)
 		},
 			
 		// 删除事件
