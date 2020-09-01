@@ -70,9 +70,9 @@ export default {
 	}
 	/* 日历选择组件 */
 	>>> .date-search{
-			width: 94%;
+			width: 96%;
 			position: absolute;
-			left: 3%;
+			left: 2%;
 			top : 206upx;
 			padding: 10px;
 			background-color: #fff;
@@ -84,10 +84,15 @@ export default {
 	>>> .query{		background-color: #fd6703;		color: #fff;		border-radius: 46upx;
 		margin: 20upx 0;	}
 	
+	>>> .list{
+		background-color: #f5f5f5;
+		height: 730upx !important;
+	}
+	
 	/* card按钮样式 */
 	>>> .details{
 		float: right;
-		margin: 20upx 20upx 20upx 0;
+		margin: 0 20upx 20upx 0;
 		font-size: 28upx;
 		background-color: #fff;
 		border: 1px #e4e4e4 solid;

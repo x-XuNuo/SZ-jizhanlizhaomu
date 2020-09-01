@@ -34,7 +34,6 @@ export default {
 		this.$PU.a_mounted("axCardDefault",(e) => {
 			console.log("35:",e)
 		})
-		// console.log('39:',this.$refs.aFrame.$refs.aList2);
 	},
 	activated() {},
 	onUnload() {},
@@ -82,9 +81,9 @@ export default {
 		height: 730upx !important;
 	}
 	>>> .date-search{
-			width: 94%;
+			width: 96%;
 			position: absolute;
-			left: 3%;
+			left: 2%;
 			top : 206upx;
 			padding: 10px;
 			background-color: #fff;

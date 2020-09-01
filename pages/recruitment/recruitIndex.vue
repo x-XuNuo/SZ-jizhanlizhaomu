@@ -1,12 +1,8 @@
 <template>
 	<view>
 		<a-frame :requestParamData="requestParamData" @clickSearch="clickSearch">
-			<!-- a-list-prove -->
 			<block slot="a-icon-list-prove">
 					<view class="line-common-inner"></view>
-			</block>
-			<block slot="a-list-prove" >
-				<view class="list-prove"></view>
 			</block>
 		</a-frame>
 	</view>
@@ -78,5 +74,9 @@ export default {
 		width: 135upx;
 		height: 38upx;
 		vertical-align: middle;
+	}
+	>>> .grid-img{
+		width: 44upx !important;
+		height: 44upx !important;
 	}
 </style>

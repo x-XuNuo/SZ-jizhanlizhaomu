@@ -19,7 +19,7 @@
 								:dataSource = "item"
 								model = "default"
 								@cardClick = "cardclick(item.recruitId)"
-								@tipsClick = "tipsClick(item)"
+								@tipsClick = "tipsClick(item,$event)"
 							>
 							</ax-card>
 					</view>
@@ -54,6 +54,7 @@
 							ref="axCardBtncard"
 							:dataSource = "item"
 							model = "btncard"
+							@tipsClick = "tipsClick(item,$event)"
 						>
 						</ax-card>
 					</view>
@@ -304,11 +305,28 @@ export default {
 			this.$refs.alert.setPropsData(off);
 		},
 		// 模态框显示
-		tipsClick(index){
+		async tipsClick(index,event){
+			let requestApi = ""
+			let content = ""
+			let title = ""
+			if(event == "已驳回"){
+				requestApi = `http://easy-mock.liuup.com/mock/5f3ddbe4339f163501d50450/example/recruit/details/recruitType/0`
+				title = "驳回原因"
+			}else if(event == "停止招聘"){
+				requestApi = `http://easy-mock.liuup.com/mock/5f3ddbe4339f163501d50450/example/recruit/end/0`
+				title = "提示"
+			}
+			await this.$apis.GET(requestApi,"","").then((res)=>{
+				if(res.data){
+					content = res.data.msg
+				}else{
+					content = res.msg
+				}
+			}).catch();
 			let modalPD = {
 				show: 'true',
-				title : "驳回原因",
-				content:"本次聘才申请人数不符合部门招聘计划，请重新申请",
+				title : title,
+				content:content,
 				showConfirmButtom : "true",
 				confirmColor:"#fd6703",
 				asyncClose:"false",
@@ -317,12 +335,10 @@ export default {
 			this.$nextTick(() => {
 				let modalOD = this.$refs.alert.operateData
 				modalOD.confirm = 'modalOff'
-				// btnOD.click = this.chaxun
 				this.$refs.alert.setPropsData(modalPD);
 				this.$refs.alert.setOperateData(modalOD);
 			});
 		},
-			
 		// 删除事件
 		cellDelete(index){
 			this.data.list.splice(index,1)

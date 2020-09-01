@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<a-form>
+		<a-form 
+		ref = "aForm">
 			
 		</a-form>
 	</view>

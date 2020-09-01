@@ -236,7 +236,8 @@ export default {
 		},
 		// 驳回原因提醒
 		tips(){
-			this.$emit("tipsClick")
+			let code = "已驳回"
+			this.$emit("tipsClick",code)
 		},
 		// 删除事件
 		Dele(e){
@@ -244,7 +245,8 @@ export default {
 		},
 		// 停止招聘提示
 		stopRecruit(){
-			console.log("停止招聘")
+			let code = "停止招聘"
+			this.$emit("tipsClick",code)
 		},
 		dianji(){
 			console.log("234567898765")
@@ -310,7 +312,7 @@ export default {
 
 <style>
 	.card{
-		margin: 30upx 40upx;	
+		margin: 30upx;	
 		border-radius: 15upx;
 		overflow: hidden;
 		box-shadow: 0 0 10px #e5e5e5;
