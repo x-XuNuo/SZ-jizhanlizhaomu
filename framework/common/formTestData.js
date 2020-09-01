@@ -3,20 +3,20 @@ const form = {
 		"currentPage": 0,
 		"pages": [{
 				"pageInfo": {
-					"tabBar": [{
-						"buttonName": "下一页",
-						"functionName": "nextPage",
-						"validate": true
-					}]
+					// "tabBar": [{
+					// 	"buttonName": "下一页",
+					// 	"functionName": "nextPage",
+					// 	"validate": true
+					// }]
 				},
 				"columns": [{
-					"columnsInfo": {
-						"columnBgColor": "#ffa525",
-						"columnColor": "#ffffff",
-						"columnIcon": "account-fill",
-						"isShowForm": true,
-						"columnName": "投保人信息"
-					},
+					// "columnsInfo": {
+					// 	"columnBgColor": "#ffa525",
+					// 	"columnColor": "#ffffff",
+					// 	"columnIcon": "account-fill",
+					// 	"isShowForm": true,
+					// 	"columnName": "投保人信息"
+					// },
 					"elementList": [{
 							"label": "姓名",
 							"elementCode": "name",

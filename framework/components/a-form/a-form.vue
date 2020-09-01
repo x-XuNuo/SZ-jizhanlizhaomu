@@ -216,6 +216,7 @@ export default {
 		};
 	},
 	mounted() {
+		console.log("219:",this.formDataJson)
 		this.init();
 	},
 	computed: {
@@ -227,18 +228,18 @@ export default {
 		async init() {
 			// 调接口
 			// let res = await this.$apis.textFormJson();
+			// let res = await this.$apis.textFormJson();
 			// if  (res && res.code == '0') {
 			// 	// 将表单数据赋值给vuex的参数
-			// 	this.$store.commit('SET_FORMDATA', res.form);
+			// 	this.$S.commit('SET_FORMDATA', res.form);
 
 			// 	this.pages = this.formDataJson.propsData.pages;
 			// 	await this.initFormRules();
 			// }
 
 			// 本地测试
-			await this.$store.commit('SET_FORMDATA', this.initFormJson);
+			await this.$S.commit('SET_FORMDATA', this.initFormJson);
 
-			// console.log("formDataJson:",this.formDataJson);
 
 			this.pages = this.formDataJson.propsData.pages;
 			await this.initFormRules();
@@ -256,7 +257,7 @@ export default {
 			let setStorageName = 'formModelJson' + this.formDataJson.propsData.currentPage;
 			// this.formModelJson = uni.getStorageSync(setStorageName);
 			this.$set(this.formModelJson, uni.getStorageSync(setStorageName));
-			this.$store.commit('SET_FORMDATA', this.formDataJson);
+			this.$S.commit('SET_FORMDATA', this.formDataJson);
 		},
 
 		// 下一页
@@ -271,7 +272,7 @@ export default {
 				this.formDataJson.propsData.currentPage += 1;
 			}
 
-			this.$store.commit('SET_FORMDATA', this.formDataJson);
+			this.$S.commit('SET_FORMDATA', this.formDataJson);
 
 			// console.log('this.formModelJson:', this.formModelJson);
 			console.log('this.formRulesJson:', this.formRulesJson);

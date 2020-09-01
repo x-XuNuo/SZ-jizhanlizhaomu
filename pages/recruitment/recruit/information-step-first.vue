@@ -2,17 +2,18 @@
 	<view>
 		<!-- 第一步信息录入 -->
 		<view class="recruitList">
-			<img src="../../../static/top_Background.png" alt="" class="imgs" />
 				<a-frame
 					ref = "aFrame"  
 					:requestParamData="requestParamData" 
 					@clickSearch="clickSearch">
 				</a-frame>
-	<!-- 			<a-form
-					ref = "aForm"
-					:requestParamData="requestParamData" 
-					@clickSearch="clickSearch"
-				></a-form> -->
+				<view class="firstForm">
+					<a-form
+						ref = "aForm"
+						:requestParamData="requestParamData" 
+						@clickSearch="clickSearch"
+					></a-form>
+				</view>
 		</view>
 	</view>
 	
@@ -72,13 +73,17 @@ export default {
 
 <style scoped>
 	.recruitList{
-		padding-top: 150upx;
+		padding-top: 130upx;
+		background-image: url(../../../static/top_Background.png);
+		background-repeat: no-repeat;
+		background-size: 100%;
 	}
-	.imgs{
-		z-index: 0;
-		width: 100%;
-		position: fixed;
-		top: 0;
+	.firstForm{
+		margin-top: 40upx;
+		margin-bottom: 80upx;
+		height: 100%;
+		border-radius: 30upx 30upx 0 0;
+		background-color: #fff;
 	}
 	.line-common-inner {
 		background: #f0eff5;

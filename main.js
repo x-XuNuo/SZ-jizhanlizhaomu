@@ -21,7 +21,8 @@ Vue.prototype.$PU = utils_p;
 Vue.prototype.$apis = apis;
 
 const app = new Vue({
-	...App
+  store : aStore,
+  ...App
 })
 
 app.$mount()

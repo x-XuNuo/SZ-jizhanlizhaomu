@@ -236,7 +236,9 @@
 		// },
 		{
 			"path": "pages/user/user",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "增员列表"
+			}
 		}
         
     ],

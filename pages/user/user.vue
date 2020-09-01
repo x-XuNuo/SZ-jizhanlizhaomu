@@ -1,8 +1,7 @@
 <template>
 	<view>
 		<a-form 
-		ref = "aForm">
-			
+			ref = "aForm">
 		</a-form>
 	</view>
 </template>
@@ -13,6 +12,15 @@
 			return {
 				
 			}
+		},
+		mounted(){
+			console.log("17:",this.$refs.aForm)
+			let modes = {
+				mode :"default"	
+			}
+			this.$nextTick( () =>{
+				this.$refs.aForm.setPropsData(modes)
+			})
 		},
 		methods: {
 			

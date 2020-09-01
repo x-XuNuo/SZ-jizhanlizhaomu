@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 import moduleA from './module/moduleA';
 import moduleB from './module/moduleB';
 
@@ -13,6 +13,10 @@ const store = new Vuex.Store({
 	state: {
 		// 前端token
 		token: TOKEN,
+		
+		// form 表单的数据
+		formData:''
+		
 	},
 
 	// getters 对state中的成员加工后传递给外界
@@ -28,6 +32,10 @@ const store = new Vuex.Store({
 			} else {
 				return false
 			}
+		},
+		
+		formData:state =>{
+			return state.formData || uni.getStorageSync("formData");
 		}
 	},
 
@@ -38,7 +46,14 @@ const store = new Vuex.Store({
 		SET_TOKEN(state, token) {
 			state.token = token;
 			uni.setStorageSync("token", token);
+		},
+		
+		SET_FORMDATA(state, formData){
+			state.formData = formData;
+			uni.setStorageSync("formData",formData);
+			console.log("formData:",formData);
 		}
+		
 	},
 	// actions 异步操作
 	// 由于直接在mutation方法中进行异步操作，将会引起数据失效。所以提供了Actions来专门进行异步操作，最终提交mutation方法。
@@ -103,4 +118,4 @@ const store = new Vuex.Store({
 
 })
 
-export default store
+export default store;
