@@ -1,22 +1,15 @@
 <template>
 	<view>
-		<a-frame 
+<!-- 		<a-frame 
 			ref = "aFrame" 
 			:requestParamData="requestParamData" 
 			@clickSearch="clickSearch">
-<!-- 			
-			<block slot="a-swiper-below">
-					<view class="line-common-inner"></view>
-			</block>
-			
-			<block slot="a-icon-list-below">
-					<view class="line-common-inner"></view>
-			</block> -->
-			
 		</a-frame>
-		
-		
-		
+		 -->
+		 <a-form
+			ref="aForm"
+		 >
+		 </a-form>
 	</view>
 	
 </template>

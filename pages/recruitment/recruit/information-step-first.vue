@@ -19,9 +19,11 @@
 	
 </template>
 <script>
+import initFormJson from '@/framework/common/stepFirst.js';
 export default {
 	data() {
 		return {
+			initFormJson: initFormJson.form || {},
 			myBtn: "btn-text",
 			// 请求参数
 			requestParamData:{}
@@ -30,20 +32,6 @@ export default {
 	components: {},
 	created() {},
 	onLoad(option) {
-		// 测试数据
-		// let userInfo ={
-		// 	"id": "123",
-		// 	"name": "test123",
-		// 	"phone": "手机号码"
-		// }
-		
-		// this.requestParamData = {
-		// 	"id": "456",
-		// 	"name": "test456"
-		// }
-		
-		// uni.setStorageSync("userInfo",userInfo);
-		
 	},
 
 	onReady: function(res) {},
@@ -51,16 +39,12 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
+		this.$refs.aForm.setInitFormJson(this.initFormJson)
 	},
 	activated() {},
 	onUnload() {},
 	onHide() {},
 	onPullDownRefresh() {
-		console.log('onPullDownRefresh');
-		setTimeout(function() {
-			uni.stopPullDownRefresh();
-			console.log('stopPullDownRefresh');
-		}, 1000);
 	},
 	// 监听APP点击按钮 调起分享菜单
 	onNavigationBarButtonTap(val) {},
@@ -91,12 +75,12 @@ export default {
 		width: 100%;
 	}
 	
-	>>> .nextStep{
+	>>> .page-button{
 			width: 90%;
 			position: fixed;
 			bottom: 0;
-			background-color: #fd6703;
-			color: #fff;
+			background-color: #fd6703 !important;
+			color: #fff !important;
 			border-radius: 46upx;
 			margin: 10px 5%;
 	}

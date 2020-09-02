@@ -31,29 +31,58 @@
 				>
 					<block v-for="(item3, index3) in item2.elementList" :key="index3">
 						<!-- 录入框 标准键盘 text 0101 -->
-						<u-form-item v-if="item3.elementType == '0101'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '0101'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-input type="text" input-align="right" :placeholder="item3.attributesData.propsData.placeholder" v-model="formModelJson[item3.prop]"></u-input>
 						</u-form-item>
 
 						<!-- 录入框 数字键盘 number 0102 -->
-						<u-form-item v-if="item3.elementType == '0102'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '0102'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-input type="number" input-align="right" :placeholder="item3.attributesData.propsData.placeholder" v-model="formModelJson[item3.prop]"></u-input>
 						</u-form-item>
 
 						<!-- 录入框  textarea 0104 -->
 						<u-form-item
 							v-if="item3.elementType == '0104'"
-							label-width="150"
-							label-position="top"
 							:label="item3.label"
 							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
 							:required="item3.elementInfo.required"
 						>
 							<u-input type="textarea" :placeholder="item3.attributesData.propsData.placeholder" v-model="formModelJson[item3.prop]"></u-input>
 						</u-form-item>
 
 						<!-- 选择器 一级 0201 -->
-						<u-form-item v-if="item3.elementType == '0201'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '0201'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-input
 								type="select"
 								input-align="right"
@@ -71,7 +100,16 @@
 						</u-form-item>
 
 						<!-- 选择器 多级联动 0202 -->
-						<u-form-item v-if="item3.elementType == '0202'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '0202'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-input
 								type="select"
 								input-align="right"
@@ -89,7 +127,16 @@
 						</u-form-item>
 
 						<!-- 日期选择器 04 -->
-						<u-form-item v-if="item3.elementType == '04'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '04'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-input
 								type="select"
 								input-align="right"
@@ -102,23 +149,49 @@
 						</u-form-item>
 
 						<!-- 不可修改的文本框 07 -->
-						<u-form-item v-if="item3.elementType == '07'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '07'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-input type="text" :clearable="false" input-align="right" :disabled="true" v-model="formModelJson[item3.prop]"></u-input>
 						</u-form-item>
 
 						<!-- 点击按钮 触发上传 09 -->
-						<u-form-item v-if="item3.elementType == '0901'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '0901'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<u-upload
 								:action="item3.action"
 								:show-progress="false"
 								ref="uUpload"
 								:file-list="formModelJson[item3.prop] || []"
 								@on-list-change="onListChange($event, item3.prop)"
-							>
-							</u-upload>
+							></u-upload>
 						</u-form-item>
 						<!-- 点击按钮 触发上传 09 -->
-						<u-form-item v-if="item3.elementType == '0902'" label-width="150" :label="item3.label" :prop="item3.prop" :required="item3.elementInfo.required">
+						<u-form-item
+							v-if="item3.elementType == '0902'"
+							:label="item3.label"
+							:prop="item3.prop"
+							:label-position="item3.labelPosition"
+							:label-width="item3.labelWidth"
+							:label-style="item3.labelStyle"
+							:label-align="item3.labelAlign"
+							:required="item3.elementInfo.required"
+						>
 							<ux-upload
 								:action="item3.action"
 								:show-progress="false"
@@ -139,7 +212,16 @@
 
 						<!-- 点击按钮跳转页面 将isShowList参数变成true后 新增后展示列表 10 -->
 						<block v-if="item3.elementType == '10'">
-							<u-form-item v-if="item3.elementType == '10'" :prop="item3.prop" :required="item3.elementInfo.required" label-width="150" :border-bottom="false">
+							<u-form-item
+								v-if="item3.elementType == '10'"
+								:prop="item3.prop"
+								:label-position="item3.labelPosition"
+								:label-width="item3.labelWidth"
+								:label-style="item3.labelStyle"
+								:label-align="item3.labelAlign"
+								:required="item3.elementInfo.required"
+								:border-bottom="false"
+							>
 								<u-button shape="circle" class="width100" :class="item3.elementInfo.buttonClass" @click="uButtonClick(item3.elementInfo.functionName)">
 									<u-icon :name="item3.elementInfo.leftIcon" :color="item3.elementInfo.leftIconColor" size="40" class="mr5"></u-icon>
 									<text>{{ item3.elementInfo.buttonName }}</text>
@@ -200,7 +282,7 @@ export default {
 	data() {
 		let that = this;
 		return {
-			initFormJson: initFormJson.form,
+			initFormJson: initFormJson.form || {},
 			formModelJson: {},
 			formRulesJson: {},
 			// 表单页面数据
@@ -216,8 +298,11 @@ export default {
 		};
 	},
 	mounted() {
-		console.log("219:",this.formDataJson)
-		this.init();
+		if (this.initFormJson) {
+			this.init();
+		} else {
+			console.log('请检查初始化form数据！');
+		}
 	},
 	computed: {
 		formDataJson() {
@@ -225,9 +310,13 @@ export default {
 		}
 	},
 	methods: {
+		// 初始化formJson
+		setInitFormJson(initFormJson) {
+			this.initFormJson = initFormJson;
+			this.init();
+		},
 		async init() {
 			// 调接口
-			// let res = await this.$apis.textFormJson();
 			// let res = await this.$apis.textFormJson();
 			// if  (res && res.code == '0') {
 			// 	// 将表单数据赋值给vuex的参数
@@ -239,7 +328,6 @@ export default {
 
 			// 本地测试
 			await this.$S.commit('SET_FORMDATA', this.initFormJson);
-
 
 			this.pages = this.formDataJson.propsData.pages;
 			await this.initFormRules();
