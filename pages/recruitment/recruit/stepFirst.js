@@ -185,7 +185,7 @@ const form = {
 							"label": "机构",
 							"elementCode": "mechanism",
 							"prop": "mechanism",
-							"elementType": "0201",						
+							"elementType": "0202",						
 							"labelWidth":"200",
 							"elementInfo": {
 								"leftIcon": "account",
@@ -195,16 +195,47 @@ const form = {
 								"propsData": {
 									"placeholder": "请选择",
 									"selectList": [{
-											"value": "电子产品",
-											"label": "电子产品"
+											"value": 1,
+											"label": "上海分公司",
+											"children": [{
+													"value": 2,
+													"label": "浦东分公司",
+													"children": [{
+															"value": 3,
+															"label": "浦东1号支公司"
+														},
+														{
+															"value": 4,
+															"label": "浦东2号支公司"
+														}
+													]
+												},
+												{
+													"value": 5,
+													"label": "黄浦分公司",
+													"children": [{
+															"value": 6,
+															"label": "黄浦1号支公司"
+														},
+														{
+															"value": 7,
+															"label": "黄浦2号支公司"
+														}
+													]
+												}
+											]
 										},
 										{
-											"value": "服装",
-											"label": "服装"
-										},
-										{
-											"value": "工艺品",
-											"label": "工艺品"
+											"value": 8,
+											"label": "江苏分公司",
+											"children": [{
+												"value": 9,
+												"label": "南京分公司",
+												"children": [{
+													"value": 10,
+													"label": "溧水支公司"
+												}]
+											}]
 										}
 									]
 								},
@@ -231,7 +262,7 @@ const form = {
 							"label": "拟聘职级",
 							"elementCode": "rank",
 							"prop": "rank",
-							"elementType": "0202",						
+							"elementType": "0201",						
 							"labelWidth":"200",
 							"elementInfo": {
 								"leftIcon": "account",
@@ -241,47 +272,16 @@ const form = {
 								"propsData": {
 									"placeholder": "请选择",
 									"selectList": [{
-											"value": 1,
-											"label": "中国",
-											"children": [{
-													"value": 2,
-													"label": "广东",
-													"children": [{
-															"value": 3,
-															"label": "深圳"
-														},
-														{
-															"value": 4,
-															"label": "广州"
-														}
-													]
-												},
-												{
-													"value": 5,
-													"label": "广西",
-													"children": [{
-															"value": 6,
-															"label": "南宁"
-														},
-														{
-															"value": 7,
-															"label": "桂林"
-														}
-													]
-												}
-											]
+											"value": "C01",
+											"label": "C01"
 										},
 										{
-											"value": 8,
-											"label": "美国",
-											"children": [{
-												"value": 9,
-												"label": "纽约",
-												"children": [{
-													"value": 10,
-													"label": "皇后街区"
-												}]
-											}]
+											"value": "C02",
+											"label": "C02"
+										},
+										{
+											"value": "C03",
+											"label": "C03"
 										}
 									]
 								},

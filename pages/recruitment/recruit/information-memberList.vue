@@ -6,8 +6,6 @@
 			@clickSearch="clickSearch">
 		</a-frame>
 		
-		
-		
 	</view>
 	
 </template>

@@ -315,7 +315,7 @@ export default {
 			this.initFormJson = initFormJson;
 			this.init();
 		},
-		async init() {
+		init() {
 			// 调接口
 			// let res = await this.$apis.textFormJson();
 			// if  (res && res.code == '0') {
@@ -327,10 +327,10 @@ export default {
 			// }
 
 			// 本地测试
-			await this.$S.commit('SET_FORMDATA', this.initFormJson);
+			this.$S.commit('SET_FORMDATA', this.initFormJson);
 
 			this.pages = this.formDataJson.propsData.pages;
-			await this.initFormRules();
+			this.initFormRules();
 		},
 
 		...mapGetters(['formData']),
