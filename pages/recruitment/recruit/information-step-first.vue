@@ -19,7 +19,8 @@
 	
 </template>
 <script>
-import initFormJson from '@/framework/common/stepFirst.js';
+// import initFormJson from '@/pages/recruitment/recruit/stepFirst.js';
+import initFormJson from './stepFirst.js';
 export default {
 	data() {
 		return {

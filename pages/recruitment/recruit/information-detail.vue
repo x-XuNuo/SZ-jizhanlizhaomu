@@ -8,15 +8,19 @@
 		 -->
 		 <a-form
 			ref="aForm"
+			:requestParamData="requestParamData" 
+			@clickSearch="clickSearch"
 		 >
 		 </a-form>
 	</view>
 	
 </template>
 <script>
+import initFormJson from './information.js';
 export default {
 	data() {
 		return {
+			initFormJson: initFormJson.form || {},
 			myBtn: "btn-text",
 			// 请求参数
 			requestParamData:{}
@@ -32,6 +36,7 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
+		this.$refs.aForm.setInitFormJson(this.initFormJson)
 	},
 	activated() {},
 	onUnload() {},
