@@ -73,22 +73,41 @@
 		<!-- 带有头像 -->
 		<view v-if="this.model == 'photo'" style="margin: 20upx;">
 			<view class="bg-fff" style="padding: 30upx; border-bottom: 1px #f4f4f4 solid; display: flex;">
-				<img src="../../common/assets/image/common/userIcon.png" mode="" style="width: 100upx; height: 100upx; margin-right: 20upx;"></img>
-				<view style="flex: 4;">
-					<view >
-						<text style="font-size: 35upx; color: #000000;">{{dataSource.applicantName}}</text>
+				<view class="mr12 x-ac f16 text-white" style="width: 100upx; height: 100upx; background-color: #868485; border-radius: 50upx;">
+					<text v-if="this.model !== 'photo'">{{dataSource.applicantPlace}}</text>
+					<img 
+						v-if="this.model == 'photo'"
+						src="../../common/assets/image/common/userIcon.png" 
+						mode="" 
+						style="width: 100%; height: 100%; "></img>
+				</view>
+				<view class="text-black" :class="{'text-colorRed':dataSource.connect != 1&&this.model !== 'photo' }" style="flex: 4;">
+					<view v-if="this.model == 'photo'">
+						<text class="f18">{{dataSource.applicantName}}</text>
 						<text 
 							:class="[{'no':dataSource.applicantStatus == 2 },{'yes':dataSource.applicantStatus == 1 },{'stay':dataSource.applicantStatus == 0}]" 
 							style="font-size: 28upx; float: right; margin: 0 10upx;">{{dataSource.applicantStatus == 2 ? "已驳回" :(dataSource.applicantStatus == 1 ? "已通过" :"审批中")}}</text>
 					</view>
-					<view  style="font-size: 25upx; color: #000; margin-top: 10upx ;">
+					<view v-if="this.model !== 'photo'">
+						<text class="mr12">{{dataSource.applicantTel}}</text>
+						<text>{{dataSource.applicantName}}</text>
+					</view>
+					<view v-if="this.model == 'photo'" class="mt10 f13">
 						<text>
-							拟聘职位：{{dataSource.rankName}}
+							{{dataSource.rankName}}
 						</text> 
 					</view>
+					<view v-if="this.model !== 'photo'" class="mt10 f13">
+						<text class="mr24">{{dataSource.conversationDate}}</text>
+						<text>{{dataSource.conversationTime}}</text>
+					</view>
+				</view>
+				<view v-if="this.dataSource.connect == 1 && this.model !== 'photo'" class="y-f" style="flex: 1;">
+					<img src="../../../static/tips.png" mode="" style="width:40upx; vertical-align: middle; margin:20upx 0;"/>
 				</view>
 			</view>
 		</view>
+		
 		<!-- 纯图片列表 -->
 		<view v-if="this.model == 'img'" style="margin: 20upx;">
 			<a-image-preview
@@ -146,6 +165,8 @@
 				</view>
 			</view>
 		</view>
+		
+		
 	</view>
 </template>
 
