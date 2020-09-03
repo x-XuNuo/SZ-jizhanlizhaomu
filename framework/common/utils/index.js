@@ -529,8 +529,8 @@ export default {
 			queryPageJson = res.page;
 			
 			// 测试造数据注释以下两行
-			// queryPageJson = decodeURIComponent(res.page);
-			// queryPageJson = JSON.parse(queryPageJson);
+			queryPageJson = decodeURIComponent(res.page);
+			queryPageJson = JSON.parse(queryPageJson);
 
 			console.log('queryPageJson:', queryPageJson);
 		}

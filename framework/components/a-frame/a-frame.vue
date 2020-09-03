@@ -322,6 +322,21 @@
 				</slot>
 				<slot name="ax-card-below"></slot>
 			</block>
+			
+			<!-- 业务 文字时间卡片 -->
+			<block>
+				<slot name="ax-call-details-prove"></slot>
+				<slot name="ax-call-details">
+					<ax-call-details
+						ref="axCallDetails"
+						v-if="item.magicalCoder.identifier == 'ax-call-details'"
+						:attributesData="$U.processDataFun(item.attributes)"
+						:requestParamData="requestParamData"
+					>
+					</ax-call-details>
+				</slot>
+				<slot name="ax-call-details-below"></slot>
+			</block>
 		</view>
 	</view>
 </template>

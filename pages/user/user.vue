@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<a-frame 
-				ref = "aFrame"
+			ref = "aFrame"
 			:requestParamData="requestParamData" 
 			@clickSearch="clickSearch">
 		</a-frame>
@@ -26,6 +26,9 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
+		this.$nextTick(() => {
+			console.log("29:",this.$refs.aFrame.$refs.axTextTime)
+		})
 	},
 	activated() {},
 	onUnload() {},
