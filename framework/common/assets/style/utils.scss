@@ -42,7 +42,9 @@
 .text-colorRed {
 	color: #ff0d0d;
 }
-
+.text-colora2{
+	color:#a2a2a2;
+}
 .text-color8C {
 	color: #8c8c8c;
 }
@@ -50,7 +52,9 @@
 .text-color-blue {
 	color: #117be3;
 }
-
+.text-color61b0ff{
+	color: #61b0ff;
+}
 .text-color97 {
 	color: #979797;
 }
@@ -61,6 +65,14 @@
 .bgc-blue {
 	background-color: #007AFF;
 }
+
+/*
+	边框
+*/ 
+.bl{
+	border-left: 4upx solid #bbbbbb;
+}
+
 
 /* 
 	基础颜色背景
@@ -438,6 +450,16 @@ div.dib {
  * 自定义class工具
  * 
 */
+
+.lh10{
+	line-height:20upx;
+}
+.lh20{
+	line-height:40upx;
+}
+.lh30{
+	line-height:60upx;
+}
 
 .pad {
 	padding: 0 20upx;

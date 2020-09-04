@@ -337,6 +337,20 @@
 				</slot>
 				<slot name="ax-call-details-below"></slot>
 			</block>
+			<!-- 业务 数据列表ax-data-list -->
+			<block>
+				<slot name="ax-data-list-prove"></slot>
+				<slot name="ax-data-list">
+					<ax-data-list
+						ref="axDataList"
+						v-if="item.magicalCoder.identifier == 'ax-data-list'"
+						:attributesData="$U.processDataFun(item.attributes)"
+						:requestParamData="requestParamData"
+					>
+					</ax-data-list>
+				</slot>
+				<slot name="ax-data-list-below"></slot>
+			</block>
 		</view>
 	</view>
 </template>

@@ -1,10 +1,15 @@
 <template>
 	<view>
-		<a-frame 
+<!-- 		<a-frame 
 			ref = "aFrame"
 			:requestParamData="requestParamData" 
 			@clickSearch="clickSearch">
-		</a-frame>
+		</a-frame> -->
+			<ax-data-list 
+				ref = "axDataList"
+				:requestParamData="requestParamData" 
+				@clickSearch="clickSearch">
+			</ax-data-list>
 	</view>
 </template>
 <script>
@@ -26,8 +31,21 @@ export default {
 	onShow() {},
 	onHide() {},
 	mounted() {
-		this.$nextTick(() => {
-			console.log("29:",this.$refs.aFrame.$refs.axTextTime)
+		let DataList = {
+			list : [{
+				durationText: "通话时长",
+				duration: "1520.6分"
+				},{
+				durationText: "总次数",
+				duration: "70次"
+				},{
+				durationText: "日均通话时长",
+				duration: "3.8分"
+			}]
+		}
+		// console.log("34:",this.$refs.axDataList)
+		this.$nextTick( () => {
+			this.$refs.axDataList.setPropsData(DataList)
 		})
 	},
 	activated() {},
